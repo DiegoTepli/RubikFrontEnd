@@ -226,7 +226,7 @@ const SignInScreen = ({navigation}) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('SignUpScreen')}
+                    onPress={() => navigation.navigate('SignUpClientScreen')}
                     style={[styles.signIn, {
                         borderColor: '#009387',
                         borderWidth: 1,
@@ -239,7 +239,7 @@ const SignInScreen = ({navigation}) => {
                     
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('SignUpScreen')}
+                    onPress={() => navigation.navigate('SignUpProfesionalScreen')}
                     style={[styles.signIn, {
                         borderColor: '#009387',
                         borderWidth: 1,

@@ -1,22 +1,85 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { 
     View, 
     Text, 
     Button, 
     TouchableOpacity, 
+    ImageBackground,
     Dimensions,
     TextInput,
     Platform,
     StyleSheet,
     ScrollView,
-    StatusBar
+    Image
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import { StatusBar} from 'expo-status-bar';
 
-const SignInScreen = ({navigation}) => {
+import {useTheme} from 'react-native-paper';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
+import BottomSheet from 'reanimated-bottom-sheet';
+import Animated from 'react-native-reanimated';
+
+/*import ImagePicker from 'react-native-image-crop-picker';*/
+import * as ImagePicker from 'expo-image-picker';
+import Constants from 'expo-constants';
+
+
+
+
+const SignUpProfesionalScreen = ({navigation}) => {
+
+    
+    const [image1, setImage1] = useState(null);
+    const [image2, setImage2] = useState(null);
+    const [image3, setImage3] = useState(null);
+
+    
+
+    const PickImage1 = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing:true,
+            aspect: [4,3],
+            quality:1
+        })
+        console.log(result)
+        if (!result.cancelled){
+            setImage1(result.uri)
+        }
+    }
+
+    const PickImage2 = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing:true,
+            aspect: [4,3],
+            quality:1
+        })
+        console.log(result)
+        if (!result.cancelled){
+            setImage2(result.uri)
+        }
+    }
+
+    const PickImage3 = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing:true,
+            aspect: [4,3],
+            quality:1
+        })
+        console.log(result)
+        if (!result.cancelled){
+            setImage3(result.uri)
+        }
+    }
 
     const [data, setData] = React.useState({
         username: '',
@@ -27,6 +90,8 @@ const SignInScreen = ({navigation}) => {
         confirm_secureTextEntry: true,
     });
 
+   
+    
     const textInputChange = (val) => {
         if( val.length !== 0 ) {
             setData({
@@ -75,7 +140,7 @@ const SignInScreen = ({navigation}) => {
       <View style={styles.container}>
           <StatusBar backgroundColor='#009387' barStyle="light-content"/>
         <View style={styles.header}>
-            <Text style={styles.text_header}>Registro Usuario Cliente</Text>
+            <Text style={styles.text_header}>Registro Usuario Profesional</Text>
         </View>
         <Animatable.View 
             animation="fadeInUpBig"
@@ -108,7 +173,9 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Nombre completo</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Nombre completo</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -133,7 +200,9 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Email</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Email</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -158,7 +227,9 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Provincia</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Provincia</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -183,7 +254,9 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Barrio</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Barrio</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -208,7 +281,9 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Domicilio</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Domicilio</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -233,7 +308,9 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Número de contacto</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Número de contacto</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -258,33 +335,66 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={styles.text_footer}>Foto actual</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Foto actual</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
                     color="#05375a"
                     size={20}
                 />
-                <TextInput 
-                    placeholder="Ingrese su Foto actual"
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
-                </Animatable.View>
-                : null}
+                <TouchableOpacity style={styles.panelButton} onPress={PickImage1}>
+        <Text style={styles.panelButtonTitle}>Seleccionar imagen</Text>
+        {image1 && <Image source = {{uri:image1}} style= {{
+            width:200,
+            height:200
+        }} />}
+        <StatusBar style ="auto" />
+      </TouchableOpacity>
             </View>
 
-            <Text style={styles.text_footer}>Usuario</Text>
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Constancia de inscripción impositiva</Text>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user-o"
+                    color="#05375a"
+                    size={20}
+                />
+                <TouchableOpacity style={styles.panelButton} onPress={PickImage2}>
+        <Text style={styles.panelButtonTitle}>Seleccionar imagen</Text>
+        {image2 && <Image source = {{uri:image2}} style= {{
+            width:200,
+            height:200
+        }} />}
+        <StatusBar style ="auto" />
+      </TouchableOpacity>
+            </View>
+
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Factura de algún servicio o contrato de alquiler</Text>
+            <View style={styles.action}>
+                <FontAwesome 
+                    name="user-o"
+                    color="#05375a"
+                    size={20}
+                />
+                <TouchableOpacity style={styles.panelButton} onPress={PickImage3}>
+        <Text style={styles.panelButtonTitle}>Seleccionar imagen</Text>
+        {image3 && <Image source = {{uri:image3}} style= {{
+            width:200,
+            height:200
+        }} />}
+        <StatusBar style ="auto" />
+      </TouchableOpacity>
+            </View>
+
+            <Text style={[styles.text_footer, {
+                marginTop: 35
+            }]}>Usuario</Text>
             <View style={styles.action}>
                 <FontAwesome 
                     name="user-o"
@@ -392,7 +502,7 @@ const SignInScreen = ({navigation}) => {
             <View style={styles.button}>
                 <TouchableOpacity
                     style={styles.signIn}
-                    onPress={() => {}}
+                    onPress={() => navigation.goBack()}
                 >
                 <LinearGradient
                     colors={['#08d4c4', '#01ab9d']}
@@ -404,18 +514,7 @@ const SignInScreen = ({navigation}) => {
                 </LinearGradient>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}
-                    style={[styles.signIn, {
-                        borderColor: '#009387',
-                        borderWidth: 1,
-                        marginTop: 15
-                    }]}
-                >
-                    <Text style={[styles.textSign, {
-                        color: '#009387'
-                    }]}>Sign In</Text>
-                </TouchableOpacity>
+               
             </View>
             </ScrollView>
         </Animatable.View>
@@ -423,7 +522,7 @@ const SignInScreen = ({navigation}) => {
     );
 };
 
-export default SignInScreen;
+export default SignUpProfesionalScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -488,5 +587,18 @@ const styles = StyleSheet.create({
     },
     color_textPrivate: {
         color: 'grey'
+    },
+    panelButton: {
+        padding: 2,
+        borderRadius: 10,
+        backgroundColor: '#FF6347',
+        alignItems: 'center',
+        marginVertical: -1,
+        marginHorizontal: 6
+    },
+    panelButtonTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'white'
     }
-  });
+    });
