@@ -10,12 +10,14 @@ const HomeScreen = ({navigation}) => {
   
     return (
       <View style={styles.container}>
-        <StatusBar barStyle= { theme.dark ? "light-content" : "dark-content" }/>
+        <StatusBar backgroundColor='#ff2167' barStyle= { theme.dark ? "light-content" : "dark-content" }/>
+        <View style={styles.header}>
         <Text style={{color: colors.text}}>Home Screen</Text>
       <Button
         title="Go to details screen"
         onPress={() => navigation.navigate("Details")}
       />
+      </View>
       </View>
     );
 };
@@ -28,4 +30,9 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'center'
   },
+   header: {
+    flex: 1,
+    
+    backgroundColor: '#ff2167'
+   }
 });

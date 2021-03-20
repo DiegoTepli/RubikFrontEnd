@@ -114,9 +114,9 @@ const SignInScreen = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#009387' barStyle="light-content"/>
+          <StatusBar backgroundColor='#ff2167' barStyle="light-content"/>
         <View style={styles.header}>
-            <Text style={styles.text_header}>Bienvenido a Rubik!</Text>
+            <Text style={styles.text_header}>¡Bienvenido a Rubik!</Text>
         </View>
         <Animatable.View 
             animation="fadeInUpBig"
@@ -124,17 +124,11 @@ const SignInScreen = ({navigation}) => {
                 backgroundColor: colors.background
             }]}
         >
-            <Text style={[styles.text_footer, {
-                color: colors.text
-            }]}>Usuario</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color={colors.text}
-                    size={20}
-                />
+                
                 <TextInput 
-                    
+                    placeholder="Usuario"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text
@@ -162,18 +156,11 @@ const SignInScreen = ({navigation}) => {
             }
             
 
-            <Text style={[styles.text_footer, {
-                color: colors.text,
-                marginTop: 35
-            }]}>Contraseña</Text>
+            
             <View style={styles.action}>
-                <Feather 
-                    name="lock"
-                    color={colors.text}
-                    size={20}
-                />
+                
                 <TextInput 
-                   
+                    placeholder="Contraseña"
                     placeholderTextColor="#666666"
                     secureTextEntry={data.secureTextEntry ? true : false}
                     style={[styles.textInput, {
@@ -208,7 +195,7 @@ const SignInScreen = ({navigation}) => {
             
 
             <TouchableOpacity>
-                <Text style={{color: '#009387', marginTop:15}}>Forgot password?</Text>
+                <Text style={{color: '#ff2167', marginTop:20}}>¿Olvidó su contraseña?</Text>
             </TouchableOpacity>
             <View style={styles.button}>
                 <TouchableOpacity
@@ -216,7 +203,7 @@ const SignInScreen = ({navigation}) => {
                     onPress={() => {loginHandle( data.username, data.password )}}
                 >
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
+                    colors={['#ff2167', '#ff2167']}
                     style={styles.signIn}
                 >
                     <Text style={[styles.textSign, {
@@ -228,26 +215,26 @@ const SignInScreen = ({navigation}) => {
                 <TouchableOpacity
                     onPress={() => navigation.navigate('SignUpClientScreen')}
                     style={[styles.signIn, {
-                        borderColor: '#009387',
+                        borderColor: '#ff2167',
                         borderWidth: 1,
-                        marginTop: 15
+                        marginTop: 25
                     }]}
                 >
                     <Text style={[styles.textSign, {
-                        color: '#009387'
+                        color: '#ff2167'
                     }]}>Registro Usuario Cliente</Text>
                     
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('SignUpProfesionalScreen')}
                     style={[styles.signIn, {
-                        borderColor: '#009387',
+                        borderColor: '#ff2167',
                         borderWidth: 1,
-                        marginTop: 15
+                        marginTop: 25
                     }]}
                 >
                     <Text style={[styles.textSign, {
-                        color: '#009387'
+                        color: '#ff2167'
                     }]}>Registro Usuario Profesional</Text>
                     
                 </TouchableOpacity>
@@ -262,10 +249,10 @@ export default SignInScreen;
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#ff2167'
     },
     header: {
-        flex: 1,
+        flex: 0.5,
         justifyContent: 'flex-end',
         paddingHorizontal: 20,
         paddingBottom: 50
@@ -281,7 +268,8 @@ const styles = StyleSheet.create({
     text_header: {
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+        marginHorizontal: 30
     },
     text_footer: {
         color: '#05375a',
@@ -289,10 +277,10 @@ const styles = StyleSheet.create({
     },
     action: {
         flexDirection: 'row',
-        marginTop: 10,
+        marginTop: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        paddingBottom: 5
+        paddingBottom: 30
     },
     actionError: {
         flexDirection: 'row',
@@ -304,12 +292,14 @@ const styles = StyleSheet.create({
     textInput: {
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
-        paddingLeft: 10,
         color: '#05375a',
+        fontSize: 20
     },
     errorMsg: {
         color: '#FF0000',
         fontSize: 14,
+        marginTop: -10,
+        marginBottom: 20
     },
     button: {
         alignItems: 'center',

@@ -10,7 +10,8 @@ import {
     Platform,
     StyleSheet,
     ScrollView,
-    Image
+    Image,
+    Alert
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -52,6 +53,8 @@ const SignUpClientScreen = ({navigation}) => {
             setImage(result.uri)
         }
     }
+
+    const { colors } = useTheme();
 
     const [data, setData] = React.useState({
         username: '',
@@ -110,7 +113,7 @@ const SignUpClientScreen = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#009387' barStyle="light-content"/>
+          <StatusBar backgroundColor='#ff2167' barStyle="light-content"/>
         <View style={styles.header}>
             <Text style={styles.text_header}>Registro Usuario Cliente</Text>
         </View>
@@ -120,16 +123,15 @@ const SignUpClientScreen = ({navigation}) => {
         >
             
             <ScrollView>
-            <Text style={styles.text_footer}>DNI</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su DNI"
-                    style={styles.textInput}
+                    placeholder="DNI"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -137,26 +139,19 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Nombre completo</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su Nombre completo"
-                    style={styles.textInput}
+                    placeholder="Nombre completo"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -164,26 +159,19 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Email</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su Email"
-                    style={styles.textInput}
+                    placeholder="Email"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -191,26 +179,19 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Provincia</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su Provincia"
-                    style={styles.textInput}
+                    placeholder="Provincia"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -218,26 +199,19 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Barrio</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su Barrio"
-                    style={styles.textInput}
+                    placeholder="Barrio"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -245,26 +219,19 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
                 </Animatable.View>
                 : null}
             </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Domicilio</Text>
+            
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su Domicilio"
-                    style={styles.textInput}
+                    placeholder="Domicilio"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -272,72 +239,20 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
-                </Animatable.View>
-                : null}
-            </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Número de contacto</Text>
-            <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
-                <TextInput 
-                    placeholder="Ingrese su Número de contacto"
-                    style={styles.textInput}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
-                </Animatable.View>
-                : null}
-            </View>
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Foto actual</Text>
-            <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
-                <TouchableOpacity style={styles.panelButton} onPress={PickImage}>
-        <Text style={styles.panelButtonTitle}>Choose From Library</Text>
-        {image && <Image source = {{uri:image}} style= {{
-            width:200,
-            height:200
-        }} />}
-        <StatusBar style ="auto" />
-      </TouchableOpacity>
-            </View>
+                    
 
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Usuario</Text>
+                </Animatable.View>
+                : null}
+            </View>
+           
             <View style={styles.action}>
-                <FontAwesome 
-                    name="user-o"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su nombre de usuario"
-                    style={styles.textInput}
+                    placeholder="Número de contacto"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => textInputChange(val)}
                 />
@@ -345,28 +260,44 @@ const SignUpClientScreen = ({navigation}) => {
                 <Animatable.View
                     animation="bounceIn"
                 >
-                    <Feather 
-                        name="check-circle"
-                        color="green"
-                        size={20}
-                    />
+                    
+                </Animatable.View>
+                : null}
+            </View>
+            
+            
+
+           
+            <View style={styles.action}>
+                
+                <TextInput 
+                    placeholder="Nombre de usuario"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    
                 </Animatable.View>
                 : null}
             </View>
 
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Contraseña</Text>
+            
             <View style={styles.action}>
-                <Feather 
-                    name="lock"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Ingrese su contraseña"
+                    placeholder="Contraseña"
+                    placeholderTextColor="#666666"
                     secureTextEntry={data.secureTextEntry ? true : false}
-                    style={styles.textInput}
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => handlePasswordChange(val)}
                 />
@@ -389,19 +320,16 @@ const SignUpClientScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
 
-            <Text style={[styles.text_footer, {
-                marginTop: 35
-            }]}>Confirm Password</Text>
+            
             <View style={styles.action}>
-                <Feather 
-                    name="lock"
-                    color="#05375a"
-                    size={20}
-                />
+                
                 <TextInput 
-                    placeholder="Confirm Your Password"
+                    placeholder="Confirmar contraseña"
+                    placeholderTextColor="#666666"
                     secureTextEntry={data.confirm_secureTextEntry ? true : false}
-                    style={styles.textInput}
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
                     autoCapitalize="none"
                     onChangeText={(val) => handleConfirmPasswordChange(val)}
                 />
@@ -425,26 +353,19 @@ const SignUpClientScreen = ({navigation}) => {
             </View>
 
             
-            <View style={styles.textPrivate}>
-                <Text style={styles.color_textPrivate}>
-                    By signing up you agree to our
-                </Text>
-                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Terms of service</Text>
-                <Text style={styles.color_textPrivate}>{" "}and</Text>
-                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Privacy policy</Text>
-            </View>
+            
             <View style={styles.button}>
                 <TouchableOpacity
                     style={styles.signIn}
                     onPress={() => navigation.goBack()}
                 >
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
+                    colors={['#ff2167', '#ff2167']}
                     style={styles.signIn}
                 >
                     <Text style={[styles.textSign, {
                         color:'#fff'
-                    }]}>Sign Up</Text>
+                    }]}>Registrarse</Text>
                 </LinearGradient>
                 </TouchableOpacity>
 
@@ -461,7 +382,7 @@ export default SignUpClientScreen;
 const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: '#009387'
+      backgroundColor: '#ff2167'
     },
     header: {
         flex: 1,
@@ -488,20 +409,20 @@ const styles = StyleSheet.create({
     },
     action: {
         flexDirection: 'row',
-        marginTop: 10,
+        marginTop: 15,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        paddingBottom: 5
+        paddingBottom: 30
     },
     textInput: {
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,
-        paddingLeft: 10,
         color: '#05375a',
+        fontSize: 20
     },
     button: {
         alignItems: 'center',
-        marginTop: 50
+        marginTop: 10
     },
     signIn: {
         width: '100%',
@@ -523,15 +444,14 @@ const styles = StyleSheet.create({
         color: 'grey'
     },
     panelButton: {
-        padding: 2,
-        borderRadius: 10,
-        backgroundColor: '#FF6347',
+        paddingRight: 5,
+        borderRadius: 5,
+        backgroundColor: '#ff2167',
         alignItems: 'center',
-        marginVertical: -1,
-        marginHorizontal: 6
+        marginTop: Platform.OS === 'ios' ? 0 : -12,
     },
     panelButtonTitle: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'white'
     }

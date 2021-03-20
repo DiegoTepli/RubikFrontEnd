@@ -18,12 +18,12 @@ const SplashScreen = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-          <StatusBar backgroundColor='#009387' barStyle="light-content"/>
+          <StatusBar backgroundColor='#ff2167' barStyle="light-content"/>
         <View style={styles.header}>
             <Animatable.Image 
                 animation="bounceIn"
                 duraton="1500"
-            source={require('../assets/logo.png')}
+            source={require('../assets/LoginPhoto2.png')}
             style={styles.logo}
             resizeMode="stretch"
             />
@@ -36,15 +36,15 @@ const SplashScreen = ({navigation}) => {
         >
             <Text style={[styles.title, {
                 color: colors.text
-            }]}>Stay connected with everyone!</Text>
-            <Text style={styles.text}>Sign in with account</Text>
+            }]}>¡Bienvenido a Rubik!</Text>
+            <Text style={styles.text}>Ahora podrás reservar todos tus tratamientos con los mejores profesionales</Text>
             <View style={styles.button}>
             <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')}>
                 <LinearGradient
-                    colors={['#08d4c4', '#01ab9d']}
+                    colors={['#ff2167', '#ff2167']}
                     style={styles.signIn}
                 >
-                    <Text style={styles.textSign}>Get Started</Text>
+                    <Text style={styles.textSign}>Comenzar</Text>
                     <MaterialIcons 
                         name="navigate-next"
                         color="#fff"
@@ -61,12 +61,12 @@ const SplashScreen = ({navigation}) => {
 export default SplashScreen;
 
 const {height} = Dimensions.get("screen");
-const height_logo = height * 0.28;
+const height_logo = height * 0.40;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1, 
-    backgroundColor: '#009387'
+    backgroundColor: '#ff2167'
   },
   header: {
       flex: 2,
@@ -88,11 +88,14 @@ const styles = StyleSheet.create({
   title: {
       color: '#05375a',
       fontSize: 30,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      marginTop: -10
   },
   text: {
       color: 'grey',
-      marginTop:5
+      marginTop: 10,
+      fontSize: 20
+
   },
   button: {
       alignItems: 'flex-end',
@@ -108,7 +111,8 @@ const styles = StyleSheet.create({
   },
   textSign: {
       color: 'white',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontSize: 18
   }
 });
 
