@@ -97,14 +97,14 @@ const SignInScreen = ({navigation}) => {
         } );
 
         if ( data.username.length == 0 || data.password.length == 0 ) {
-            Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
+            Alert.alert('Error!', 'El Email o la contraseña no puede estar vacío.', [
                 {text: 'Okay'}
             ]);
             return;
         }
 
         if ( foundUser.length == 0 ) {
-            Alert.alert('Invalid User!', 'Username or password is incorrect.', [
+            Alert.alert('Usuario inválido!', 'El Email o la contraseña es incorrecto.', [
                 {text: 'Okay'}
             ]);
             return;
@@ -128,7 +128,7 @@ const SignInScreen = ({navigation}) => {
             <View style={styles.action}>
                 
                 <TextInput 
-                    placeholder="Usuario"
+                    placeholder="Email"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text
@@ -149,11 +149,6 @@ const SignInScreen = ({navigation}) => {
                 </Animatable.View>
                 : null}
             </View>
-            { data.isValidUser ? null : 
-            <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Username must be 4 characters long.</Text>
-            </Animatable.View>
-            }
             
 
             
@@ -187,11 +182,7 @@ const SignInScreen = ({navigation}) => {
                     }
                 </TouchableOpacity>
             </View>
-            { data.isValidPassword ? null : 
-            <Animatable.View animation="fadeInLeft" duration={500}>
-            <Text style={styles.errorMsg}>Password must be 8 characters long.</Text>
-            </Animatable.View>
-            }
+            
             
 
             <TouchableOpacity>

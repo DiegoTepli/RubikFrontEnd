@@ -141,7 +141,7 @@ const SignUpProfesionalScreen = ({navigation}) => {
             <View style={styles.action}>
                 
                 <TextInput 
-                    placeholder="DNI"
+                    placeholder="Email"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text
@@ -181,7 +181,7 @@ const SignUpProfesionalScreen = ({navigation}) => {
             <View style={styles.action}>
                 
                 <TextInput 
-                    placeholder="Email"
+                    placeholder="DNI"
                     placeholderTextColor="#666666"
                     style={[styles.textInput, {
                         color: colors.text
@@ -279,30 +279,7 @@ const SignUpProfesionalScreen = ({navigation}) => {
                 : null}
             </View>
             
-            
-
-           
-            <View style={styles.action}>
-                
-                <TextInput 
-                    placeholder="Nombre de usuario"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-                </Animatable.View>
-                : null}
-            </View>
-
-            
+        
             <View style={styles.action}>
                 
                 <TextInput 
