@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /* All native-base components used in this file */ } from 'native-base';
-import StarRating from './StarRating';
+import StarRating2 from './StarRating2';
 
-const Card = ({itemData, onPress}) => {
+const CardComments = ({itemData, onPress}) => {
 return (
  
   
@@ -19,23 +19,23 @@ return (
         
         <View style={styles.cardInfo}>
          <View style={styles.cardTitleDiscount}>
-          <Text style={styles.cardTitle}>{itemData.title}</Text>
+          <Text style={styles.cardTitle}>{itemData.name}</Text>
           <Text style={styles.cardDiscount}>{itemData.discount}</Text>
          </View>
-          <StarRating ratings={itemData.ratings} reviews={itemData.reviews} />
-          <Text numberOfLines={2} style={styles.cardDetails}>{itemData.description}</Text>
+          <StarRating2 ratings={itemData.ratings} />
+          <Text style={styles.cardDetails}>{itemData.date}</Text>
+          <Text style={styles.cardDetails}>{itemData.comment}</Text>
        </View>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default Card;
+export default CardComments;
 
 const styles = StyleSheet.create({
   card: {
     height: 100,
-    marginVertical: 10,
     flexDirection: 'row',
     shadowColor: '#999',
     shadowOffset: {width: 0, height: 1},
@@ -45,10 +45,12 @@ const styles = StyleSheet.create({
   },
   cardImgWrapper: {
     flex: 1,
+    
   },
   cardImg: {
-    height: '100%',
-    width: '100%',
+    height: '80%',
+    width: '60%',
+    marginTop: 10,
     alignSelf: 'center',
     borderRadius: 20,
     borderBottomRightRadius: 20,
@@ -78,7 +80,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   cardDetails: {
-    fontSize: 12,
+    fontSize: 14,
     color: '#444',
+    fontWeight: 'bold'
   },
 });

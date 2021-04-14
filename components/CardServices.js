@@ -3,34 +3,29 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /* All native-base components used in this file */ } from 'native-base';
 import StarRating from './StarRating';
 
-const Card = ({itemData, onPress}) => {
+const CardServices = ({itemData, onPress}) => {
 return (
  
   
     <TouchableOpacity onPress={onPress}>
-      <View style={styles.card}>
-        <View style={styles.cardImgWrapper}>
-          <Image
-            source={itemData.image}
-            resizeMode="cover"
-            style={styles.cardImg}
-          />
-        </View>
-        
+     
         <View style={styles.cardInfo}>
-         <View style={styles.cardTitleDiscount}>
-          <Text style={styles.cardTitle}>{itemData.title}</Text>
-          <Text style={styles.cardDiscount}>{itemData.discount}</Text>
-         </View>
-          <StarRating ratings={itemData.ratings} reviews={itemData.reviews} />
-          <Text numberOfLines={2} style={styles.cardDetails}>{itemData.description}</Text>
-       </View>
-      </View>
+          <Text style={styles.cardTitle}>{itemData.category}</Text>
+          <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
+          <View style={{flexDirection: 'row'}}>
+          <Text style={styles.cardDetails}>Precio: {itemData.servicePrice} </Text>
+          <Text style={styles.cardDiscount}>{itemData.serviceDiscount} </Text>
+          </View>
+          
+
+          
+          </View>
+       
     </TouchableOpacity>
   );
 };
 
-export default Card;
+export default CardServices;
 
 const styles = StyleSheet.create({
   card: {
@@ -66,7 +61,8 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
+    color: '#ff2167'
   },
   cardDiscount:{
     alignSelf: 'center',
@@ -78,7 +74,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   cardDetails: {
-    fontSize: 12,
+    fontSize: 16,
     color: '#444',
+    fontWeight: 'bold'
   },
 });

@@ -74,7 +74,7 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('CardListScreen', {title: 'Peluquería'})
+            navigation.navigate('CardListScreen', {category: 'Peluquería'})
           }>
             <ImageBackground
               source={require('../assets/banners/Peluqueria.png')}
@@ -87,7 +87,7 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate('CardListScreen', {title: 'barbershop'})
+            navigation.navigate('CardListScreen', {category: 'barbershop'})
           }>
           <ImageBackground
               source={require('../assets/banners/Barberia.png')}

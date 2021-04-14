@@ -1,0 +1,75 @@
+export const beautyServices = [
+    {
+      id: '1',
+      idUser: '1',
+      title: 'Diego Teplitzky',
+      idCategory: '1',
+      category: 'Peluquería',
+      idServiceCategory: '1',
+      serviceCategory: 'Color',
+      servicePrice: '$500',
+      serviceDiscount: '30% OFF'
+    },
+    {
+        id: '2',
+        title: 'Diego Teplitzky',
+        idCategory: '1',
+        category: 'Peluquería',
+        idServiceCategory: '2',
+        serviceCategory: 'Mechas',
+        servicePrice: '$600'
+      },
+      {
+        id: '3',
+        idUser: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '1',
+        category: 'Peluquería',
+        idServiceCategory: '3',
+        serviceCategory: 'Peinado',
+        servicePrice: '$400',
+      },
+      {
+        id: '4',
+        idUser: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '2',
+        category: 'Barbería',
+        idServiceCategory: '1',
+        serviceCategory: 'Corte de pelo',
+        servicePrice: '$500',
+        serviceDiscount: '30% OFF'
+      },
+      {
+        id: '5',
+        idUser: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '2',
+        category: 'Barbería',
+        idServiceCategory: '2',
+        serviceCategory: 'Barba',
+        servicePrice: '$500',
+        serviceDiscount: '30% OFF'
+      },
+      {
+        id: '6',
+        idUser: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '1',
+        serviceCategory: 'Extensiones de pestañas',
+        servicePrice: '$500',
+      },
+      {
+        id: '7',
+        idUser: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: '$500',
+        serviceDiscount: '30% OFF'
+      },
+];

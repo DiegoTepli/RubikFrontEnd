@@ -18,6 +18,8 @@ import {View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import CardListScreen from './CardListScreen';
 import CardItemDetails from './CardItemDetails';
+import CardServicesListScreen from './CardServicesListScreen';
+import CalendarScreen from './CalendarScreen';
 
 const HomeStack = createStackNavigator();
 const NotificationStack = createStackNavigator();
@@ -103,13 +105,34 @@ const HomeStackScreen = ({navigation}) => {
         name="CardListScreen"
         component={CardListScreen}
         options={({route}) => ({
-          title: route.params.title,
+          title: route.params.category,
           headerBackTitleVisible: false,
         })}
       />
       <HomeStack.Screen 
         name="CardItemDetails"
         component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
+      />
+      <HomeStack.Screen 
+        name="CardServicesListScreen"
+        component={CardServicesListScreen}
+        options={({route}) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
+      />
+      <HomeStack.Screen 
+        name="CalendarScreen"
+        component={CalendarScreen}
         options={({route}) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,

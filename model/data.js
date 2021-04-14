@@ -14,13 +14,12 @@ export const data = [
       longitude: 88.4354486,
     },
     title: 'Diego Teplitzky',
-    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est metus, gravida vel ex volutpat, posuere euismod tortor. Pellentesque tincidunt, mi ac varius blandit, quam orci dignissim risus, vitae rutrum orci urna ut neque.
-      
-      Pellentesque condimentum ut libero id blandit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`,
+    description: `Brindo servicios de peluquería, barbería y estética. 5 años de experiencia en el rubro.`,
     image: Images[0].image,
-    rating: 4,
-    reviews: 99,
-    categories: ['Restaurant', 'Hotel', 'Dineout'],
+    rating: '5.0',
+    reviews: '99 calificaciones',
+    categories: ['Peluquería', 'Barbería', 'Estética'],
+    discount: '30% OFF'
   },
   {
     id: '2',
@@ -36,6 +35,7 @@ export const data = [
     rating: 5,
     reviews: 102,
     categories: ['Restaurant', 'Fastfood Center', 'Snacks Corner'],
+    discount: '15% OFF'
   },
   {
     id: '3',
