@@ -7,8 +7,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import HomeScreen from './HomeScreen';
-import NotificationScreen from './NotificationScreen';
-import ExploreScreen from './ExploreScreen';
+import ShiftScreen from './ShiftScreen';
+import FavouriteScreen from './FavouriteScreen';
 import ProfileScreen from './ProfileScreen';
 import MapTestScreen from './MapTestScreen';
 import EditProfileScreen from './EditProfileScreen';
@@ -22,8 +22,9 @@ import CardServicesListScreen from './CardServicesListScreen';
 import CalendarScreen from './CalendarScreen';
 
 const HomeStack = createStackNavigator();
-const NotificationStack = createStackNavigator();
+const ShiftStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
+const FavouriteStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -33,7 +34,7 @@ const MainTabScreen = () => (
       name="Home"
       component={HomeStackScreen}
       options={{
-        tabBarLabel: 'Home',
+        tabBarLabel: 'Inicio',
         tabBarColor: '#ff2167',
         tabBarIcon: ({color}) => (
           <Icon name="ios-home" color={color} size={26} />
@@ -41,38 +42,41 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Notifications"
-      component={NotificationStackScreen}
+      name="Shifts"
+      component={ShiftStackScreen}
       options={{
-        tabBarLabel: 'Updates',
+        tabBarLabel: 'Turnos',
         tabBarColor: '#ff2167',
         tabBarIcon: ({color}) => (
-          <Icon name="ios-notifications" color={color} size={26} />
+          <Icon name="calendar" color={color} size={26} />
         ),
       }}
     />
+
+<Tab.Screen
+      name="Favourites"
+      component={FavouriteStackScreen}
+      options={{
+        tabBarLabel: 'Favoritos',
+        tabBarColor: '#ff2167',
+        tabBarIcon: ({color}) => (
+          <Icon name="heart" color={color} size={26} />
+        ),
+      }}
+    />
+
     <Tab.Screen
       name="Profile"
       component={ProfileStackScreen}
       options={{
-        tabBarLabel: 'Profile',
+        tabBarLabel: 'Perfil',
         tabBarColor: '#ff2167',
         tabBarIcon: ({color}) => (
           <Icon name="ios-person" color={color} size={26} />
         ),
       }}
     />
-    <Tab.Screen
-      name="Explore"
-      component={ExploreScreen}
-      options={{
-        tabBarLabel: 'Explore',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
-          <Icon name="ios-aperture" color={color} size={26} />
-        ),
-      }}
-    />
+    
   </Tab.Navigator>
 );
 
@@ -145,50 +149,73 @@ const HomeStackScreen = ({navigation}) => {
   );
 };
 
-const NotificationStackScreen = ({navigation}) => (
-  <NotificationStack.Navigator
+const ShiftStackScreen = ({navigation}) => (
+  <ShiftStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#1f65ff',
+        backgroundColor: '#ff2167',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',
+        alignSelf: 'center',
+        fontSize: 25
       },
     }}>
-    <NotificationStack.Screen
-      name="Notifications"
-      component={NotificationScreen}
+    <ShiftStack.Screen
+      name="Turnos"
+      component={ShiftScreen}
       
     />
-  </NotificationStack.Navigator>
+  </ShiftStack.Navigator>
 );
 
-const ProfileStackScreen = ({navigation}) => {
-  const {colors} = useTheme();
 
-  return (
-    <ProfileStack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: colors.background,
-          shadowColor: colors.background, // iOS
-          elevation: 0, // Android
-        },
-        headerTintColor: colors.text,
-      }}>
-      <ProfileStack.Screen
-        name="Profile"
-        component={ProfileScreen}
-        
-      />
-      <ProfileStack.Screen
+
+const ProfileStackScreen = ({navigation}) => (
+  <ProfileStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#ff2167',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        fontSize: 25
+      },
+    }}>
+    <ProfileStack.Screen
+      name="Perfil"
+      component={ProfileScreen}
+    />
+    <ProfileStack.Screen
         name="EditProfile"
         options={{
           title: 'Edit Profile',
         }}
         component={EditProfileScreen}
       />
-    </ProfileStack.Navigator>
-  );
-};
+  </ProfileStack.Navigator>
+);
+
+const FavouriteStackScreen = ({navigation}) => (
+  <FavouriteStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#ff2167',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        fontSize: 25
+      },
+    }}>
+    <FavouriteStack.Screen
+      name="Favoritos"
+      component={FavouriteScreen}
+      
+    />
+  </FavouriteStack.Navigator>
+);

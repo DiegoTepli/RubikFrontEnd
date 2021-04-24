@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Alert
 } from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
+import COLORS from '../consts/colors';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CalendarPicker from 'react-native-calendar-picker';
-
+import {schedule} from '../model/schedule';
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +26,25 @@ export default class App extends Component {
       selectedStartDate: date,
     });
   }
+
+
+  
   render() {
     const { selectedStartDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    const createTwoButtonAlert = () =>
+    Alert.alert(
+      "Confirmar turno",
+      "¿Desea confirmar la reserva del turno?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    );
     return (
       
       <View style={styles.container}>
@@ -33,9 +55,86 @@ export default class App extends Component {
           onDateChange={this.onDateChange}
         />
       </View>
-        
+
+      <Text style={{fontSize: 22, fontWeight: 'bold', alignSelf: 'center', marginTop: 40}}>Seleccionar un horario</Text>
+
+    <ScrollView horizontal = {true} showsHorizontalScrollIndicator = {false}>
+      <View style={{flexDirection: 'row', marginTop: 10, padding: 20, height: 90}}>
+            
+          
+              <TouchableOpacity>
+              <View style={{backgroundColor: '#ff2167', flexDirection: 'row', padding: 10, borderRadius: 20}}>
+              <Text style={styles.category}>09:00</Text>
+              </View> 
+              </TouchableOpacity>
+          
+          
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>10:00</Text>
+              </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>11:00</Text>
+              </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>12:00</Text>
+              </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>14:00</Text>
+              </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>15:00</Text>
+              </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>16:00</Text>
+              </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <Text style={styles.category}>17:00</Text>
+              </View>
+              </TouchableOpacity>
+          
          
+          </View>
+          </ScrollView>
+
+          <View style={styles.sectionReserve}>
         
+        <TouchableOpacity
+        onPress={createTwoButtonAlert}
+                    style={styles.signIn}
+                    
+                >
+        <LinearGradient
+                    colors={['#ff2167', '#ff2167']}
+                    style={styles.signIn}
+                >
+                    <Text style={[styles.textSign, {
+                        color:'#fff'
+                    }]}>Reservar turno</Text>
+                </LinearGradient>
+
+                </TouchableOpacity>
+                
+                </View>
+
       </View>
     );
   }
@@ -47,4 +146,47 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     marginTop: 10,
   },
+  categories: {
+    flexDirection: 'row',
+    width: '30%',
+    backgroundColor: '#ff2167',
+    marginTop: 40,
+    marginRight: 15,
+    marginLeft: 15,
+    borderRadius: 10,
+    padding: 10,
+  },
+  categoryContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#ff2167',
+    
+    marginTop: 40,
+    marginRight: 15,
+    marginLeft: 15,
+    borderRadius: 10,
+    padding: 10,
+    
+  },
+  category: {
+    fontSize: 20,
+    color: '#fff',
+  },
+  sectionReserve: {
+    paddingHorizontal: 20,
+    paddingBottom: 60,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc',
+    backgroundColor: 'white',
+  },
+  signIn: {
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
+},
+textSign: {
+    fontSize: 20,
+    fontWeight: 'bold'
+},
 });

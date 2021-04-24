@@ -2,20 +2,26 @@
 import React from 'react';
 import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { Container, Content, List, ListItem, Header, Icon, Item, Input } from 'native-base';
-import {beautyServices} from '../model/beautyServices';
-import CardServices from '../components/CardServices';
+import {data} from '../model/data';
+import Card from '../components/Card';
 import {LinearGradient} from 'expo-linear-gradient';
 import COLORS from '../consts/colors';
 let helperArray = require ('../model/data');
 
-const CardServicesListScreen = ({navigation, route}) => {
-  const itemData = route.params.itemData;
+const FavouriteScreen = ({navigation}) => {
+  const categories = ['Puntuación', 'Popularidad', 'Descuento'];
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  const [activeCardIndex, setActiveCardIndex] = React.useState(0);
+  const scrollX = React.useRef(new Animated.Value(0)).current;
+  const searchUser  = (textToSearch) => {
+    alert(textToSearch);
+  }
     const renderItem = ({item}) => {
       
         return (
-            <CardServices 
+            <Card 
                 itemData={item}
-                onPress={()=> navigation.navigate('CalendarScreen', {itemData})}
+                onPress={()=> navigation.navigate('CardItemDetails', {itemData: item})}
             />
         );
         
@@ -24,14 +30,9 @@ const CardServicesListScreen = ({navigation, route}) => {
     return (
       
       <Container> 
-       
-      <View >
-      <Text style={{fontSize:22, alignSelf:'center', marginTop: 10, fontWeight: 'bold', marginBottom: 10}}>Seleccionar una especialidad</Text>
-      </View>
-
       <View style={styles.container}>
         <FlatList 
-            data={beautyServices}
+            data={data}
             renderItem={renderItem}
             keyExtractor={item => item.id}
         />
@@ -41,7 +42,7 @@ const CardServicesListScreen = ({navigation, route}) => {
     
 };
 
-export default CardServicesListScreen;
+export default FavouriteScreen;
 
 const styles = StyleSheet.create({
   container: {

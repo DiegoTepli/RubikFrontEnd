@@ -52,7 +52,7 @@ const MAX_HEIGHT = 350;
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       
-          <View>
+          <View style={{height: 330}}>
             <Image source={itemData.image} style={styles.image} />
             <View style={styles.iconContainer}>
           <Icon name="favorite" color={COLORS.red} size={30} />
@@ -100,6 +100,8 @@ const MAX_HEIGHT = 350;
             <Text style={styles.title}>{itemData.title}</Text>
             <Text style={styles.cardDiscount}>{itemData.discount}</Text>
           </View>
+
+          <Text style={{fontSize: 15}}>Telefono: 1549142091</Text>
           
         
           <View style={styles.categories}>
@@ -129,11 +131,11 @@ const MAX_HEIGHT = 350;
         </View>
 
         <View style={styles.sectionReserve}>
-        <View style={styles.button}>
+       
         <TouchableOpacity
                     style={styles.signIn}
                     onPress={() =>
-                      navigation.navigate('CardServicesListScreen')
+                      navigation.navigate('CardServicesListScreen', itemData)
                     }
                 >
         <LinearGradient
@@ -146,7 +148,7 @@ const MAX_HEIGHT = 350;
                 </LinearGradient>
 
                 </TouchableOpacity>
-                </View>
+               
                 </View>
         
       
@@ -410,7 +412,7 @@ const MAX_HEIGHT = 350;
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
      
-          <View>
+          <View style={{height: 330}}>
             <Image source={itemData.image} style={styles.image} />
             <View style={styles.iconContainer}>
           <Icon name="favorite" color={COLORS.red} size={30} />

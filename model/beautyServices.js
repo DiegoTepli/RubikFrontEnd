@@ -1,7 +1,7 @@
 export const beautyServices = [
     {
       id: '1',
-      idUser: '1',
+      idProf: '1',
       title: 'Diego Teplitzky',
       idCategory: '1',
       category: 'Peluquería',
@@ -12,6 +12,7 @@ export const beautyServices = [
     },
     {
         id: '2',
+        idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '1',
         category: 'Peluquería',
@@ -21,7 +22,7 @@ export const beautyServices = [
       },
       {
         id: '3',
-        idUser: '1',
+        idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '1',
         category: 'Peluquería',
@@ -31,7 +32,7 @@ export const beautyServices = [
       },
       {
         id: '4',
-        idUser: '1',
+        idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '2',
         category: 'Barbería',
@@ -42,7 +43,7 @@ export const beautyServices = [
       },
       {
         id: '5',
-        idUser: '1',
+        idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '2',
         category: 'Barbería',
@@ -53,7 +54,7 @@ export const beautyServices = [
       },
       {
         id: '6',
-        idUser: '1',
+        idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '3',
         category: 'Estética',
@@ -63,7 +64,7 @@ export const beautyServices = [
       },
       {
         id: '7',
-        idUser: '1',
+        idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '3',
         category: 'Estética',

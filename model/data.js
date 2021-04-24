@@ -17,9 +17,11 @@ export const data = [
     description: `Brindo servicios de peluquería, barbería y estética. 5 años de experiencia en el rubro.`,
     image: Images[0].image,
     rating: '5.0',
-    reviews: '99 calificaciones',
+    reviews: 99,
     categories: ['Peluquería', 'Barbería', 'Estética'],
-    discount: '30% OFF'
+    discount: '30% OFF',
+    days: ['Lunes, Martes, Miercoles, Jueves, Viernes'],
+    hours: ['9:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
   },
   {
     id: '2',
@@ -35,7 +37,9 @@ export const data = [
     rating: 5,
     reviews: 102,
     categories: ['Restaurant', 'Fastfood Center', 'Snacks Corner'],
-    discount: '15% OFF'
+    discount: '15% OFF',
+    days: ['Lunes, Martes, Miercoles, Jueves, Viernes'],
+    hours: ['14:00', '15:00', '16:00', '17:00', '18:00'],
   },
   {
     id: '3',
