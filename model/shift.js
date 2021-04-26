@@ -22,7 +22,9 @@ export const shift = [
       hour: '9:00',
       date: 'Lunes 19 de Abril de 2021',
       image: Images[0].image,
-      paymentMethod: 'Efectivo'
+      paymentMethod: 'Efectivo',
+      userAdress: 'Rivadavia 5000',
+      neighborhood: 'Caballito'
     },
     {
       id: '2',
@@ -39,7 +41,9 @@ export const shift = [
       hour: '10:00',
       date: 'Martes 20 de Abril de 2021',
       image: Images[1].image,
-      paymentMethod: 'Tarjeta de crédito'
+      paymentMethod: 'Tarjeta de crédito',
+      userAdress: 'Rivadavia 5000',
+      neighborhood: 'Caballito'
     },
     {
       id: '3',
@@ -56,7 +60,9 @@ export const shift = [
       hour: '14:00',
       date: 'Viernes 16 de Abril de 2021',
       image: Images[0].image,
-      paymentMethod: 'Efectivo'
+      paymentMethod: 'Efectivo',
+      userAdress: 'Rivadavia 5000',
+      neighborhood: 'Caballito'
     },
     {
       id: '4',
@@ -73,7 +79,9 @@ export const shift = [
       hour: '17:00',
       date: 'Jueves 15 de Abril de 2021',
       image: Images[2].image,
-      paymentMethod: 'Tarjeta de crédito'
+      paymentMethod: 'Tarjeta de crédito',
+      userAdress: 'Rivadavia 5000',
+      neighborhood: 'Caballito'
     },
   ];
   

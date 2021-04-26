@@ -23,11 +23,11 @@ return (
           <Text style={styles.cardTitle}>{itemData.nameProf}</Text>
          </View>
          <Text style={styles.cardDetails}>{itemData.date} {itemData.hour}</Text>
-          <Text style={styles.cardDetails}>{itemData.category}</Text>
-          <Text style={styles.cardDetails}>{itemData.serviceCategory}</Text>
-          <Text style={styles.cardDetails}>{itemData.servicePrice}</Text>
+          <Text style={styles.cardDetails}>Categoría: {itemData.category}</Text>
+          <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
+          <Text style={styles.cardDetails}>Precio: {itemData.servicePrice}</Text>
           <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
-          <Text style={styles.cardDetails}>{itemData.paymentMethod}</Text>
+          <Text style={styles.cardDetails}>Pago: {itemData.paymentMethod}</Text>
         <TouchableOpacity onPress={onPress}
                     style={styles.signIn}
 
