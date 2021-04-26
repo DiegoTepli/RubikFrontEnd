@@ -22,6 +22,7 @@ export const shift = [
       hour: '9:00',
       date: 'Lunes 19 de Abril de 2021',
       image: Images[0].image,
+      paymentMethod: 'Efectivo'
     },
     {
       id: '2',
@@ -38,6 +39,7 @@ export const shift = [
       hour: '10:00',
       date: 'Martes 20 de Abril de 2021',
       image: Images[1].image,
+      paymentMethod: 'Tarjeta de crédito'
     },
     {
       id: '3',
@@ -54,6 +56,7 @@ export const shift = [
       hour: '14:00',
       date: 'Viernes 16 de Abril de 2021',
       image: Images[0].image,
+      paymentMethod: 'Efectivo'
     },
     {
       id: '4',
@@ -70,6 +73,7 @@ export const shift = [
       hour: '17:00',
       date: 'Jueves 15 de Abril de 2021',
       image: Images[2].image,
+      paymentMethod: 'Tarjeta de crédito'
     },
   ];
   

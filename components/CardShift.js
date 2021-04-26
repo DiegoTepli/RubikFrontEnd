@@ -25,9 +25,9 @@ return (
          <Text style={styles.cardDetails}>{itemData.date} {itemData.hour}</Text>
           <Text style={styles.cardDetails}>{itemData.category}</Text>
           <Text style={styles.cardDetails}>{itemData.serviceCategory}</Text>
-          <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
           <Text style={styles.cardDetails}>{itemData.servicePrice}</Text>
-          
+          <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+          <Text style={styles.cardDetails}>{itemData.paymentMethod}</Text>
         <TouchableOpacity onPress={onPress}
                     style={styles.signIn}
 
@@ -63,7 +63,7 @@ export default CardShift;
 
 const styles = StyleSheet.create({
   card: {
-    height: 110,
+    height: 130,
     marginVertical: 10,
     flexDirection: 'row',
     shadowColor: '#999',
@@ -111,11 +111,13 @@ const styles = StyleSheet.create({
     color: '#444',
   },
   signIn: {
-    marginTop: -10,
+    marginTop: -25,
+    marginLeft: 100,
     borderRadius: 0,
     width: '60%',
     alignSelf: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
+    position: 'absolute'
 },
 textSign: {
     fontSize: 18,

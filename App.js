@@ -23,6 +23,7 @@
  
  import { DrawerContent } from './screens/DrawerContent';
  
+ import MainTabScreenProfesional from './screens/MainTabScreenProfesional';
  import MainTabScreen from './screens/MainTabScreen';
  import SupportScreen from './screens/SupportScreen';
  import SettingsScreen from './screens/SettingsScreen';
@@ -169,9 +170,7 @@
        { loginState.userToken !== null ? (
          <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
            <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
-           <Drawer.Screen name="SupportScreen" component={SupportScreen} />
-           <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
-           <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
+           
          </Drawer.Navigator>
        )
      :
