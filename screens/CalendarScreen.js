@@ -12,9 +12,11 @@ import COLORS from '../consts/colors';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import CalendarPicker from 'react-native-calendar-picker';
 import {schedule} from '../model/schedule';
+import {useTheme} from '@react-navigation/native';
 export default class App extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       selectedStartDate: null,
     };
@@ -32,6 +34,26 @@ export default class App extends Component {
   render() {
     const { selectedStartDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    const {navigation, position} = this.props
+
+    const createCashOrCredit = () =>
+    
+    Alert.alert(
+      
+      "Método de pago",
+      "Elegir el método de pago con el que desea abonar",
+      [
+        {
+          text: "Efectivo",
+          onPress: createTwoButtonAlert,
+          style: "cancel"
+        },
+        { text: "Tarjeta de crédito", onPress: () => navigation.navigate('PaymentScreen') }
+      ]
+    );
+    
+    
+    
     const createTwoButtonAlert = () =>
     Alert.alert(
       "Confirmar turno",
@@ -55,7 +77,7 @@ export default class App extends Component {
           onDateChange={this.onDateChange}
         />
       </View>
-
+<View style={{position: 'absolute', marginTop: 370}}>
       <Text style={{fontSize: 22, fontWeight: 'bold', alignSelf: 'center', marginTop: 40}}>Seleccionar un horario</Text>
 
     <ScrollView horizontal = {true} showsHorizontalScrollIndicator = {false}>
@@ -118,7 +140,7 @@ export default class App extends Component {
           <View style={styles.sectionReserve}>
         
         <TouchableOpacity
-        onPress={createTwoButtonAlert}
+        onPress={createCashOrCredit}
                     style={styles.signIn}
                     
                 >
@@ -134,7 +156,7 @@ export default class App extends Component {
                 </TouchableOpacity>
                 
                 </View>
-
+                </View>
       </View>
     );
   }
@@ -177,6 +199,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#cccccc',
     backgroundColor: 'white',
+    marginTop: 10
   },
   signIn: {
     width: '100%',

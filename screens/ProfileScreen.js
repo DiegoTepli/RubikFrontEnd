@@ -33,7 +33,7 @@ import{ AuthContext } from '../components/context';
 
 const ProfileScreen = () => {
     const { signOut, toggleTheme } = React.useContext(AuthContext);
-  const [image, setImage] = useState('https://api.adorable.io/avatars/80/abott@adorable.png');
+  const [image, setImage] = useState('../assets/user2.png'); 
   const {colors} = useTheme();
 
   const PickImage = async () => {
@@ -155,9 +155,7 @@ const textInputChange = (val) => {
                 alignItems: 'center',
               }}>
               <ImageBackground
-                source={{
-                  uri: image,
-                }}
+                source={require('../assets/user2.png')}
                 style={{height: 100, width: 100}}
                 imageStyle={{borderRadius: 50}}>
                 <View
@@ -352,19 +350,7 @@ const textInputChange = (val) => {
         </Animatable.View>
 
 
-      <Drawer.Section style={styles.bottomDrawerSection}>
-                <DrawerItem 
-                    icon={({color, size}) => (
-                        <Icon 
-                        name="exit-to-app" 
-                        color={color}
-                        size={size}
-                        />
-                    )}
-                    label="Salir"
-                    onPress={() => {signOut()}}
-                />
-            </Drawer.Section>
+      
     </View>
     
   );

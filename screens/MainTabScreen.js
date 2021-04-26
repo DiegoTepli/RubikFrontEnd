@@ -20,6 +20,7 @@ import CardListScreen from './CardListScreen';
 import CardItemDetails from './CardItemDetails';
 import CardServicesListScreen from './CardServicesListScreen';
 import CalendarScreen from './CalendarScreen';
+import PaymentScreen from './PaymentScreen';
 
 const HomeStack = createStackNavigator();
 const ShiftStack = createStackNavigator();
@@ -145,7 +146,20 @@ const HomeStackScreen = ({navigation}) => {
           headerTintColor: '#fff',
         })}
       />
+      <HomeStack.Screen 
+        name="PaymentScreen"
+        component={PaymentScreen}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
+      />
     </HomeStack.Navigator>
+    
+    
   );
 };
 
@@ -172,8 +186,11 @@ const ShiftStackScreen = ({navigation}) => (
 
 
 
-const ProfileStackScreen = ({navigation}) => (
-  <ProfileStack.Navigator
+const ProfileStackScreen = ({navigation}) => {
+  const {colors} = useTheme();
+
+  return (
+    <ProfileStack.Navigator
     screenOptions={{
       headerStyle: {
         backgroundColor: '#ff2167',
@@ -182,22 +199,41 @@ const ProfileStackScreen = ({navigation}) => (
       headerTitleStyle: {
         fontWeight: 'bold',
         alignSelf: 'center',
-        fontSize: 25
+        fontSize: 25,
+        marginRight: 50
       },
-    }}>
-    <ProfileStack.Screen
-      name="Perfil"
-      component={ProfileScreen}
-    />
-    <ProfileStack.Screen
+      }}>
+      <ProfileStack.Screen
+        name="Perfil"
+        component={ProfileScreen}
+        options={{
+          title: 'Perfil',
+          headerLeft: () => (
+            <View style={{marginLeft: 10}}>
+              <Icon.Button
+                name="ios-settings"
+                size={25}
+                backgroundColor= '#ff2167'
+                color= '#fff'
+                
+                onPress={() => navigation.openDrawer()}
+              />
+            </View>
+          ),
+          
+        }}
+      />
+      <ProfileStack.Screen
         name="EditProfile"
         options={{
           title: 'Edit Profile',
         }}
         component={EditProfileScreen}
       />
-  </ProfileStack.Navigator>
-);
+    </ProfileStack.Navigator>
+  );
+};
+
 
 const FavouriteStackScreen = ({navigation}) => (
   <FavouriteStack.Navigator
