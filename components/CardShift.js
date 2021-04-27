@@ -12,7 +12,7 @@ return (
       <View style={styles.card}>
         <View style={styles.cardImgWrapper}>
           <Image
-            source={itemData.image}
+            source={itemData.imageProf}
             resizeMode="cover"
             style={styles.cardImg}
           />

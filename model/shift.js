@@ -1,4 +1,12 @@
-const Images = [
+const ImagesProf = [
+  {image: require('../assets/banners/prof1.jpg')},
+  {image: require('../assets/banners/prof2.jpg')},
+  {image: require('../assets/banners/prof3.jpg')},
+  {image: require('../assets/banners/prof4.jpg')},
+  {image: require('../assets/banners/prof5.jpg')},
+];
+
+const ImagesUser = [
   {image: require('../assets/banners/prof1.jpg')},
   {image: require('../assets/banners/prof2.jpg')},
   {image: require('../assets/banners/prof3.jpg')},
@@ -21,15 +29,16 @@ export const shift = [
       day: 'Lunes',
       hour: '9:00',
       date: 'Lunes 19 de Abril de 2021',
-      image: Images[0].image,
+      imageProf: ImagesProf[0].image,
+      imageUser: ImagesUser[0].image,
       paymentMethod: 'Efectivo',
       userAdress: 'Rivadavia 5000',
       neighborhood: 'Caballito'
     },
     {
       id: '2',
-      idUser: '1',
-      nameUser: 'Martin Rodriguez',
+      idUser: '2',
+      nameUser: 'Rodolfo Paez',
       idProf: '2',
       nameProf: 'Juan Gonzalez',
       idCategory: '2',
@@ -40,7 +49,8 @@ export const shift = [
       day: 'Martes',
       hour: '10:00',
       date: 'Martes 20 de Abril de 2021',
-      image: Images[1].image,
+      imageProf: ImagesProf[1].image,
+      imageUser: ImagesUser[1].image,
       paymentMethod: 'Tarjeta de crédito',
       userAdress: 'Rivadavia 5000',
       neighborhood: 'Caballito'
@@ -59,7 +69,8 @@ export const shift = [
       day: 'Viernes',
       hour: '14:00',
       date: 'Viernes 16 de Abril de 2021',
-      image: Images[0].image,
+      imageProf: ImagesProf[2].image,
+      imageUser: ImagesUser[2].image,
       paymentMethod: 'Efectivo',
       userAdress: 'Rivadavia 5000',
       neighborhood: 'Caballito'
@@ -78,7 +89,8 @@ export const shift = [
       day: 'Jueves',
       hour: '17:00',
       date: 'Jueves 15 de Abril de 2021',
-      image: Images[2].image,
+      imageProf: ImagesProf[3].image,
+      imageUser: ImagesUser[3].image,
       paymentMethod: 'Tarjeta de crédito',
       userAdress: 'Rivadavia 5000',
       neighborhood: 'Caballito'

@@ -10,13 +10,14 @@ let helperArray = require ('../model/data');
 
 import {shift} from '../model/shift';
 import CardShift from '../components/CardShift';
+import CardShiftProfesional from '../components/CardShiftProfesional';
 
 const ShiftScreenProfesional = ({navigation}) => {
   const theme = useTheme();
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Confirmar cancelación del turno",
-      "¿Desea cancelar el turno solicitado?",
+      "¿Desea cancelar el turno?",
       [
         {
           text: "Cancelar",
@@ -29,7 +30,7 @@ const ShiftScreenProfesional = ({navigation}) => {
   const renderItem = ({item}) => {
       
     return (
-        <CardShift 
+        <CardShiftProfesional 
             itemData={item}
             onPress={createTwoButtonAlert}
         />
