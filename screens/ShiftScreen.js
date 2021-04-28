@@ -24,8 +24,11 @@ const ShiftScreen = ({navigation}) => {
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     );
+  const categories = ['Próximos', 'Anteriores'];
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  
   const renderItem = ({item}) => {
-      
+    
     return (
         <CardShift 
             itemData={item}
@@ -38,7 +41,37 @@ const ShiftScreen = ({navigation}) => {
       
       <Container> 
        
-       <Text style={{fontSize: 22, fontWeight: 'bold', marginTop: 10, marginBottom: 10, color: '#ff2167'}}>Próximos turnos</Text>
+       <View style={styles.categoryListContainerDesc}>
+        {categories.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            activeOpacity={0.8}
+            onPress={() => setSelectedCategoryIndex(index)}>
+            <View>
+              <Text
+                style={{
+                  ...styles.categoryListText,
+                  color:
+                    selectedCategoryIndex == index
+                      ? COLORS.rubik
+                      : COLORS.grey,
+                }}>
+                {item}
+              </Text>
+              {selectedCategoryIndex == index && (
+                <View
+                  style={{
+                    height: 3,
+                    width: 30,
+                    backgroundColor: COLORS.rubik,
+                    marginTop: 2,
+                  }}
+                />
+              )}
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
 
       <View style={styles.container}>
         <FlatList 
@@ -48,14 +81,7 @@ const ShiftScreen = ({navigation}) => {
         />
       </View>
 
-      <Text style={{fontSize: 22, fontWeight: 'bold', marginTop: 10, marginBottom: 10, color: '#ff2167'}}>Turnos pasados</Text>
-      <View style={styles.container}>
-        <FlatList 
-            data={shift}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-        />
-      </View>
+      
 
       </Container>
     );
@@ -76,8 +102,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   categoryListText: {
-    fontSize: 17,
+    fontSize: 20,
     fontWeight: 'bold',
+  },
+  categoryListContainerDesc: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    marginHorizontal: 20,
+    marginTop: 15,
+    justifyContent: 'space-between',
   },
   /*button: {
     flexDirection: 'row',

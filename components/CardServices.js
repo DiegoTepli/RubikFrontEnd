@@ -4,6 +4,7 @@ import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /
 import StarRating from './StarRating';
 
 const CardServices = ({itemData, onPress}) => {
+  
 return (
  
   
@@ -13,8 +14,21 @@ return (
           <Text style={styles.cardTitle}>{itemData.category}</Text>
           <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
           <View style={{flexDirection: 'row'}}>
-          <Text style={styles.cardDetails}>Precio: {itemData.servicePrice} </Text>
-          <Text style={styles.cardDiscount}>{itemData.serviceDiscount} </Text>
+          <Text style={styles.cardDetails}>Precio: </Text>
+          {itemData.serviceDiscount != null && (
+            <View style={{flexDirection: 'row'}}>
+            <Text style={styles.cardDetailsPriceLineThrough}>${itemData.servicePrice}</Text>
+            <Text style={styles.cardDetailsPriceDiscount}> $300</Text>
+            </View>
+          )}
+          {itemData.serviceDiscount == null && (
+            <View>
+            <Text style={styles.cardDetails}>${itemData.servicePrice}</Text>
+            </View>
+          )}
+            
+          
+          
           </View>
           
 
@@ -78,4 +92,16 @@ const styles = StyleSheet.create({
     color: '#444',
     fontWeight: 'bold'
   },
+  cardDetailsPriceLineThrough: {
+    fontSize: 16,
+    color: '#444',
+    fontWeight: 'bold',
+    textDecorationLine: 'line-through',
+  },
+  cardDetailsPriceDiscount: {
+    fontSize: 16,
+    color: '#444',
+    fontWeight: 'bold',
+    color: '#ff2167'
+  }
 });

@@ -85,20 +85,20 @@ export default class App extends Component {
             
           
               <TouchableOpacity>
-              <View style={{backgroundColor: '#ff2167', flexDirection: 'row', padding: 10, borderRadius: 20}}>
+              <View style={{backgroundColor: 'green', flexDirection: 'row', padding: 10, borderRadius: 20, opacity: 0.7}}>
               <Text style={styles.category}>09:00</Text>
               </View> 
               </TouchableOpacity>
           
           
               <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <View style={{backgroundColor: 'green', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20, opacity: 0.7}}>
               <Text style={styles.category}>10:00</Text>
               </View>
               </TouchableOpacity>
 
               <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
+              <View style={{backgroundColor: 'green', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
               <Text style={styles.category}>11:00</Text>
               </View>
               </TouchableOpacity>
@@ -196,10 +196,10 @@ const styles = StyleSheet.create({
   sectionReserve: {
     paddingHorizontal: 20,
     paddingBottom: 60,
-    borderBottomWidth: 1,
+    
     borderBottomColor: '#cccccc',
     backgroundColor: 'white',
-    marginTop: 10
+    marginTop: 20
   },
   signIn: {
     width: '100%',

@@ -7,8 +7,8 @@ export const beautyServices = [
       category: 'Peluquería',
       idServiceCategory: '1',
       serviceCategory: 'Color',
-      servicePrice: '$500',
-      serviceDiscount: '30% OFF'
+      servicePrice: 500,
+      serviceDiscount: 30
     },
     {
         id: '2',
@@ -18,7 +18,7 @@ export const beautyServices = [
         category: 'Peluquería',
         idServiceCategory: '2',
         serviceCategory: 'Mechas',
-        servicePrice: '$600'
+        servicePrice: 600
       },
       {
         id: '3',
@@ -28,7 +28,7 @@ export const beautyServices = [
         category: 'Peluquería',
         idServiceCategory: '3',
         serviceCategory: 'Peinado',
-        servicePrice: '$400',
+        servicePrice: 400,
       },
       {
         id: '4',
@@ -38,8 +38,8 @@ export const beautyServices = [
         category: 'Barbería',
         idServiceCategory: '1',
         serviceCategory: 'Corte de pelo',
-        servicePrice: '$500',
-        serviceDiscount: '30% OFF'
+        servicePrice: 500,
+        serviceDiscount: 30
       },
       {
         id: '5',
@@ -49,8 +49,8 @@ export const beautyServices = [
         category: 'Barbería',
         idServiceCategory: '2',
         serviceCategory: 'Barba',
-        servicePrice: '$500',
-        serviceDiscount: '30% OFF'
+        servicePrice: 500,
+        serviceDiscount: 30
       },
       {
         id: '6',
@@ -60,7 +60,7 @@ export const beautyServices = [
         category: 'Estética',
         idServiceCategory: '1',
         serviceCategory: 'Extensiones de pestañas',
-        servicePrice: '$500',
+        servicePrice: 500,
       },
       {
         id: '7',
@@ -70,7 +70,7 @@ export const beautyServices = [
         category: 'Estética',
         idServiceCategory: '2',
         serviceCategory: 'Laminado de cejas',
-        servicePrice: '$500',
-        serviceDiscount: '30% OFF'
+        servicePrice: 500,
+        serviceDiscount: 30
       },
 ];

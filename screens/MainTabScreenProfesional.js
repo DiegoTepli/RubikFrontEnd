@@ -12,9 +12,10 @@ import ShiftScreenProfesional from './ShiftScreenProfesional';
 import FavouriteScreen from './FavouriteScreen';
 import ProfileScreen from './ProfileScreen';
 import ProfileScreenProfesional from './ProfileScreenProfesional';
+import ProfileScreenViewProfesional from './ProfileScreenViewProfesional';
 import MapTestScreen from './MapTestScreen';
 import EditProfileScreen from './EditProfileScreen';
-
+import ProfileScreenServicesProfesional from './ProfileScreenServicesProfesional';
 import {useTheme, Avatar} from 'react-native-paper';
 import {View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -32,7 +33,7 @@ const FavouriteStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreenProfesional = () => (
-  <Tab.Navigator initialRouteName="Shifts" activeColor="#fff">
+  <Tab.Navigator initialRouteName="Shifts" activeColor="#fff" barStyle={{ backgroundColor: '#ff2167' }}>
     
     <Tab.Screen
       name="Shifts"
@@ -107,7 +108,6 @@ const ProfileStackScreenProfesional = ({navigation}) => {
         fontWeight: 'bold',
         alignSelf: 'center',
         fontSize: 25,
-        marginRight: 50
       },
       }}>
       <ProfileStackProfesional.Screen
@@ -127,15 +127,53 @@ const ProfileStackScreenProfesional = ({navigation}) => {
               />
             </View>
           ),
-          
+          headerRight: () => (
+            <View style={{marginLeft: 10, marginBottom: 2, flexDirection: 'row'}}>
+              <Icon.Button
+                name="ios-eye"
+                size={40}
+                backgroundColor= '#ff2167'
+                color= '#fff'
+                
+                onPress={() => navigation.navigate('ProfileScreenViewProfesional')}
+              />
+              <Icon.Button
+                name="ios-add"
+                size={40}
+                backgroundColor= '#ff2167'
+                color= '#fff'
+                
+                onPress={() => navigation.navigate('ProfileScreenServicesProfesional')}
+              />
+            </View>
+          ),
         }}
       />
       <ProfileStackProfesional.Screen
-        name="EditProfile"
+        name="ProfileScreenViewProfesional"
         options={{
-          title: 'Edit Profile',
+          title: 'View',
         }}
-        component={EditProfileScreen}
+        component={ProfileScreenViewProfesional}
+        options={({route}) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
+      />
+      <ProfileStackProfesional.Screen
+        name="ProfileScreenServicesProfesional"
+        options={{
+          title: 'View',
+        }}
+        component={ProfileScreenServicesProfesional}
+        options={({route}) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
       />
     </ProfileStackProfesional.Navigator>
   );

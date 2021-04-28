@@ -1,3 +1,5 @@
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /* All native-base components used in this file */ } from 'native-base';
@@ -25,11 +27,12 @@ return (
          <Text style={styles.cardDetails}>{itemData.date} {itemData.hour}</Text>
           <Text style={styles.cardDetails}>Categoría: {itemData.category}</Text>
           <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
-          <Text style={styles.cardDetails}>Precio: {itemData.servicePrice}</Text>
+          <Text style={styles.cardDetails}>Precio: ${itemData.servicePrice}</Text>
           <Text style={styles.cardDetails}>Dirección: {itemData.userAdress}</Text>
           <Text style={styles.cardDetails}>Barrio: {itemData.neighborhood}</Text>
-          <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
           <Text style={styles.cardDetails}>Pago: {itemData.paymentMethod}</Text>
+          <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
+          
         <TouchableOpacity onPress={onPress}
                     style={styles.signIn}
 
@@ -65,7 +68,7 @@ export default CardShiftProfesional;
 
 const styles = StyleSheet.create({
   card: {
-    height: 170,
+    height: hp('25%'),
     marginVertical: 10,
     flexDirection: 'row',
     shadowColor: '#999',
@@ -113,13 +116,12 @@ const styles = StyleSheet.create({
     color: '#444',
   },
   signIn: {
-    marginTop: -25,
+    marginTop: -10,
     marginLeft: 100,
     borderRadius: 0,
     width: '60%',
     alignSelf: 'flex-end',
     alignItems: 'center',
-    position: 'absolute'
 },
 textSign: {
     fontSize: 18,

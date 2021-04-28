@@ -9,7 +9,7 @@ import {
   ScrollView,
   SafeAreaView
 } from 'react-native';
-
+import {LinearGradient} from 'expo-linear-gradient';
 import {useTheme, Avatar,
     Title,
     Caption,
@@ -349,7 +349,25 @@ const textInputChange = (val) => {
             </ScrollView>
         </Animatable.View>
 
+        <View style={styles.sectionReserve}>
+        
+        <TouchableOpacity
+        
+                    style={styles.signIn}
+                    
+                >
+        <LinearGradient
+                    colors={['#ff2167', '#ff2167']}
+                    style={styles.signIn}
+                >
+                    <Text style={[styles.textSign, {
+                        color:'#fff'
+                    }]}>Guardar datos</Text>
+                </LinearGradient>
 
+                </TouchableOpacity>
+                
+                </View>
       
     </View>
     
@@ -432,11 +450,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#FF0000',
     paddingBottom: 5,
   },
-  textInput: {
-    flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : -12,
-    color: '#05375a',
-  },
   bottomDrawerSection: {
     
     borderTopColor: '#f4f4f4',
@@ -475,5 +488,24 @@ input: {
   borderColor: '#cccccc',
   paddingHorizontal: 10,
   paddingTop: 10
+},
+sectionReserve: {
+  paddingHorizontal: 20,
+  paddingBottom: 20,
+  borderBottomWidth: 1,
+  borderBottomColor: '#cccccc',
+  backgroundColor: 'white',
+  marginTop: 30
+},
+signIn: {
+  width: '100%',
+  height: 50,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 10
+},
+textSign: {
+  fontSize: 20,
+  fontWeight: 'bold'
 },
 });

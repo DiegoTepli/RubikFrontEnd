@@ -8,7 +8,7 @@ const Images = [
       name: 'Diego',
       comment: `Muy buen servicio!`,
       image: Images[0].image,
-      rating: '5',
+      rating: 5,
       date: '10/04/2021'
     },
     {
@@ -16,7 +16,7 @@ const Images = [
         name: 'Jose',
         comment: `Buen servicio`,
         image: Images[0].image,
-        rating: '4',
+        rating: 4,
         date: '10/04/2021'
       },
       {
@@ -24,7 +24,7 @@ const Images = [
         name: 'Lucía',
         comment: `Normal`,
         image: Images[0].image,
-        rating: '3',
+        rating: 3,
         date: '10/04/2021'
       },
       {
@@ -32,7 +32,7 @@ const Images = [
         name: 'Camila',
         comment: `Excelente profesional!`,
         image: Images[0].image,
-        rating: '5',
+        rating: 5,
         date: '10/04/2021'
       },
       {
@@ -40,7 +40,7 @@ const Images = [
         name: 'Gonzalo',
         comment: `Excelente profesional!`,
         image: Images[0].image,
-        rating: '5',
+        rating: 5,
         date: '10/04/2021'
       },
       {
@@ -48,7 +48,7 @@ const Images = [
         name: 'Diego',
         comment: `Excelente profesional!`,
         image: Images[0].image,
-        rating: '5',
+        rating: 5,
         date: '10/04/2021'
       },
       {
@@ -56,7 +56,7 @@ const Images = [
         name: 'Diego',
         comment: `Excelente profesional!`,
         image: Images[0].image,
-        rating: '5',
+        rating: 5,
         date: '10/04/2021'
       },
   ];

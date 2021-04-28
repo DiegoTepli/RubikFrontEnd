@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   sectionReserve: {
     paddingHorizontal: 15,
-    marginTop: 180,
+    marginTop: 50,
     
     backgroundColor: 'white',
   },

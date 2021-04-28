@@ -20,9 +20,18 @@ return (
         <View style={styles.cardInfo}>
          <View style={styles.cardTitleDiscount}>
           <Text style={styles.cardTitle}>{itemData.title}</Text>
-          <Text style={styles.cardDiscount}>{itemData.discount}</Text>
+          {itemData.discount != null && (
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.cardDiscount}>{itemData.discount}% OFF</Text>
+            </View>
+          )}
+          {itemData.discount == null && (
+            <View style={{flexDirection: 'row'}}>
+            </View>
+          )}
+          
          </View>
-          <StarRating ratings={itemData.ratings} reviews={itemData.reviews} />
+          <StarRating ratings={itemData.ratings} rating={itemData.rating} reviews={itemData.reviews} />
           <Text numberOfLines={2} style={styles.cardDetails}>{itemData.description}</Text>
        </View>
       </View>

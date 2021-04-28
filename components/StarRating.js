@@ -23,6 +23,7 @@ const StarRating = (props) => {
     return (
         <View style={ styles.container }>
             { stars }
+            <Text style={styles.textRat}>{props.rating}</Text>
             <Text style={styles.text}>({props.reviews})</Text>
         </View>
     );
@@ -43,5 +44,12 @@ const styles = StyleSheet.create({
 		fontSize: 12,
         marginLeft: 5,
         color: '#444',
+	},
+    textRat: {
+		fontSize: 12,
+        marginLeft: 2,
+        fontWeight: 'bold',
+        color: 'black',
+
 	}
 });

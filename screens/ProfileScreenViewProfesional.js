@@ -5,6 +5,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {useTheme} from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import StarRating2 from '../components/StarRating2';
+import {data} from '../model/data';
 import {
   View,
   Text,
@@ -38,13 +39,13 @@ const MIN_HEIGHT = Platform.OS === 'ios' ? 90 : 55;
 const MAX_HEIGHT = 350;
 
  
-  const CardItemDetails = ({route, navigation}) => {
+  const ProfileScreenViewProfesional = ({navigation}) => {
     const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
     useEffect(() => {
       LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     }, [])
-  const itemData = route.params.itemData;
+  const itemData = data[0];
   const navTitleView = useRef(null);
   const theme = useTheme();
   const categories = ['Descripción', 'Comentarios y puntación'];
@@ -97,7 +98,7 @@ const MAX_HEIGHT = 350;
         ))}
       </View>
 
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text style={styles.title}>{itemData.title}</Text>
             {itemData.discount != null && (
             <View style={{flexDirection: 'row'}}>
@@ -131,7 +132,7 @@ const MAX_HEIGHT = 350;
               <FontAwesome name="star" size={18} color="#FF6347"/>
               <FontAwesome name="star" size={18} color="#FF6347"/>
            
-              <Text style={{marginHorizontal: 4, fontSize: 17, alignItems: 'center', alignSelf: 'center', alignContent: 'center', fontWeight: 'bold', color: 'black'}}>{itemData.rating}</Text>
+              <Text style={{marginHorizontal: 4, fontSize: 17, alignItems: 'center', alignSelf: 'center', alignContent: 'center', fontWeight: 'bold'}}>{itemData.rating}</Text>
               <Text style={{fontSize: 17, alignItems: 'center', alignSelf: 'center', alignContent: 'center'}}>({itemData.reviews})</Text>
               </View>
            </View>
@@ -144,9 +145,7 @@ const MAX_HEIGHT = 350;
        
         <TouchableOpacity
                     style={styles.signIn}
-                    onPress={() =>
-                      navigation.navigate('CardServicesListScreen', itemData)
-                    }
+                    
                 >
         <LinearGradient
                     colors={['#ff2167', '#ff2167']}
@@ -166,7 +165,7 @@ const MAX_HEIGHT = 350;
   );
 };
 
-export default CardItemDetails;
+export default ProfileScreenViewProfesional;
 
 const styles = StyleSheet.create({
   container: {
@@ -338,9 +337,8 @@ categoryBtnTxt: {
 },
 categoryBtn: {
   alignSelf: 'flex-end',
-  
-
-  position: 'absolute'
+  marginTop: 180,
+  position: 'absolute',
 },
 input: {
   height: 100,
@@ -352,11 +350,12 @@ input: {
 });
 
 
-
-/*import React, {useRef,  useState}  from 'react';
+/*
+import React, {useRef,  useState}  from 'react';
 import COLORS from '../consts/colors';
 import {LinearGradient} from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
+
 import {useTheme} from '@react-navigation/native';
 import StarRating2 from '../components/StarRating2';
 import {
@@ -381,6 +380,7 @@ import HeaderImageScrollView, {
 } from 'react-native-image-header-scroll-view';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as Animatable from 'react-native-animatable';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {comments} from '../model/comments';
@@ -394,14 +394,14 @@ const MIN_HEIGHT = Platform.OS === 'ios' ? 90 : 55;
 const MAX_HEIGHT = 350;
 
  
-  const CardItemDetails = ({route, navigation}) => {
+  const ProfileScreenViewProfesional = ({navigation}) => {
     const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     useEffect(() => {
       LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
     }, [])
-  const itemData = route.params.itemData;
+  const itemData = data[0];
   const navTitleView = useRef(null);
   const theme = useTheme();
   const categories = ['Descripción', 'Comentarios y puntación'];
@@ -541,7 +541,7 @@ const MAX_HEIGHT = 350;
         
         <TouchableOpacity
           style={styles.categoryBtn}
-          onPress={() => setModalOpen(true)}
+         
           >
             <ImageBackground
               source={require('../assets/pencil.jpg')}
@@ -560,7 +560,7 @@ const MAX_HEIGHT = 350;
   );
 };
 
-export default CardItemDetails;
+export default ProfileScreenViewProfesional;
 
 const styles = StyleSheet.create({
   container: {
@@ -730,7 +730,7 @@ categoryBtnTxt: {
   marginLeft: 0
 },
 categoryBtn: {
- alignSelf: 'flex-end',
+  alignSelf: 'flex-end',
   
 
   position: 'absolute'
