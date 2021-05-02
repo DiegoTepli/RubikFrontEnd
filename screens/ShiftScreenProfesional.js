@@ -1,23 +1,21 @@
 import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity, Animated, Alert, StatusBar } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity, Animated, Alert } from 'react-native';
 import { Container, Content, List, ListItem, Header, Icon, Item, Input } from 'native-base';
 import {data} from '../model/data';
 import Card from '../components/Card';
 import {LinearGradient} from 'expo-linear-gradient';
 import COLORS from '../consts/colors';
-import {useTheme} from '@react-navigation/native';
 let helperArray = require ('../model/data');
 
 import {shift} from '../model/shift';
 import CardShift from '../components/CardShift';
 import CardShiftProfesional from '../components/CardShiftProfesional';
 
-const ShiftScreenProfesional = ({navigation}) => {
-  const theme = useTheme();
+const ShiftScreen = ({navigation}) => {
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Confirmar cancelación del turno",
-      "¿Desea cancelar el turno?",
+      "¿Desea cancelar el turno solicitado?",
       [
         {
           text: "Cancelar",
@@ -27,8 +25,11 @@ const ShiftScreenProfesional = ({navigation}) => {
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     );
+  const categories = ['Próximos', 'Anteriores'];
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  
   const renderItem = ({item}) => {
-      
+    
     return (
         <CardShiftProfesional 
             itemData={item}
@@ -40,8 +41,38 @@ const ShiftScreenProfesional = ({navigation}) => {
     return (
       
       <Container> 
-       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
-       <Text style={{fontSize: 22, fontWeight: 'bold', marginTop: 10, marginBottom: 10, color: '#ff2167'}}>Próximos turnos</Text>
+       
+       <View style={styles.categoryListContainerDesc}>
+        {categories.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            activeOpacity={0.8}
+            onPress={() => setSelectedCategoryIndex(index)}>
+            <View>
+              <Text
+                style={{
+                  ...styles.categoryListText,
+                  color:
+                    selectedCategoryIndex == index
+                      ? COLORS.rubik
+                      : COLORS.grey,
+                }}>
+                {item}
+              </Text>
+              {selectedCategoryIndex == index && (
+                <View
+                  style={{
+                    height: 3,
+                    width: 30,
+                    backgroundColor: COLORS.rubik,
+                    marginTop: 2,
+                  }}
+                />
+              )}
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
 
       <View style={styles.container}>
         <FlatList 
@@ -51,19 +82,12 @@ const ShiftScreenProfesional = ({navigation}) => {
         />
       </View>
 
-      <Text style={{fontSize: 22, fontWeight: 'bold', marginTop: 10, marginBottom: 10, color: '#ff2167'}}>Turnos pasados</Text>
-      <View style={styles.container}>
-        <FlatList 
-            data={shift}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-        />
-      </View>
+      
 
       </Container>
     );
 };
-export default ShiftScreenProfesional;
+export default ShiftScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -79,8 +103,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   categoryListText: {
-    fontSize: 17,
+    fontSize: 20,
     fontWeight: 'bold',
+  },
+  categoryListContainerDesc: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    marginHorizontal: 20,
+    marginTop: 15,
+    justifyContent: 'space-between',
   },
   /*button: {
     flexDirection: 'row',

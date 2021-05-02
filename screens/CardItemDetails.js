@@ -352,8 +352,8 @@ input: {
 });
 
 
-
-/*import React, {useRef,  useState}  from 'react';
+/*
+import React, {useRef,  useState}  from 'react';
 import COLORS from '../consts/colors';
 import {LinearGradient} from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -485,6 +485,7 @@ const MAX_HEIGHT = 350;
       <TextInput
         
         style={{fontSize: 20, fontWeight: 'bold', marginLeft: 5, marginTop: 5}}
+        multiline
         placeholder="Deja tu comentario aquí"
         
       />

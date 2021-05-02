@@ -1,7 +1,7 @@
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity, Alert, ImageBackground} from 'react-native';
 import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /* All native-base components used in this file */ } from 'native-base';
 import StarRating from './StarRating';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -38,14 +38,12 @@ return (
 
                     
                 >
-        <LinearGradient
-                    colors={['red', 'red']}
-                    style={styles.signIn}
-                >
-                    <Text style={[styles.textSign, {
-                        color:'#fff'
-                    }]}>Cancelar</Text>
-                </LinearGradient>
+        <ImageBackground
+              source={require('../assets/cancel.png')}
+              resizeMode="center"
+              style={styles.categoryIcon}
+               
+            />
 
                 </TouchableOpacity>
                 
@@ -116,7 +114,7 @@ const styles = StyleSheet.create({
     color: '#444',
   },
   signIn: {
-    marginTop: -10,
+    marginTop: -32,
     marginLeft: 100,
     borderRadius: 0,
     width: '60%',
@@ -126,5 +124,15 @@ const styles = StyleSheet.create({
 textSign: {
     fontSize: 18,
     fontWeight: 'bold'
+},
+categoryIcon: {
+  borderWidth: 0,
+  alignItems: 'center',
+  justifyContent: 'center',
+  alignSelf: 'flex-end',
+  width: 30,
+  height: 30,
+  borderRadius: 50,
+  marginRight: 10,
 },
 });
