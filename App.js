@@ -33,7 +33,7 @@
  
  import RootStackScreen from './screens/RootStackScreen';
  
- import AsyncStorage from '@react-native-community/async-storage';
+ import AsyncStorage from '@react-native-async-storage/async-storage';
  
  const Drawer = createDrawerNavigator();
  
@@ -169,7 +169,7 @@
      <NavigationContainer theme={theme}>
        { loginState.userToken !== null ? (
          <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
-           <Drawer.Screen name="HomeDrawer" component={MainTabScreenProfesional} />
+           <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
            
          </Drawer.Navigator>
        )

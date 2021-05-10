@@ -56,8 +56,11 @@ const MAX_HEIGHT = 350;
       
           <View style={{height: 330}}>
             <Image source={itemData.image} style={styles.image} />
+            
             <View style={styles.iconContainer}>
+            <TouchableOpacity>
           <Icon name="favorite" color={COLORS.red} size={30} />
+          </TouchableOpacity>
         </View>
           </View>
           
@@ -100,16 +103,7 @@ const MAX_HEIGHT = 350;
 
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text style={styles.title}>{itemData.title}</Text>
-            {itemData.discount != null && (
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.cardDiscount}>{itemData.discount}% OFF</Text>
-            </View>
-          )}
-            {itemData.discount == null && (
-            <View style={{flexDirection: 'row'}}>
-              
-            </View>
-          )}
+            
           </View>
 
           <Text style={{fontSize: 15}}>Telefono: 1549142091</Text>

@@ -12,24 +12,35 @@ return (
      
         <View style={styles.cardInfo}>
           <Text style={styles.cardTitle}>{itemData.category}</Text>
-          <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
-          <View style={{flexDirection: 'row'}}>
-          <Text style={styles.cardDetails}>Precio: </Text>
+          
+          
+          
           {itemData.serviceDiscount != null && (
+            <View>
             <View style={{flexDirection: 'row'}}>
+            <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
+              <Text style={styles.cardDiscount}> {itemData.serviceDiscount}% OFF</Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+            <Text style={styles.cardDetails}>Precio: </Text>
             <Text style={styles.cardDetailsPriceLineThrough}>${itemData.servicePrice}</Text>
-            <Text style={styles.cardDetailsPriceDiscount}> $300</Text>
+            <Text style={styles.cardDetailsPriceDiscount}> ${(itemData.servicePrice * (100 - itemData.serviceDiscount))/100} </Text>
+            </View>
             </View>
           )}
           {itemData.serviceDiscount == null && (
             <View>
-            <Text style={styles.cardDetails}>${itemData.servicePrice}</Text>
+              <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
+              <View style={{flexDirection: 'row'}}>
+               <Text style={styles.cardDetails}>Precio: </Text>
+               <Text style={styles.cardDetails}>${itemData.servicePrice}</Text>
+              </View>
             </View>
           )}
             
           
           
-          </View>
+       
           
 
           
@@ -80,7 +91,7 @@ const styles = StyleSheet.create({
   },
   cardDiscount:{
     alignSelf: 'center',
-    marginHorizontal: 5,
+    
     fontWeight: 'bold',
     color: 'red'
   },

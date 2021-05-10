@@ -7,6 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import {beautyServices} from '../model/beautyServices';
 import CardServicesProf from '../components/CardServicesProf';
 import StarRating2 from '../components/StarRating2';
+import {Picker} from '@react-native-picker/picker';
 import {
   View,
   Text,
@@ -75,7 +76,10 @@ const textInputChange = (val) => {
     }, [])
   const navTitleView = useRef(null);
   const theme = useTheme();
+  const [modalOpen, setModalOpen] = useState(false);
   const categories = ['Descripción', 'Servicios', 'Turnos'];
+  const [selectedLanguage, setSelectedLanguage] = useState();
+   const [selectedLanguage2, setSelectedLanguage2] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   return (
     <View style={styles.container}>
@@ -339,8 +343,8 @@ input: {
 */
 
 
-/*import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import React, {useRef,  useState}  from 'react';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import React, {useRef,  useState, Component}  from 'react';
 import COLORS from '../consts/colors';
 import {beautyServices} from '../model/beautyServices';
 import CardServicesProf from '../components/CardServicesProf';
@@ -348,6 +352,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {useTheme} from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import StarRating2 from '../components/StarRating2';
+import {Picker} from '@react-native-picker/picker';
 import {
   View,
   Text,
@@ -377,11 +382,140 @@ import CardComments from '../components/CardComments';
 import { Container, Content, List, ListItem, Header, Item, Input } from 'native-base';
 import { useEffect } from 'react';
 import { LogBox } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
+import SelectBox from 'react-native-multi-selectbox'
+import { xorBy } from 'lodash'
+import ModalDropdown from 'react-native-modal-dropdown';
+
+
 const MIN_HEIGHT = Platform.OS === 'ios' ? 90 : 55;
 const MAX_HEIGHT = 350;
 
  
   const ProfileScreenServicesProfesional = ({navigation}) => {
+
+    function onMultiChange() {
+      return (item) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'))
+    }
+  const [selectedTeams, setSelectedTeams] = useState([])
+
+  function onMultiChange2() {
+    return (item) => setSelectedTeams2(xorBy(selectedTeams2, [item], 'id'))
+  }
+const [selectedTeams2, setSelectedTeams2] = useState([])
+
+function onMultiChange3() {
+  return (item) => setSelectedTeams3(xorBy(selectedTeams3, [item], 'id'))
+}
+const [selectedTeams3, setSelectedTeams3] = useState([])
+
+function onMultiChange4() {
+  return (item) => setSelectedTeams4(xorBy(selectedTeams4, [item], 'id'))
+}
+const [selectedTeams4, setSelectedTeams4] = useState([])
+
+function onMultiChange5() {
+  return (item) => setSelectedTeams5(xorBy(selectedTeams5, [item], 'id'))
+}
+const [selectedTeams5, setSelectedTeams5] = useState([])
+
+function onMultiChange6() {
+  return (item) => setSelectedTeams6(xorBy(selectedTeams6, [item], 'id'))
+}
+const [selectedTeams6, setSelectedTeams6] = useState([])
+  
+function onMultiChange7() {
+  return (item) => setSelectedTeams7(xorBy(selectedTeams7, [item], 'id'))
+}
+const [selectedTeams7, setSelectedTeams7] = useState([])
+
+    const K_OPTIONS =
+      
+     [{
+      id: '1',
+      item: '07:00'
+    }, {
+      id: '2',
+      item: '07:30'
+    }, {
+      id: '3',
+      item: '08:00'
+    }, {
+      id: '4',
+      item: '08:30'
+    }, {
+      id: '5',
+      item: '09:00'
+    }, {
+      id: '6',
+      item: '09:30'
+    }, {
+      id: '7',
+      item: '10:00'
+    }, {
+      id: '8',
+      item: '10:30'
+    }, {
+      id: '9',
+      item: '11:00'
+    }, {
+      id: '10',
+      item: '11:30'
+    }, {
+      id: '11',
+      item: '12:00'
+    }, {
+      id: '12',
+      item: '12:30'
+    }, {
+      id: '13',
+      item: '13:00'
+    }, {
+      id: '14',
+      item: '13:30'
+    }, {
+      id: '15',
+      item: '14:00'
+    }, {
+      id: '16',
+      item: '14:30'
+    }, {
+      id: '17',
+      item: '15:00'
+    }, {
+      id: '18',
+      item: '15:30'
+    }, {
+      id: '19',
+      item: '16:00'
+    }, {
+      id: '20',
+      item: '16:30'
+    }, {
+      id: '21',
+      item: '17:00'
+    }, {
+      id: '22',
+      item: '17:30'
+    }, {
+      id: '23',
+      item: '18:00'
+    }, {
+      id: '24',
+      item: '18:30'
+    }, {
+      id: '25',
+      item: '19:00'
+    }, {
+      id: '26',
+      item: '19:30'
+    }, {
+      id: '27',
+      item: '20:00'
+    }
+  ]
+
+    
     const {colors} = useTheme();
     const [data, setData] = React.useState({
       username: '',
@@ -416,7 +550,10 @@ const MAX_HEIGHT = 350;
     }, [])
   const navTitleView = useRef(null);
   const theme = useTheme();
+  const [modalOpen, setModalOpen] = useState(false);
   const categories = ['Descripción', 'Servicios', 'Turnos'];
+  const [selectedLanguage, setSelectedLanguage] = useState();
+   const [selectedLanguage2, setSelectedLanguage2] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(2);
   return (
     <View style={styles.container}>
@@ -460,182 +597,98 @@ const MAX_HEIGHT = 350;
 
            </View>
       <Text style={{fontSize: 25, fontWeight: 'bold', alignSelf: 'center', marginTop: -10, width: '100%', paddingLeft: 15}}>Seleccionar turnos disponibles</Text>
-    <View style={{ marginHorizontal: 15, marginBottom: 30, marginTop: 20}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Lunes</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                    
-                    placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+     
+        options={K_OPTIONS}
+        selectedValues={selectedTeams}
+        onMultiSelect={onMultiChange()}
+        onTapClose={onMultiChange()}
+        isMulti
+      />
             </View>
     </View>
 
-    <View style={{marginHorizontal: 15, marginBottom: 30}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Martes</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                     placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+        options={K_OPTIONS}
+        selectedValues={selectedTeams2}
+        onMultiSelect={onMultiChange2()}
+        onTapClose={onMultiChange2()}
+        isMulti
+      />
             </View>
     </View>
 
-    <View style={{marginHorizontal: 15, marginBottom: 30}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Miercoles</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                   placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+        options={K_OPTIONS}
+        selectedValues={selectedTeams3}
+        onMultiSelect={onMultiChange3()}
+        onTapClose={onMultiChange3()}
+        isMulti
+      />
             </View>
     </View>
 
-    <View style={{marginHorizontal: 15, marginBottom: 30}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Jueves</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                    placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+        options={K_OPTIONS}
+        selectedValues={selectedTeams4}
+        onMultiSelect={onMultiChange4()}
+        onTapClose={onMultiChange4()}
+        isMulti
+      />
             </View>
     </View>
 
-    <View style={{marginHorizontal: 15, marginBottom: 30}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Viernes</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                   placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+        options={K_OPTIONS}
+        selectedValues={selectedTeams5}
+        onMultiSelect={onMultiChange5()}
+        onTapClose={onMultiChange5()}
+        isMulti
+      />
             </View>
     </View>
 
-    <View style={{marginHorizontal: 15, marginBottom: 30}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Sabado</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                    placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+        options={K_OPTIONS}
+        selectedValues={selectedTeams6}
+        onMultiSelect={onMultiChange6()}
+        onTapClose={onMultiChange6()}
+        isMulti
+      />
             </View>
     </View>
 
-    <View style={{marginHorizontal: 15}}>
+    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Domingo</Text>
-      <View style={styles.action}>
-            <SafeAreaView style={styles.input}>    
-                <TextInput 
-                    placeholder="Ej: 09:00, 11:30, 14:00"
-                    placeholderTextColor="#666666"
-                    style={[styles.textInput, {
-                        color: colors.text
-                    }]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                />
-                </SafeAreaView>
-                {data.check_textInputChange ? 
-                <Animatable.View
-                    animation="bounceIn"
-                >
-                    
-
-                </Animatable.View>
-                : null}
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <SelectBox
+        options={K_OPTIONS}
+        selectedValues={selectedTeams7}
+        onMultiSelect={onMultiChange7()}
+        onTapClose={onMultiChange7()}
+        isMulti
+      />
             </View>
     </View>
-
+    
     <View style={styles.sectionReserve}>
        
        <TouchableOpacity
@@ -648,13 +701,12 @@ const MAX_HEIGHT = 350;
                >
                    <Text style={[styles.textSign, {
                        color:'#fff'
-                   }]}>Guardar información</Text>
+                   }]}>Guardar turnos</Text>
                </LinearGradient>
 
                </TouchableOpacity>
               
                </View>
-
 
     </View>
   );
@@ -853,8 +905,8 @@ textInput: {
   fontSize: 20,
 },
 });
-*/
 
+/*
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import React, {useRef,  useState}  from 'react';
 import COLORS from '../consts/colors';
@@ -862,6 +914,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {useTheme} from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import StarRating2 from '../components/StarRating2';
+import {Picker} from '@react-native-picker/picker';
 import {
   View,
   Text,
@@ -942,7 +995,10 @@ const MAX_HEIGHT = 350;
     }, [])
   const navTitleView = useRef(null);
   const theme = useTheme();
+  const [modalOpen, setModalOpen] = useState(false);
   const categories = ['Descripción', 'Servicios', 'Turnos'];
+  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedLanguage2, setSelectedLanguage2] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(1);
   return (
     <View style={styles.container}>
@@ -990,7 +1046,7 @@ const MAX_HEIGHT = 350;
        
        <TouchableOpacity
                    style={styles.signIn}
-                   
+                   onPress={() => setModalOpen(true)}
                >
                  
        <LinearGradient
@@ -1004,17 +1060,137 @@ const MAX_HEIGHT = 350;
                </LinearGradient>
 
                </TouchableOpacity>
-               <TouchableOpacity>
-               <ImageBackground
-              source={require('../assets/discount.png')}
-              resizeMode="center"
-              style={styles.categoryIcon2}  
-            />
-            </TouchableOpacity>
+               
               </View>
             
               
-              
+              <Modal visible={modalOpen} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20}}>
+        <View style={{flexDirection: 'row'}}>
+         <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Categoría:</Text>
+         <Picker style={{ width: '42%', alignSelf: 'flex-end', marginLeft: 30, height: '54%', transform: [
+      { scaleX: 1.2 }, 
+      { scaleY: 1.2 },
+   ],}}
+  selectedValue={selectedLanguage}
+  onValueChange={(itemValue, itemIndex) =>
+    setSelectedLanguage(itemValue)
+  }>
+  <Picker.Item label="Peluquería" value="hairdressing" />
+  <Picker.Item label="Barbería" value="barbershop" />
+  <Picker.Item label="Estética" value="esthetic" />
+  <Picker.Item label="Manicuría" value="manicure" />
+  <Picker.Item label="Pedicuría" value="pedicure" />
+  <Picker.Item label="Maquillaje" value="makeup" />
+  <Picker.Item label="Depilación" value="hairRemoval" />
+  <Picker.Item label="Cuerpo" value="body" />
+  <Picker.Item label="Spa" value="spa" />
+</Picker>
+</View>
+
+<View style={{flexDirection:'row'}}>
+<Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Servicio:</Text>
+<View style={{width: '60%'}}>
+            <SafeAreaView style={styles.inputModal}>    
+                <TextInput 
+                    
+                    placeholder=""
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+                </SafeAreaView>
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    
+
+                </Animatable.View>
+                : null}
+            </View>
+</View>
+
+<View style={{flexDirection:'row'}}>
+<Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Precio:</Text>
+<View style={{width: '25%', marginLeft: 15}}>
+            <SafeAreaView style={styles.inputModal}>    
+                <TextInput 
+                    
+                    placeholder=""
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+                </SafeAreaView>
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    
+
+                </Animatable.View>
+                : null}
+            </View>
+</View>
+          
+<View style={{flexDirection: 'row'}}>
+         <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Descuento:</Text>
+         <Picker style={{ width: '42%', alignSelf: 'flex-end', marginLeft: 20, height: '54%', transform: [
+      { scaleX: 1.2 }, 
+      { scaleY: 1.2 },
+   ],}}
+  selectedValue={selectedLanguage2}
+  onValueChange={(itemValue, itemIndex) =>
+    setSelectedLanguage2(itemValue)
+  }>
+  <Picker.Item label="0%" value="0" />
+  <Picker.Item label="5%" value="5" />
+  <Picker.Item label="10%" value="10" />
+  <Picker.Item label="15%" value="15" />
+  <Picker.Item label="20%" value="20" />
+  <Picker.Item label="25%" value="25" />
+  <Picker.Item label="30%" value="30" />
+  <Picker.Item label="35%" value="35" />
+  <Picker.Item label="40%" value="40" />
+  <Picker.Item label="45%" value="45" />
+  <Picker.Item label="50%" value="50" />
+  <Picker.Item label="55%" value="55" />
+  <Picker.Item label="60%" value="60" />
+  <Picker.Item label="65%" value="65" />
+  <Picker.Item label="70%" value="70" />
+  <Picker.Item label="75%" value="75" />
+  <Picker.Item label="80%" value="80" />
+  <Picker.Item label="85%" value="85" />
+  <Picker.Item label="90%" value="90" />
+  <Picker.Item label="95%" value="95" />
+</Picker>
+</View>          
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 30, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpen(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpen(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
 
           
 
@@ -1181,6 +1357,13 @@ input: {
   paddingHorizontal: 10,
   marginRight: 0
 },
+inputModal: {
+  height: 30,
+  borderWidth: 1,
+  borderColor: '#cccccc',
+  marginLeft: 37,
+  marginTop: 18,
+},
 action: {
   flexDirection: 'row',
   marginLeft: 100,
@@ -1201,7 +1384,7 @@ sectionReserve: {
   backgroundColor: 'white',
   marginTop: 10,
   flexDirection: 'row',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
 },
 signIn: {
     height: 50,
@@ -1224,3 +1407,4 @@ categoryIcon2: {
   marginRight: 10,
 },
 });
+*/

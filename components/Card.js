@@ -22,7 +22,7 @@ return (
           <Text style={styles.cardTitle}>{itemData.title}</Text>
           {itemData.discount != null && (
             <View style={{flexDirection: 'row'}}>
-              <Text style={styles.cardDiscount}>{itemData.discount}% OFF</Text>
+              <Text style={styles.cardDiscount}>Hasta {itemData.discount}% OFF</Text>
             </View>
           )}
           {itemData.discount == null && (

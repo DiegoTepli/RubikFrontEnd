@@ -24,7 +24,7 @@ const ShiftScreen = ({navigation}) => {
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     );
-  const categories = ['Próximos', 'Anteriores'];
+  const categories = ['Próximos', 'Históricos'];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   
   const renderItem = ({item}) => {

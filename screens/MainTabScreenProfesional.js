@@ -16,6 +16,7 @@ import ProfileScreenViewProfesional from './ProfileScreenViewProfesional';
 import MapTestScreen from './MapTestScreen';
 import EditProfileScreen from './EditProfileScreen';
 import ProfileScreenServicesProfesional from './ProfileScreenServicesProfesional';
+import ProfileScreenServicesProfesional2 from './ProfileScreenServicesProfesional2';
 import {useTheme, Avatar} from 'react-native-paper';
 import {View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';

@@ -39,7 +39,7 @@ export const beautyServices = [
         idServiceCategory: '1',
         serviceCategory: 'Corte de pelo',
         servicePrice: 500,
-        serviceDiscount: 30
+        serviceDiscount: 15
       },
       {
         id: '5',
@@ -50,7 +50,7 @@ export const beautyServices = [
         idServiceCategory: '2',
         serviceCategory: 'Barba',
         servicePrice: 500,
-        serviceDiscount: 30
+        serviceDiscount: 20
       },
       {
         id: '6',
@@ -64,6 +64,149 @@ export const beautyServices = [
       },
       {
         id: '7',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '8',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '9',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '10',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '11',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '12',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '13',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '14',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '15',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '16',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '17',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '18',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '19',
+        idProf: '1',
+        title: 'Diego Teplitzky',
+        idCategory: '3',
+        category: 'Estética',
+        idServiceCategory: '2',
+        serviceCategory: 'Laminado de cejas',
+        servicePrice: 500,
+        serviceDiscount: 30
+      },
+      {
+        id: '20',
         idProf: '1',
         title: 'Diego Teplitzky',
         idCategory: '3',

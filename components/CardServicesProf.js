@@ -1,10 +1,58 @@
-import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useRef,  useState}  from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity, ImageBackground, Alert, Modal, SafeAreaView, TextInput} from 'react-native';
 import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /* All native-base components used in this file */ } from 'native-base';
 import StarRating from './StarRating';
+import {Picker} from '@react-native-picker/picker';
+import * as Animatable from 'react-native-animatable';
+import COLORS from '../consts/colors';
+import {useTheme} from '@react-navigation/native';
+
 
 const CardServicesProf = ({itemData, onPress}) => {
-  
+  const {colors} = useTheme();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState();
+   const [selectedLanguage2, setSelectedLanguage2] = useState();
+   const [data, setData] = React.useState({
+  username: '',
+  password: '',
+  confirm_password: '',
+  check_textInputChange: false,
+  secureTextEntry: true,
+  confirm_secureTextEntry: true,
+});
+
+
+const textInputChange = (val) => {
+    if( val.length !== 0 ) {
+        setData({
+            ...data,
+            username: val,
+            check_textInputChange: true
+        });
+    } else {
+        setData({
+            ...data,
+            username: val,
+            check_textInputChange: false
+        });
+    }
+}
+
+    const [text, onChangeText] = React.useState("Useless Text");
+  const createTwoButtonAlert = () =>
+    Alert.alert(
+      "Eliminar servicio",
+      "¿Desea eliminar el servicio seleccionado?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    );
 return (
  
   
@@ -12,28 +60,183 @@ return (
      
         <View style={styles.cardInfo}>
           <Text style={styles.cardTitle}>{itemData.category}</Text>
-          <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
-          <View style={{flexDirection: 'row'}}>
-          <Text style={styles.cardDetails}>Precio: </Text>
+          
+          
+          
           {itemData.serviceDiscount != null && (
+            <View>
             <View style={{flexDirection: 'row'}}>
+            <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
+              <Text style={styles.cardDiscount}> {itemData.serviceDiscount}% OFF</Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+            <Text style={styles.cardDetails}>Precio: </Text>
             <Text style={styles.cardDetailsPriceLineThrough}>${itemData.servicePrice}</Text>
-            <Text style={styles.cardDetailsPriceDiscount}> $300</Text>
+            <Text style={styles.cardDetailsPriceDiscount}> ${(itemData.servicePrice * (100 - itemData.serviceDiscount))/100} </Text>
+            </View>
             </View>
           )}
           {itemData.serviceDiscount == null && (
             <View>
-            <Text style={styles.cardDetails}>${itemData.servicePrice}</Text>
+              <Text style={styles.cardDetails}>Servicio: {itemData.serviceCategory}</Text>
+              <View style={{flexDirection: 'row'}}>
+               <Text style={styles.cardDetails}>Precio: </Text>
+               <Text style={styles.cardDetails}>${itemData.servicePrice}</Text>
+              </View>
             </View>
           )}
-            
           
-          
-          </View>
-          
+         
+          <TouchableOpacity 
+                      onPress={() => setModalOpen(true)}
+                      style={styles.signInPencil}
+   >
+          <ImageBackground
+                source={require('../assets/pencil.jpg')}
+                resizeMode="center"
+                style={styles.categoryIcon}
+                 
+              />
+  
+                  </TouchableOpacity>
+       
+          <TouchableOpacity 
+                      onPress={createTwoButtonAlert}
+                      style={styles.signIn}
+   >
+          <ImageBackground
+                source={require('../assets/delete.png')}
+                resizeMode="center"
+                style={styles.categoryIcon}
+                 
+              />
+  
+                  </TouchableOpacity>
+                  
+                  <Modal visible={modalOpen} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20}}>
+        <View style={{flexDirection: 'row'}}>
+         <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Categoría:</Text>
+         <Picker style={{ width: '42%', alignSelf: 'flex-end', marginLeft: 30, height: '54%', transform: [
+      { scaleX: 1.2 }, 
+      { scaleY: 1.2 },
+   ],}}
+  selectedValue={selectedLanguage}
+  
+  onValueChange={(itemValue, itemIndex) =>
+    setSelectedLanguage(itemValue)
+  }>
+  <Picker.Item label={itemData.category}/>
+</Picker>
+</View>
 
+<View style={{flexDirection:'row'}}>
+<Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Servicio:</Text>
+<View style={{width: '60%'}}>
+            <SafeAreaView style={styles.inputModal}>    
+                <TextInput 
+                    editable = {false}
+                    value={itemData.serviceCategory}
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+                </SafeAreaView>
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    
+
+                </Animatable.View>
+                : null}
+            </View>
+</View>
+
+<View style={{flexDirection:'row'}}>
+<Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Precio:</Text>
+<View style={{width: '25%', marginLeft: 15}}>
+            <SafeAreaView style={styles.inputModal}>    
+                <TextInput 
+                    
+                    defaultValue = {itemData.servicePrice.toString()}
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+                </SafeAreaView>
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    
+
+                </Animatable.View>
+                : null}
+            </View>
+</View>
           
-          </View>
+<View style={{flexDirection: 'row'}}>
+         <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Descuento:</Text>
+         <Picker style={{ width: '42%', alignSelf: 'flex-end', marginLeft: 20, height: '54%', transform: [
+      { scaleX: 1.2 }, 
+      { scaleY: 1.2 },
+   ],}}
+  selectedValue={selectedLanguage2}
+  onValueChange={(itemValue, itemIndex) =>
+    setSelectedLanguage2(itemValue)
+  }>
+  <Picker.Item label="0%" value="0" />
+  <Picker.Item label="5%" value="5" />
+  <Picker.Item label="10%" value="10" />
+  <Picker.Item label="15%" value="15" />
+  <Picker.Item label="20%" value="20" />
+  <Picker.Item label="25%" value="25" />
+  <Picker.Item label="30%" value="30" />
+  <Picker.Item label="35%" value="35" />
+  <Picker.Item label="40%" value="40" />
+  <Picker.Item label="45%" value="45" />
+  <Picker.Item label="50%" value="50" />
+  <Picker.Item label="55%" value="55" />
+  <Picker.Item label="60%" value="60" />
+  <Picker.Item label="65%" value="65" />
+  <Picker.Item label="70%" value="70" />
+  <Picker.Item label="75%" value="75" />
+  <Picker.Item label="80%" value="80" />
+  <Picker.Item label="85%" value="85" />
+  <Picker.Item label="90%" value="90" />
+  <Picker.Item label="95%" value="95" />
+</Picker>
+</View>          
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 30, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpen(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpen(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+                  </View>
+          
+         
        
     
   );
@@ -103,5 +306,35 @@ const styles = StyleSheet.create({
     color: '#444',
     fontWeight: 'bold',
     color: '#ff2167'
-  }
+  },
+  signIn: {
+    marginTop: -30,
+    borderRadius: 0,
+    alignSelf: 'flex-end',
+},
+signInPencil: {
+  marginTop: -32,
+  borderRadius: 0,
+  alignSelf: 'flex-end',
+  marginRight: 60
+},
+categoryIcon: {
+  borderWidth: 0,
+  width: 30,
+  height: 30,
+  borderRadius: 50,
+},
+textInput: {
+  flex: 1,
+  marginTop: Platform.OS === 'ios' ? 0 : 0,
+  color: '#05375a',
+  fontSize: 20,
+},
+inputModal: {
+  height: 30,
+  borderWidth: 1,
+  borderColor: '#cccccc',
+  marginLeft: 37,
+  marginTop: 18,
+},
 });
