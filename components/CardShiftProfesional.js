@@ -31,6 +31,8 @@ return (
           <Text style={styles.cardDetails}>Dirección: {itemData.userAdress}</Text>
           <Text style={styles.cardDetails}>Barrio: {itemData.neighborhood}</Text>
           <Text style={styles.cardDetails}>Pago: {itemData.paymentMethod}</Text>
+          <Text style={styles.cardDetails}>Mail: {itemData.userMail}</Text>
+
           <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
           
         <TouchableOpacity onPress={onPress}
@@ -66,7 +68,7 @@ export default CardShiftProfesional;
 
 const styles = StyleSheet.create({
   card: {
-    height: hp('25%'),
+    height: hp('27%'),
     marginVertical: 10,
     flexDirection: 'row',
     shadowColor: '#999',

@@ -33,7 +33,8 @@ export const shift = [
       imageUser: ImagesUser[0].image,
       paymentMethod: 'Efectivo',
       userAdress: 'Rivadavia 5000',
-      neighborhood: 'Caballito'
+      neighborhood: 'Caballito',
+      userMail: 'user@gmail.com'
     },
     {
       id: '2',
@@ -53,7 +54,8 @@ export const shift = [
       imageUser: ImagesUser[1].image,
       paymentMethod: 'Tarjeta de crédito',
       userAdress: 'Rivadavia 5000',
-      neighborhood: 'Caballito'
+      neighborhood: 'Caballito',
+      userMail: 'user@gmail.com'
     },
     {
       id: '3',
@@ -73,7 +75,8 @@ export const shift = [
       imageUser: ImagesUser[2].image,
       paymentMethod: 'Efectivo',
       userAdress: 'Rivadavia 5000',
-      neighborhood: 'Caballito'
+      neighborhood: 'Caballito',
+      userMail: 'user@gmail.com'
     },
     {
       id: '4',
@@ -93,7 +96,8 @@ export const shift = [
       imageUser: ImagesUser[3].image,
       paymentMethod: 'Tarjeta de crédito',
       userAdress: 'Rivadavia 5000',
-      neighborhood: 'Caballito'
+      neighborhood: 'Caballito',
+      userMail: 'user@gmail.com'
     },
   ];
   

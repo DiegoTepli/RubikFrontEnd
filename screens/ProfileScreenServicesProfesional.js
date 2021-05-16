@@ -77,9 +77,19 @@ const textInputChange = (val) => {
   const navTitleView = useRef(null);
   const theme = useTheme();
   const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpenInfo, setModalOpenInfo] = useState(false);
+
+  const [modalOpenMon, setModalOpenMon] = useState(false);
+  const [modalOpenTue, setModalOpenTue] = useState(false);
+  const [modalOpenWed, setModalOpenWed] = useState(false);
+  const [modalOpenThu, setModalOpenThu] = useState(false);
+  const [modalOpenFri, setModalOpenFri] = useState(false);
+  const [modalOpenSat, setModalOpenSat] = useState(false);
+  const [modalOpenSun, setModalOpenSun] = useState(false);
   const categories = ['Descripción', 'Servicios', 'Turnos'];
   const [selectedLanguage, setSelectedLanguage] = useState();
    const [selectedLanguage2, setSelectedLanguage2] = useState();
+   const [selectedLanguage3, setSelectedLanguage3] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   return (
     <View style={styles.container}>
@@ -342,7 +352,7 @@ input: {
 });
 */
 
-
+/*
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import React, {useRef,  useState, Component}  from 'react';
 import COLORS from '../consts/colors';
@@ -550,10 +560,19 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
     }, [])
   const navTitleView = useRef(null);
   const theme = useTheme();
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenMon, setModalOpenMon] = useState(false);
+    const [modalOpenInfo, setModalOpenInfo] = useState(false);
+
+  const [modalOpenTue, setModalOpenTue] = useState(false);
+  const [modalOpenWed, setModalOpenWed] = useState(false);
+  const [modalOpenThu, setModalOpenThu] = useState(false);
+  const [modalOpenFri, setModalOpenFri] = useState(false);
+  const [modalOpenSat, setModalOpenSat] = useState(false);
+  const [modalOpenSun, setModalOpenSun] = useState(false);
   const categories = ['Descripción', 'Servicios', 'Turnos'];
   const [selectedLanguage, setSelectedLanguage] = useState();
    const [selectedLanguage2, setSelectedLanguage2] = useState();
+   const [selectedLanguage3, setSelectedLanguage3] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(2);
   return (
     <View style={styles.container}>
@@ -599,9 +618,33 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
       <Text style={{fontSize: 25, fontWeight: 'bold', alignSelf: 'center', marginTop: -10, width: '100%', paddingLeft: 15}}>Seleccionar turnos disponibles</Text>
     <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Lunes</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenMon(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenMon} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Lunes</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
-     
         options={K_OPTIONS}
         selectedValues={selectedTeams}
         onMultiSelect={onMultiChange()}
@@ -609,11 +652,54 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
 
-    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenMon(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenMon(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+      <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Martes</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenTue(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenTue} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Martes</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
         options={K_OPTIONS}
         selectedValues={selectedTeams2}
@@ -622,11 +708,54 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
 
-    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenTue(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenTue(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+      <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Miercoles</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenWed(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenWed} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Miercoles</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
         options={K_OPTIONS}
         selectedValues={selectedTeams3}
@@ -635,11 +764,54 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
 
-    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenWed(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenWed(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+      <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Jueves</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenThu(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenThu} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Jueves</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
         options={K_OPTIONS}
         selectedValues={selectedTeams4}
@@ -648,11 +820,54 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
 
-    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenThu(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenThu(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+      <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Viernes</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenFri(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenFri} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Viernes</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
         options={K_OPTIONS}
         selectedValues={selectedTeams5}
@@ -661,11 +876,54 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
 
-    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
-      <Text style={{fontSize: 20, fontWeight: 'bold'}}>Sabado</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenFri(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenFri(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+      <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold'}}>Sábado</Text>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenSat(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenSat} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Sábado</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
         options={K_OPTIONS}
         selectedValues={selectedTeams6}
@@ -674,11 +932,54 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
 
-    <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenSat(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenSat(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
+
+      <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Domingo</Text>
-      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27, position: 'absolute'}}>
+      <View style={{flexDirection: 'row',marginLeft: 105,borderBottomWidth: 0,borderBottomColor: '#f2f2f2', marginTop: -7, position: 'absolute'}}>
+      
+       
+       <TouchableOpacity
+                   style={styles.signIn2}
+                   onPress={() => setModalOpenSun(true)}
+               >
+       <LinearGradient
+                   colors={['#ff2167', '#ff2167']}
+                   style={styles.signIn2}
+               >
+                   <Text style={[styles.textSign2, {
+                       color:'#fff'
+                   }]}>Seleccionar turnos</Text>
+               </LinearGradient>
+
+               </TouchableOpacity>
+              
+               </View>
+            </View>
+            <Modal visible={modalOpenSun} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 180, marginHorizontal: 20, height: 350}}>
+        <View style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20}}>
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>Domingo</Text>
+      <View style={{flexDirection: 'row',marginLeft: 130,borderBottomWidth: 0,borderBottomColor: '#f2f2f2',paddingBottom: 20, marginTop: -27.5, position: 'absolute'}}>
       <SelectBox
         options={K_OPTIONS}
         selectedValues={selectedTeams7}
@@ -687,7 +988,25 @@ const [selectedTeams7, setSelectedTeams7] = useState([])
         isMulti
       />
             </View>
-    </View>
+    </View>          
+
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 230, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenSun(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Cancelar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+          style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => setModalOpenSun(false)} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Aceptar</Text>
+          </TouchableOpacity>
+        </View>
+        </View>
+        </View>
+      </Modal>
     
     <View style={styles.sectionReserve}>
        
@@ -859,6 +1178,17 @@ textSign: {
     fontSize: 20,
     fontWeight: 'bold'
 },
+signIn2: {
+  width: '100%',
+  height: 40,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 10,
+},
+textSign2: {
+  fontSize: 20,
+  fontWeight: 'bold'
+},
 categoryIcon: {
   borderWidth: 0,
     alignItems: 'center',
@@ -905,8 +1235,8 @@ textInput: {
   fontSize: 20,
 },
 });
+*/
 
-/*
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import React, {useRef,  useState}  from 'react';
 import COLORS from '../consts/colors';
@@ -996,9 +1326,18 @@ const MAX_HEIGHT = 350;
   const navTitleView = useRef(null);
   const theme = useTheme();
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpenInfo, setModalOpenInfo] = useState(false);
+  const [modalOpenMon, setModalOpenMon] = useState(false);
+  const [modalOpenTue, setModalOpenTue] = useState(false);
+  const [modalOpenWed, setModalOpenWed] = useState(false);
+  const [modalOpenThu, setModalOpenThu] = useState(false);
+  const [modalOpenFri, setModalOpenFri] = useState(false);
+  const [modalOpenSat, setModalOpenSat] = useState(false);
+  const [modalOpenSun, setModalOpenSun] = useState(false);
   const categories = ['Descripción', 'Servicios', 'Turnos'];
   const [selectedLanguage, setSelectedLanguage] = useState();
   const [selectedLanguage2, setSelectedLanguage2] = useState();
+  const [selectedLanguage3, setSelectedLanguage3] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(1);
   return (
     <View style={styles.container}>
@@ -1172,7 +1511,34 @@ const MAX_HEIGHT = 350;
   <Picker.Item label="90%" value="90" />
   <Picker.Item label="95%" value="95" />
 </Picker>
-</View>          
+</View>  
+
+<View style={{flexDirection: 'row'}}>
+         <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 20, color: 'black', marginLeft: 30}}>Modo:</Text>
+         <Picker style={{ width: '42%', alignSelf: 'flex-end', marginLeft: 65, height: '54%', transform: [
+      { scaleX: 1.2 }, 
+      { scaleY: 1.2 },
+   ],}}
+  selectedValue={selectedLanguage3}
+  onValueChange={(itemValue, itemIndex) =>
+    setSelectedLanguage3(itemValue)
+  }>
+  <Picker.Item label="Gratuito" value="free" />
+  <Picker.Item label="Clásico" value="classic" />
+  <Picker.Item label="Premium" value="premium" />
+</Picker>
+
+<TouchableOpacity onPress={() => {setModalOpenInfo(true); setModalOpen(false);}}
+   >
+          <ImageBackground
+                source={require('../assets/moreInfo.png')}
+                resizeMode="center"
+                style={styles.categoryIcon2}
+                 
+              />
+  
+                  </TouchableOpacity>
+</View>
 
         <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30, marginTop: 30, marginBottom: 20}}>
           <TouchableOpacity 
@@ -1192,7 +1558,36 @@ const MAX_HEIGHT = 350;
         </View>
       </Modal>
 
+      <Modal visible={modalOpenInfo} animationType='slide' transparent = {true}>
+        <View style={{backgroundColor: '#000000AA', flex: 1}}>
+        <View style={{backgroundColor: 'white', marginTop: 130, marginHorizontal: 20}}>
+        <View style={{flexDirection: 'row', marginTop: 10}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', margin: 10, color: 'black'}}>Gratuito: </Text>
+          <Text style={{fontSize: 20, color: 'black', marginTop: 10, paddingRight: 100, marginLeft: 10}}>Cargo mensual por alta del servicio: $0,00. Posicionamiento: Bajo</Text>
+          </View>
+         
           
+          <View style={{flexDirection: 'row'}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', margin: 10, color: 'black'}}>Clásico: </Text>
+          <Text style={{fontSize: 20, color: 'black', marginTop: 10, paddingRight: 89, marginLeft: 17}}>Cargo mensual por alta del servicio: $100,00. Posicionamiento: Alto</Text>
+          </View>
+
+          <View style={{flexDirection: 'row'}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold', margin: 10, color: 'black'}}>Premium: </Text>
+          <Text style={{fontSize: 20, color: 'black', marginTop: 10, paddingRight: 110}}>Cargo mensual por alta del servicio: $200,00. Posicionamiento: Máximo</Text>
+          </View>
+          
+          <View style={{width: '30%', alignSelf: 'center',marginTop: 30, marginBottom: 20}}>
+          <TouchableOpacity 
+            style={{backgroundColor: '#ff2167', padding: 10}}
+            onPress={() => {setModalOpenInfo(false); setModalOpen(true);}} 
+          >
+          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18, alignSelf: 'center'}}>Regresar</Text>
+          </TouchableOpacity>
+          </View>
+        </View>
+        </View>
+      </Modal>
 
 
         
@@ -1401,10 +1796,10 @@ textSign: {
 categoryBtn2: {
 },
 categoryIcon2: {
-  width: 40,
-  height: 40,
+  width: 20,
+  height: 20,
   borderRadius: 50,
-  marginRight: 10,
+  marginTop: 23,
+  marginLeft: 5
 },
 });
-*/

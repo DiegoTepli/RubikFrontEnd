@@ -18,9 +18,11 @@ import {View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import CardListScreen from './CardListScreen';
 import CardItemDetails from './CardItemDetails';
+import CardItemDetailsPrueba from './CardItemDetailsPrueba';
 import CardServicesListScreen from './CardServicesListScreen';
 import CalendarScreen from './CalendarScreen';
-import PaymentScreen from './PaymentScreen';
+import PaymentCreditScreen from './PaymentCreditScreen';
+import PaymentDebitScreen from './PaymentDebitScreen';
 
 const HomeStack = createStackNavigator();
 const ShiftStack = createStackNavigator();
@@ -147,8 +149,19 @@ const HomeStackScreen = ({navigation}) => {
         })}
       />
       <HomeStack.Screen 
-        name="PaymentScreen"
-        component={PaymentScreen}
+        name="PaymentCreditScreen"
+        component={PaymentCreditScreen}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
+      />
+      <HomeStack.Screen 
+        name="PaymentDebitScreen"
+        component={PaymentDebitScreen}
         options={({route}) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,

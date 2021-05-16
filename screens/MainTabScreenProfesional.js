@@ -16,7 +16,6 @@ import ProfileScreenViewProfesional from './ProfileScreenViewProfesional';
 import MapTestScreen from './MapTestScreen';
 import EditProfileScreen from './EditProfileScreen';
 import ProfileScreenServicesProfesional from './ProfileScreenServicesProfesional';
-import ProfileScreenServicesProfesional2 from './ProfileScreenServicesProfesional2';
 import {useTheme, Avatar} from 'react-native-paper';
 import {View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -24,8 +23,8 @@ import CardListScreen from './CardListScreen';
 import CardItemDetails from './CardItemDetails';
 import CardServicesListScreen from './CardServicesListScreen';
 import CalendarScreen from './CalendarScreen';
-import PaymentScreen from './PaymentScreen';
-
+import PaymentCreditScreen from './PaymentCreditScreen';
+import PaymentScreenProfesional from './PaymentScreenProfesional';
 const HomeStack = createStackNavigator();
 const ShiftStackProfesional = createStackNavigator();
 const ProfileStackProfesional = createStackNavigator();
@@ -117,7 +116,7 @@ const ProfileStackScreenProfesional = ({navigation}) => {
         options={{
           title: 'Perfil',
           headerLeft: () => (
-            <View style={{marginLeft: 10}}>
+            <View style={{marginLeft: 10, marginBottom: 2, flexDirection: 'row'}}>
               <Icon.Button
                 name="ios-settings"
                 size={25}
@@ -125,6 +124,15 @@ const ProfileStackScreenProfesional = ({navigation}) => {
                 color= '#fff'
                 
                 onPress={() => navigation.openDrawer()}
+              />
+              <Icon.Button
+                
+                name="ios-card"
+                size={27}
+                backgroundColor= '#ff2167'
+                color= '#fff'
+                
+                onPress={() => navigation.navigate('PaymentScreenProfesional')}
               />
             </View>
           ),
@@ -169,6 +177,19 @@ const ProfileStackScreenProfesional = ({navigation}) => {
           title: 'View',
         }}
         component={ProfileScreenServicesProfesional}
+        options={({route}) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff',
+        })}
+      />
+      <ProfileStackProfesional.Screen
+        name="PaymentScreenProfesional"
+        options={{
+          title: 'View',
+        }}
+        component={PaymentScreenProfesional}
         options={({route}) => ({
           headerBackTitleVisible: false,
           headerTitle: false,

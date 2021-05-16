@@ -5,6 +5,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import {useTheme} from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
 import StarRating2 from '../components/StarRating2';
+
 import {
   View,
   Text,
@@ -38,7 +39,7 @@ const MIN_HEIGHT = Platform.OS === 'ios' ? 90 : 55;
 const MAX_HEIGHT = 350;
 
  
-  const CardItemDetails = ({route, navigation}) => {
+  const CardItemDetailsPrueba = ({route, navigation}) => {
     const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
     useEffect(() => {
@@ -49,6 +50,19 @@ const MAX_HEIGHT = 350;
   const theme = useTheme();
   const categories = ['Descripción', 'Comentarios y puntación'];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+  
+  const desc = (item) =>
+  {item == "Descripción" && (
+    <View >
+      <Text>Hola</Text>
+    </View>
+  )}
+  {item == "Comentarios y puntación" && (
+    <View>
+      <Text>Chau</Text>
+    </View>
+  )}
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -73,8 +87,9 @@ const MAX_HEIGHT = 350;
         {categories.map((item, index) => (
           <TouchableOpacity
             key={index}
+            
             activeOpacity={0.8}
-            onPress={() => setSelectedCategoryIndex(index)}>
+            onPress={() => {setSelectedCategoryIndex(index), desc(item)}}>
             <View>
               <Text
                 style={{
@@ -97,71 +112,22 @@ const MAX_HEIGHT = 350;
                 />
               )}
             </View>
-          </TouchableOpacity>
-        ))}
-      </View>
-      </View>
-      <View style={{marginTop: -20, marginLeft: 20, marginBottom: 20}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text style={styles.title}>{itemData.title}</Text>
             
-          </View>
+            
 
-          <Text style={{fontSize: 15}}>Telefono: 1549142091</Text>
+          </TouchableOpacity >
           
+        )
+        )
+        }
         
-          <View style={styles.categories}>
-            {itemData.categories.map((category, index) => (
-              <View style={styles.categoryContainer} key={index}>
-                <FontAwesome name="tag" size={16} color="#fff" />
-                <Text style={styles.category}>{category}</Text>
-              </View>
-            ))}
-          </View>
-        
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              
-              <FontAwesome name="star" size={18} color="#FF6347"/>
-              <FontAwesome name="star" size={18} color="#FF6347"/>
-              <FontAwesome name="star" size={18} color="#FF6347"/>
-              <FontAwesome name="star" size={18} color="#FF6347"/>
-              <FontAwesome name="star" size={18} color="#FF6347"/>
-           
-              <Text style={{marginHorizontal: 4, fontSize: 17, alignItems: 'center', alignSelf: 'center', alignContent: 'center', fontWeight: 'bold', color: 'black'}}>{itemData.rating}</Text>
-              <Text style={{fontSize: 17, alignItems: 'center', alignSelf: 'center', alignContent: 'center'}}>({itemData.reviews})</Text>
-              </View>
-              </View>
-        <View style={[styles.sectionDesc, styles.sectionLarge]}>
-          <Text style={styles.sectionContent}>{itemData.description}</Text>
-          
-        </View>
-        <View style={styles.sectionReserve}>
-       
-        <TouchableOpacity
-                    style={styles.signIn}
-                    onPress={() =>
-                      navigation.navigate('CardServicesListScreen', itemData)
-                    }
-                >
-        <LinearGradient
-                    colors={['#ff2167', '#ff2167']}
-                    style={styles.signIn}
-                >
-                    <Text style={[styles.textSign, {
-                        color:'#fff'
-                    }]}>Reservar turno</Text>
-                </LinearGradient>
-
-                </TouchableOpacity>
-               
-                </View>
-        
-      
+      </View>
+      </View> 
     </View>
   );
 };
 
-export default CardItemDetails;
+export default CardItemDetailsPrueba;
 
 const styles = StyleSheet.create({
   container: {
@@ -389,7 +355,7 @@ const MIN_HEIGHT = Platform.OS === 'ios' ? 90 : 55;
 const MAX_HEIGHT = 350;
 
  
-  const CardItemDetails = ({route, navigation}) => {
+  const CardItemDetailsPrueba = ({route, navigation}) => {
     const [text, onChangeText] = React.useState("Useless Text");
   const [number, onChangeNumber] = React.useState(null);
     const [modalOpen, setModalOpen] = useState(false);
@@ -556,7 +522,7 @@ const MAX_HEIGHT = 350;
   );
 };
 
-export default CardItemDetails;
+export default CardItemDetailsPrueba;
 
 const styles = StyleSheet.create({
   container: {

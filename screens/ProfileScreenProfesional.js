@@ -345,6 +345,30 @@ const textInputChange = (val) => {
             </View>
 
             
+
+            <Text style={styles.text_footer}>CBU</Text>
+            <View style={styles.action}>
+            <SafeAreaView style={styles.input}>   
+                <TextInput 
+                    placeholder="CBU"
+                    placeholderTextColor="#666666"
+                    style={[styles.textInput, {
+                        color: colors.text
+                    }]}
+                    autoCapitalize="none"
+                    onChangeText={(val) => textInputChange(val)}
+                />
+                </SafeAreaView>
+                {data.check_textInputChange ? 
+                <Animatable.View
+                    animation="bounceIn"
+                >
+                    
+                </Animatable.View>
+                : null}
+            </View>
+
+            
             
             </ScrollView>
         </Animatable.View>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Category from 'react-native-category';
 import {
   StyleSheet,
   Text,
@@ -19,8 +20,20 @@ export default class App extends Component {
     
     this.state = {
       selectedStartDate: null,
+      selectedScheduleIndex: null
     };
     this.onDateChange = this.onDateChange.bind(this);
+    this.data = [
+      {id: 1, title: '08:00'},
+      {id: 2, title: '09:00'},
+      {id: 3, title: '10:00'},
+      {id: 4, title: '11:00'},
+      {id: 5, title: '12:00'},
+      {id: 6, title: '14:00'},
+      {id: 7, title: '15:00'},
+      {id: 8, title: '16:00'},
+      {id: 9, title: '17:00'},
+    ];
   }
 
   onDateChange(date) {
@@ -28,14 +41,20 @@ export default class App extends Component {
       selectedStartDate: date,
     });
   }
-
+  _itemChoose(item) {
+    {item.id == 3 && (
+      alert(item.title)
+    )}
+    
+  }
 
   
   render() {
+    
     const { selectedStartDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
     const {navigation, position} = this.props
-
+    
     const createCashOrCredit = () =>
     
     Alert.alert(
@@ -46,9 +65,11 @@ export default class App extends Component {
         {
           text: "Efectivo",
           onPress: createTwoButtonAlert,
-          style: "cancel"
+          style: "cancel",
         },
-        { text: "Tarjeta de crédito", onPress: () => navigation.navigate('PaymentScreen') }
+        { text: "Tarjeta de crédito", onPress: () => navigation.navigate('PaymentCreditScreen') },
+        { text: "Tarjeta de débito", onPress: () => navigation.navigate('PaymentDebitScreen') },
+
       ]
     );
     
@@ -67,6 +88,9 @@ export default class App extends Component {
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     );
+
+      
+
     return (
       
       <View style={styles.container}>
@@ -79,64 +103,13 @@ export default class App extends Component {
       </View>
 <View style={{position: 'absolute', marginTop: 370}}>
       <Text style={{fontSize: 22, fontWeight: 'bold', alignSelf: 'center', marginTop: 40}}>Seleccionar un horario</Text>
-
-    <ScrollView horizontal = {true} showsHorizontalScrollIndicator = {false}>
-      <View style={{flexDirection: 'row', marginTop: 10, padding: 20, height: 90}}>
-            
-          
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'green', flexDirection: 'row', padding: 10, borderRadius: 20, opacity: 0.7}}>
-              <Text style={styles.category}>09:00</Text>
-              </View> 
-              </TouchableOpacity>
-          
-          
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'green', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20, opacity: 0.7}}>
-              <Text style={styles.category}>10:00</Text>
-              </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'green', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
-              <Text style={styles.category}>11:00</Text>
-              </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
-              <Text style={styles.category}>12:00</Text>
-              </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
-              <Text style={styles.category}>14:00</Text>
-              </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
-              <Text style={styles.category}>15:00</Text>
-              </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
-              <Text style={styles.category}>16:00</Text>
-              </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity>
-              <View style={{backgroundColor: 'grey', flexDirection: 'row', padding: 10, marginLeft: 20, borderRadius: 20}}>
-              <Text style={styles.category}>17:00</Text>
-              </View>
-              </TouchableOpacity>
-          
-         
-          </View>
-          </ScrollView>
-
+<View style={{marginTop: 10}}>
+      <Category
+  data={this.data}    
+  itemSelected={(item) => this._itemChoose(item)}
+  itemText={'title'}  //set attribule of object show in item category
+/>
+</View> 
           <View style={styles.sectionReserve}>
         
         <TouchableOpacity
@@ -211,5 +184,15 @@ const styles = StyleSheet.create({
 textSign: {
     fontSize: 20,
     fontWeight: 'bold'
+},
+categoryListContainerDesc: {
+  flexDirection: 'row',
+  marginBottom: 20,
+  justifyContent: 'space-between',
+},
+categoryListText: {
+  fontSize: 17,
+  fontWeight: 'bold',
+  marginLeft: 10
 },
 });
