@@ -1,45 +1,43 @@
-import React from 'react';
+import React from "react";
 
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from "react-native-vector-icons/Ionicons";
 
-import HomeScreen from './HomeScreen';
-import ShiftScreen from './ShiftScreen';
-import FavouriteScreen from './FavouriteScreen';
-import ProfileScreen from './ProfileScreen';
-import MapTestScreen from './MapTestScreen';
-import EditProfileScreen from './EditProfileScreen';
+import HomeScreen from "./HomeScreen";
+import ShiftScreen from "./ShiftScreen";
 
-import {useTheme, Avatar} from 'react-native-paper';
-import {View} from 'react-native-animatable';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import CardListScreen from './CardListScreen';
-import CardItemDetails from './CardItemDetails';
-import CardItemDetailsPrueba from './CardItemDetailsPrueba';
-import CardServicesListScreen from './CardServicesListScreen';
-import CalendarScreen from './CalendarScreen';
-import PaymentCreditScreen from './PaymentCreditScreen';
-import PaymentDebitScreen from './PaymentDebitScreen';
+import ProfileScreen from "./ProfileScreen";
 
+import { useTheme } from "react-native-paper";
+import { View } from "react-native-animatable";
+import CardListScreen from "./CardListScreen";
+import CardItemDetails from "./CardItemDetails";
+import CardServicesListScreen from "./CardServicesListScreen";
+import CalendarScreen from "./CalendarScreen";
+import PaymentCreditScreen from "./PaymentCreditScreen";
+import PaymentDebitScreen from "./PaymentDebitScreen";
+import SaveCardScreen from "./SaveCardScreen";
 const HomeStack = createStackNavigator();
 const ShiftStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
-const FavouriteStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator initialRouteName="Home" activeColor="#fff">
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor="#fff"
+    barStyle={{ backgroundColor: "#ff2167" }}
+  >
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
       options={{
-        tabBarLabel: 'Inicio',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
+        tabBarLabel: "Inicio",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
       }}
@@ -48,22 +46,10 @@ const MainTabScreen = () => (
       name="Shifts"
       component={ShiftStackScreen}
       options={{
-        tabBarLabel: 'Turnos',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
+        tabBarLabel: "Turnos",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
           <Icon name="calendar" color={color} size={26} />
-        ),
-      }}
-    />
-
-<Tab.Screen
-      name="Favourites"
-      component={FavouriteStackScreen}
-      options={{
-        tabBarLabel: 'Favoritos',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
-          <Icon name="heart" color={color} size={26} />
         ),
       }}
     />
@@ -72,199 +58,186 @@ const MainTabScreen = () => (
       name="Profile"
       component={ProfileStackScreen}
       options={{
-        tabBarLabel: 'Perfil',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
+        tabBarLabel: "Perfil",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
           <Icon name="ios-person" color={color} size={26} />
         ),
       }}
     />
-    
   </Tab.Navigator>
 );
 
 export default MainTabScreen;
 
-const HomeStackScreen = ({navigation}) => {
-  const {colors} = useTheme();
+const HomeStackScreen = ({ navigation }) => {
+  const { colors } = useTheme();
   return (
     <HomeStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#ff2167',
+          backgroundColor: "#ff2167",
           shadowColor: colors.background, // iOS
           elevation: 0, // Android
         },
-        headerTintColor: '#FFFFFF',
+        headerTintColor: "#FFFFFF",
         headerTitleStyle: {
-          fontWeight: 'bold',
-          alignSelf: 'center',
-          fontSize: 25
+          fontWeight: "bold",
+          alignSelf: "center",
+          fontSize: 25,
         },
-      }}>
+      }}
+    >
       <HomeStack.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Categorías'}}
+          title: "Categorías",
+        }}
       />
-      <HomeStack.Screen 
+      <HomeStack.Screen
         name="CardListScreen"
         component={CardListScreen}
-        options={({route}) => ({
+        options={({ route }) => ({
           title: route.params.category,
           headerBackTitleVisible: false,
         })}
       />
-      <HomeStack.Screen 
+      <HomeStack.Screen
         name="CardItemDetails"
         component={CardItemDetails}
-        options={({route}) => ({
+        options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen 
+      <HomeStack.Screen
         name="CardServicesListScreen"
         component={CardServicesListScreen}
-        options={({route}) => ({
+        options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen 
+      <HomeStack.Screen
         name="CalendarScreen"
         component={CalendarScreen}
-        options={({route}) => ({
+        options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen 
+      <HomeStack.Screen
         name="PaymentCreditScreen"
         component={PaymentCreditScreen}
-        options={({route}) => ({
+        options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen 
+      <HomeStack.Screen
         name="PaymentDebitScreen"
         component={PaymentDebitScreen}
-        options={({route}) => ({
+        options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
     </HomeStack.Navigator>
-    
-    
   );
 };
 
-const ShiftStackScreen = ({navigation}) => (
+const ShiftStackScreen = ({ navigation }) => (
   <ShiftStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#ff2167',
+        backgroundColor: "#ff2167",
       },
-      headerTintColor: '#fff',
+      headerTintColor: "#fff",
       headerTitleStyle: {
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        fontSize: 25
+        fontWeight: "bold",
+        alignSelf: "center",
+        fontSize: 25,
       },
-    }}>
-    <ShiftStack.Screen
-      name="Turnos"
-      component={ShiftScreen}
-      
-    />
+    }}
+  >
+    <ShiftStack.Screen name="Turnos" component={ShiftScreen} />
   </ShiftStack.Navigator>
 );
 
-
-
-const ProfileStackScreen = ({navigation}) => {
-  const {colors} = useTheme();
+const ProfileStackScreen = ({ navigation }) => {
+  const { colors } = useTheme();
 
   return (
     <ProfileStack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: '#ff2167',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        fontSize: 25,
-        marginRight: 50
-      },
-      }}>
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#ff2167",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+          alignSelf: "center",
+          fontSize: 25,
+          marginRight: 50,
+        },
+      }}
+    >
       <ProfileStack.Screen
         name="Perfil"
         component={ProfileScreen}
         options={{
-          title: 'Perfil',
+          title: "Perfil",
           headerLeft: () => (
-            <View style={{marginLeft: 10}}>
+            <View
+              style={{ marginLeft: 10, marginBottom: 2, flexDirection: "row" }}
+            >
               <Icon.Button
                 name="ios-settings"
                 size={25}
-                backgroundColor= '#ff2167'
-                color= '#fff'
-                
+                backgroundColor="#ff2167"
+                color="#fff"
                 onPress={() => navigation.openDrawer()}
+              />
+              <Icon.Button
+                name="ios-card"
+                size={27}
+                backgroundColor="#ff2167"
+                color="#fff"
+                onPress={() => navigation.navigate("SaveCardScreen")}
               />
             </View>
           ),
-          
         }}
       />
+      
       <ProfileStack.Screen
-        name="EditProfile"
+        name="SaveCardScreen"
         options={{
-          title: 'Edit Profile',
+          title: "Perfil",
         }}
-        component={EditProfileScreen}
+        component={SaveCardScreen}
+        options={({ route }) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: "#fff",
+        })}
       />
     </ProfileStack.Navigator>
   );
 };
-
-
-const FavouriteStackScreen = ({navigation}) => (
-  <FavouriteStack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: '#ff2167',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        fontSize: 25
-      },
-    }}>
-    <FavouriteStack.Screen
-      name="Favoritos"
-      component={FavouriteScreen}
-      
-    />
-  </FavouriteStack.Navigator>
-);

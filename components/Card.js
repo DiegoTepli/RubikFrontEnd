@@ -1,12 +1,9 @@
-import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import { Container, Content, List, ListItem, Header, Button, Icon, Item, Input /* All native-base components used in this file */ } from 'native-base';
-import StarRating from './StarRating';
+import React from "react";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { AirbnbRating } from "react-native-ratings";
 
-const Card = ({itemData, onPress}) => {
-return (
- 
-  
+const Card = ({ itemData, onPress }) => {
+  return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
         <View style={styles.cardImgWrapper}>
@@ -16,24 +13,41 @@ return (
             style={styles.cardImg}
           />
         </View>
-        
+
         <View style={styles.cardInfo}>
-         <View style={styles.cardTitleDiscount}>
-          <Text style={styles.cardTitle}>{itemData.title}</Text>
-          {itemData.discount != null && (
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.cardDiscount}>Hasta {itemData.discount}% OFF</Text>
-            </View>
-          )}
-          {itemData.discount == null && (
-            <View style={{flexDirection: 'row'}}>
-            </View>
-          )}
-          
-         </View>
-          <StarRating ratings={itemData.ratings} rating={itemData.rating} reviews={itemData.reviews} />
-          <Text numberOfLines={2} style={styles.cardDetails}>{itemData.description}</Text>
-       </View>
+          <View style={styles.cardTitleDiscount}>
+            <Text style={styles.cardTitle}>{itemData.title}</Text>
+            {itemData.discount != null && (
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.cardDiscount}>
+                  Hasta {itemData.discount}% OFF
+                </Text>
+              </View>
+            )}
+            {itemData.discount == null && (
+              <View style={{ flexDirection: "row" }}></View>
+            )}
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <AirbnbRating
+              count={5}
+              size={15}
+              isDisabled={true}
+              showRating={false}
+              starContainerStyle={{ alignSelf: "flex-start", marginLeft: -3 }}
+            />
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+              {itemData.rating}
+            </Text>
+            <Text style={{ fontSize: 16, marginLeft: 5 }}>
+              ({itemData.reviews})
+            </Text>
+          </View>
+
+          <Text numberOfLines={2} style={styles.cardDetails}>
+            {itemData.description}
+          </Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -45,9 +59,9 @@ const styles = StyleSheet.create({
   card: {
     height: 100,
     marginVertical: 10,
-    flexDirection: 'row',
-    shadowColor: '#999',
-    shadowOffset: {width: 0, height: 1},
+    flexDirection: "row",
+    shadowColor: "#999",
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
@@ -56,9 +70,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardImg: {
-    height: '100%',
-    width: '100%',
-    alignSelf: 'center',
+    height: "100%",
+    width: "100%",
+    alignSelf: "center",
     borderRadius: 20,
     borderBottomRightRadius: 20,
     borderTopRightRadius: 20,
@@ -66,28 +80,28 @@ const styles = StyleSheet.create({
   cardInfo: {
     flex: 2,
     padding: 10,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     borderLeftWidth: 0,
     borderBottomRightRadius: 8,
     borderTopRightRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   cardTitle: {
-    fontWeight: 'bold',
-    fontSize: 16,
+    fontWeight: "bold",
+    fontSize: 18,
   },
-  cardDiscount:{
-    alignSelf: 'center',
+  cardDiscount: {
+    alignSelf: "center",
     marginHorizontal: 5,
-    fontWeight: 'bold',
-    color: 'red'
+    fontWeight: "bold",
+    color: "red",
   },
-  cardTitleDiscount:{
-    flexDirection: 'row'
+  cardTitleDiscount: {
+    flexDirection: "row",
   },
   cardDetails: {
-    fontSize: 12,
-    color: '#444',
+    fontSize: 14,
+    color: "#444",
   },
 });

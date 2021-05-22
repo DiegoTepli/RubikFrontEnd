@@ -1,17 +1,20 @@
-import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity, Animated, Alert } from 'react-native';
-import { Container, Content, List, ListItem, Header, Icon, Item, Input } from 'native-base';
-import {data} from '../model/data';
-import Card from '../components/Card';
-import {LinearGradient} from 'expo-linear-gradient';
-import COLORS from '../consts/colors';
-let helperArray = require ('../model/data');
+import React from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
+import { Container } from "native-base";
+import COLORS from "../consts/colors";
+let helperArray = require("../model/data");
 
-import {shift} from '../model/shift';
-import CardShift from '../components/CardShift';
-import CardShiftProfesional from '../components/CardShiftProfesional';
+import { shift } from "../model/shift";
+import CardShiftProfesional from "../components/CardShiftProfesional";
 
-const ShiftScreen = ({navigation}) => {
+const ShiftScreen = ({ navigation }) => {
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Confirmar cancelación del turno",
@@ -20,43 +23,61 @@ const ShiftScreen = ({navigation}) => {
         {
           text: "Cancelar",
           onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
+          style: "cancel",
         },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
+        { text: "OK", onPress: () => console.log("OK Pressed") },
       ]
     );
-  const categories = ['Próximos', 'Históricos'];
+  const categories = ["Próximos", "Históricos"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-  
-  const renderItem = ({item}) => {
-    
-    return (
-        <CardShiftProfesional 
-            itemData={item}
-            onPress={createTwoButtonAlert}
-        />
-    );
+  const renderSelectedTab = () => {
+    if (selectedCategoryIndex === 0) {
+      return (
+        <View style={styles.container}>
+          <FlatList
+            data={shift}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
+      );
+    }
 
+    if (selectedCategoryIndex === 1) {
+      return (
+        <View style={styles.container}>
+          <FlatList
+            data={shift}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
+      );
+    }
   };
+
+  const renderItem = ({ item }) => {
     return (
-      
-      <Container> 
-       
-       <View style={styles.categoryListContainerDesc}>
+      <CardShiftProfesional itemData={item} onPress={createTwoButtonAlert} />
+    );
+  };
+  return (
+    <Container>
+      <View style={styles.categoryListContainerDesc}>
         {categories.map((item, index) => (
           <TouchableOpacity
             key={index}
             activeOpacity={0.8}
-            onPress={() => setSelectedCategoryIndex(index)}>
+            onPress={() => setSelectedCategoryIndex(index)}
+          >
             <View>
               <Text
                 style={{
                   ...styles.categoryListText,
                   color:
-                    selectedCategoryIndex == index
-                      ? COLORS.rubik
-                      : COLORS.grey,
-                }}>
+                    selectedCategoryIndex == index ? COLORS.rubik : COLORS.grey,
+                }}
+              >
                 {item}
               </Text>
               {selectedCategoryIndex == index && (
@@ -73,45 +94,35 @@ const ShiftScreen = ({navigation}) => {
           </TouchableOpacity>
         ))}
       </View>
-
-      <View style={styles.container}>
-        <FlatList 
-            data={shift}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-        />
-      </View>
-
-      
-
-      </Container>
-    );
+      {renderSelectedTab()}
+    </Container>
+  );
 };
 export default ShiftScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    width: '100%',
-    alignSelf: 'center'
+    flex: 1,
+    width: "100%",
+    alignSelf: "center",
   },
   categoryListContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginHorizontal: 20,
     marginTop: 15,
     marginBottom: 10,
   },
   categoryListText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   categoryListContainerDesc: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 10,
     marginHorizontal: 20,
     marginTop: 15,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   /*button: {
     flexDirection: 'row',

@@ -1,30 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from "react-native-vector-icons/Ionicons";
 
-import HomeScreen from './HomeScreen';
-import ShiftScreen from './ShiftScreen';
-import ShiftScreenProfesional from './ShiftScreenProfesional';
-import FavouriteScreen from './FavouriteScreen';
-import ProfileScreen from './ProfileScreen';
-import ProfileScreenProfesional from './ProfileScreenProfesional';
-import ProfileScreenViewProfesional from './ProfileScreenViewProfesional';
-import MapTestScreen from './MapTestScreen';
-import EditProfileScreen from './EditProfileScreen';
-import ProfileScreenServicesProfesional from './ProfileScreenServicesProfesional';
-import {useTheme, Avatar} from 'react-native-paper';
-import {View} from 'react-native-animatable';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import CardListScreen from './CardListScreen';
-import CardItemDetails from './CardItemDetails';
-import CardServicesListScreen from './CardServicesListScreen';
-import CalendarScreen from './CalendarScreen';
-import PaymentCreditScreen from './PaymentCreditScreen';
-import PaymentScreenProfesional from './PaymentScreenProfesional';
+import ShiftScreenProfesional from "./ShiftScreenProfesional";
+import ProfileScreenProfesional from "./ProfileScreenProfesional";
+import ProfileScreenViewProfesional from "./ProfileScreenViewProfesional";
+import ProfileScreenServicesProfesional from "./ProfileScreenServicesProfesional";
+import { useTheme } from "react-native-paper";
+import { View } from "react-native-animatable";
+import PaymentScreenProfesional from "./PaymentScreenProfesional";
 const HomeStack = createStackNavigator();
 const ShiftStackProfesional = createStackNavigator();
 const ProfileStackProfesional = createStackNavigator();
@@ -33,126 +20,131 @@ const FavouriteStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreenProfesional = () => (
-  <Tab.Navigator initialRouteName="Shifts" activeColor="#fff" barStyle={{ backgroundColor: '#ff2167' }}>
-    
+  <Tab.Navigator
+    initialRouteName="Shifts"
+    activeColor="#fff"
+    barStyle={{ backgroundColor: "#ff2167" }}
+  >
     <Tab.Screen
       name="Shifts"
       component={ShiftStackScreenProfesional}
       options={{
-        tabBarLabel: 'Turnos',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
+        tabBarLabel: "Turnos",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
           <Icon name="calendar" color={color} size={26} />
         ),
       }}
     />
-    
+
     <Tab.Screen
       name="Profile"
       component={ProfileStackScreenProfesional}
       options={{
-        tabBarLabel: 'Perfil',
-        tabBarColor: '#ff2167',
-        tabBarIcon: ({color}) => (
+        tabBarLabel: "Perfil",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
           <Icon name="ios-person" color={color} size={26} />
         ),
       }}
     />
-    
   </Tab.Navigator>
 );
 
 export default MainTabScreenProfesional;
 
-
-const ShiftStackScreenProfesional = ({navigation}) => {
-  const {colors} = useTheme();
-  return(
-  <ShiftStackProfesional.Navigator
-  screenOptions={{
-    headerStyle: {
-      backgroundColor: '#ff2167',
-      shadowColor: colors.background, // iOS
-      elevation: 0, // Android
-    },
-    headerTintColor: '#FFFFFF',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-      alignSelf: 'center',
-      fontSize: 25
-    },
-    }}>
-    <ShiftStackProfesional.Screen
-      name="Shifts"
-      component={ShiftScreenProfesional}
-      options={{
-        title: 'Turnos'
+const ShiftStackScreenProfesional = ({ navigation }) => {
+  const { colors } = useTheme();
+  return (
+    <ShiftStackProfesional.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#ff2167",
+          shadowColor: colors.background, // iOS
+          elevation: 0, // Android
+        },
+        headerTintColor: "#FFFFFF",
+        headerTitleStyle: {
+          fontWeight: "bold",
+          alignSelf: "center",
+          fontSize: 25,
+        },
       }}
-    />
-  </ShiftStackProfesional.Navigator>
-)};
+    >
+      <ShiftStackProfesional.Screen
+        name="Shifts"
+        component={ShiftScreenProfesional}
+        options={{
+          title: "Turnos",
+        }}
+      />
+    </ShiftStackProfesional.Navigator>
+  );
+};
 
-
-
-const ProfileStackScreenProfesional = ({navigation}) => {
-  const {colors} = useTheme();
+const ProfileStackScreenProfesional = ({ navigation }) => {
+  const { colors } = useTheme();
 
   return (
     <ProfileStackProfesional.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: '#ff2167',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        fontSize: 25,
-      },
-      }}>
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#ff2167",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+          alignSelf: "center",
+          fontSize: 25,
+        },
+      }}
+    >
       <ProfileStackProfesional.Screen
         name="Perfil"
         component={ProfileScreenProfesional}
         options={{
-          title: 'Perfil',
+          title: "Perfil",
           headerLeft: () => (
-            <View style={{marginLeft: 10, marginBottom: 2, flexDirection: 'row'}}>
+            <View
+              style={{ marginLeft: 10, marginBottom: 2, flexDirection: "row" }}
+            >
               <Icon.Button
                 name="ios-settings"
                 size={25}
-                backgroundColor= '#ff2167'
-                color= '#fff'
-                
+                backgroundColor="#ff2167"
+                color="#fff"
                 onPress={() => navigation.openDrawer()}
               />
               <Icon.Button
-                
                 name="ios-card"
                 size={27}
-                backgroundColor= '#ff2167'
-                color= '#fff'
-                
-                onPress={() => navigation.navigate('PaymentScreenProfesional')}
+                backgroundColor="#ff2167"
+                color="#fff"
+                onPress={() => navigation.navigate("PaymentScreenProfesional")}
               />
             </View>
           ),
           headerRight: () => (
-            <View style={{marginLeft: 10, marginBottom: 2, flexDirection: 'row'}}>
+            <View
+              style={{ marginLeft: 10, marginBottom: 2, flexDirection: "row" }}
+            >
               <Icon.Button
                 name="ios-eye"
                 size={40}
-                backgroundColor= '#ff2167'
-                color= '#fff'
-                
-                onPress={() => navigation.navigate('ProfileScreenViewProfesional')}
+                backgroundColor="#ff2167"
+                color="#fff"
+                onPress={() =>
+                  navigation.navigate("ProfileScreenViewProfesional")
+                }
               />
               <Icon.Button
                 name="ios-add"
                 size={40}
-                backgroundColor= '#ff2167'
-                color= '#fff'
-                
-                onPress={() => navigation.navigate('ProfileScreenServicesProfesional')}
+                backgroundColor="#ff2167"
+                color="#fff"
+                onPress={() =>
+                  navigation.navigate("ProfileScreenServicesProfesional")
+                }
               />
             </View>
           ),
@@ -161,44 +153,42 @@ const ProfileStackScreenProfesional = ({navigation}) => {
       <ProfileStackProfesional.Screen
         name="ProfileScreenViewProfesional"
         options={{
-          title: 'View',
+          title: "View",
         }}
         component={ProfileScreenViewProfesional}
-        options={({route}) => ({
+        options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
       <ProfileStackProfesional.Screen
         name="ProfileScreenServicesProfesional"
         options={{
-          title: 'View',
+          title: "View",
         }}
         component={ProfileScreenServicesProfesional}
-        options={({route}) => ({
+        options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
       <ProfileStackProfesional.Screen
         name="PaymentScreenProfesional"
         options={{
-          title: 'View',
+          title: "View",
         }}
         component={PaymentScreenProfesional}
-        options={({route}) => ({
+        options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
           headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         })}
       />
     </ProfileStackProfesional.Navigator>
   );
 };
-
-

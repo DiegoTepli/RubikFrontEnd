@@ -1,64 +1,89 @@
+import React from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+} from "react-native";
+import {
+  Container,
+  Icon,
+  Item,
+  Input,
+} from "native-base";
+import { beautyServices } from "../model/beautyServices";
+import CardServices from "../components/CardServices";
+let helperArray = require("../model/data");
 
-import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity, Animated } from 'react-native';
-import { Container, Content, List, ListItem, Header, Icon, Item, Input } from 'native-base';
-import {beautyServices} from '../model/beautyServices';
-import CardServices from '../components/CardServices';
-import {LinearGradient} from 'expo-linear-gradient';
-import COLORS from '../consts/colors';
-let helperArray = require ('../model/data');
-
-const CardServicesListScreen = ({navigation, route}) => {
+const CardServicesListScreen = ({ navigation, route }) => {
   const itemData = route.params.itemData;
-    const renderItem = ({item}) => {
-      
-        return (
-            <CardServices 
-                itemData={item}
-                onPress={()=> navigation.navigate('CalendarScreen', {itemData})}
-            />
-        );
-        
-    };
-    
+  const searchUser = (textToSearch) => {
+    alert(textToSearch);
+  };
+  const renderItem = ({ item }) => {
     return (
-      
-      <Container> 
-       
-      <View >
-      <Text style={{fontSize:22, alignSelf:'center', marginTop: 10, fontWeight: 'bold', marginBottom: 10}}>Seleccionar una especialidad</Text>
+      <CardServices
+        itemData={item}
+        onPress={() => navigation.navigate("CalendarScreen", { itemData })}
+      />
+    );
+  };
+
+  return (
+    <Container>
+      <View>
+        <Text
+          style={{
+            fontSize: 25,
+            alignSelf: "center",
+            marginTop: 15,
+            fontWeight: "bold",
+            marginBottom: 10,
+          }}
+        >
+          Seleccionar servicio
+        </Text>
       </View>
+
+      <Item>
+        <Icon name="ios-search" />
+        <Input
+          placeholder="Buscar servicio"
+          onChangeText={(text) => {
+            searchUser(text);
+          }}
+        />
+      </Item>
 
       <View style={styles.container}>
-        <FlatList 
-            data={beautyServices}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
+        <FlatList
+          data={beautyServices}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
         />
       </View>
-      </Container>
-    );
-    
+    </Container>
+  );
 };
 
 export default CardServicesListScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    width: '100%',
-    alignSelf: 'center'
+    flex: 1,
+    width: "100%",
+    alignSelf: "center",
   },
   categoryListContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginHorizontal: 20,
     marginTop: 15,
     marginBottom: 10,
   },
   categoryListText: {
     fontSize: 17,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   /*button: {
     flexDirection: 'row',

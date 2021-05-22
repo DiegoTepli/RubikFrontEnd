@@ -15,7 +15,7 @@ let helperArray = require("../model/data");
 import {
   CreditCardInput,
 } from "react-native-credit-card-input";
-const PaymentScreenProfesional = ({ navigation }) => {
+const SaveCardScreen = ({ navigation }) => {
   const categories = ["Tarjeta de crédito", "Tarjeta de débito"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   const [activeCardIndex, setActiveCardIndex] = React.useState(0);
@@ -172,7 +172,7 @@ const PaymentScreenProfesional = ({ navigation }) => {
   );
 };
 
-export default PaymentScreenProfesional;
+export default SaveCardScreen;
 
 const styles = StyleSheet.create({
   container: {
