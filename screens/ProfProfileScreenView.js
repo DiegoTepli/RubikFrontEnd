@@ -22,13 +22,13 @@ import {
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { comments } from "../model/comments";
-import CardComments from "../components/CardComments";
+import ProfCardComments from "../components/ProfCardComments";
 import { useEffect } from "react";
 import { LogBox } from "react-native";
 const MIN_HEIGHT = Platform.OS === "ios" ? 90 : 55;
 const MAX_HEIGHT = 350;
 
-const ProfileScreenViewProfesional = ({ route, navigation }) => {
+const ProfProfileScreenView = ({ route, navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
@@ -39,7 +39,7 @@ const ProfileScreenViewProfesional = ({ route, navigation }) => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
   const renderItem = ({ item }) => {
-    return <CardComments itemData={item} />;
+    return <ProfCardComments itemData={item} />;
   };
 
   const renderSelectedTab = () => {
@@ -288,7 +288,7 @@ const ProfileScreenViewProfesional = ({ route, navigation }) => {
   );
 };
 
-export default ProfileScreenViewProfesional;
+export default ProfProfileScreenView;
 
 const styles = StyleSheet.create({
   container: {

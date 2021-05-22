@@ -23,9 +23,9 @@ import {
 
 import { DrawerContent } from "./screens/DrawerContent";
 
-import MainTabScreen from "./screens/MainTabScreen";
+import UserMainTabScreen from "./screens/UserMainTabScreen";
 
-import MainTabScreenProfesional from "./screens/MainTabScreenProfesional";
+import ProfMainTabScreen from "./screens/ProfMainTabScreen";
 
 import { AuthContext } from "./components/context";
 
@@ -175,7 +175,7 @@ const App = () => {
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
             >
-              <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+              <Drawer.Screen name="HomeDrawer" component={ProfMainTabScreen} />
             </Drawer.Navigator>
           ) : (
             <RootStackScreen />

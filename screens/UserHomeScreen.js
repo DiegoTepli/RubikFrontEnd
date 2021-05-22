@@ -13,7 +13,7 @@ import { useTheme } from "@react-navigation/native";
 
 import Swiper from "react-native-swiper";
 
-const HomeScreen = ({ navigation }) => {
+const UserHomeScreen = ({ navigation }) => {
   const theme = useTheme();
 
   return (
@@ -68,7 +68,7 @@ const HomeScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.categoryBtn}
           onPress={() =>
-            navigation.navigate("CardListScreen", { category: "Peluquería" })
+            navigation.navigate("UserCardListScreen", { category: "Peluquería" })
           }
         >
           <ImageBackground
@@ -159,7 +159,7 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default UserHomeScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -22,18 +22,18 @@ import * as Animatable from "react-native-animatable";
 import { Container, Item, Input, Icon } from "native-base";
 import { useEffect } from "react";
 import { beautyServices } from "../model/beautyServices";
-import CardServicesProf from "../components/CardServicesProf";
+import ProfCardServices from "../components/ProfCardServices";
 import { LogBox } from "react-native";
 import SelectBox from "react-native-multi-selectbox";
 const MIN_HEIGHT = Platform.OS === "ios" ? 90 : 55;
 const MAX_HEIGHT = 350;
 
-const ProfileScreenServicesProfesional = ({ navigation }) => {
+const ProfProfileScreenServices = ({ navigation }) => {
   const searchUser = (textToSearch) => {
     alert(textToSearch);
   };
   const renderItem = ({ item }) => {
-    return <CardServicesProf itemData={item} />;
+    return <ProfCardServices itemData={item} />;
   };
   const { colors } = useTheme();
   const [data, setData] = React.useState({
@@ -77,7 +77,7 @@ const ProfileScreenServicesProfesional = ({ navigation }) => {
   const categories = ["Descripción", "Servicios", "Turnos"];
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedDiscount, setSelectedDiscount] = useState();
-  const [selectedMode, setSelectedMode] = useState();
+  const [selectedMode, setSelectedMode] = useState("free");
   const [selectedPayment, setSelectedPayment] = useState();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
@@ -526,40 +526,45 @@ const ProfileScreenServicesProfesional = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
 
-                <View style={{ flexDirection: "row" }}>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontWeight: "bold",
-                      marginTop: 20,
-                      color: "black",
-                      marginLeft: 27,
-                    }}
-                  >
-                    {" "}
-                    Pago:
-                  </Text>
-                  <Picker
-                    style={{
-                      width: "51%",
-                      alignSelf: "flex-end",
-                      marginLeft: 72,
-                      height: "54%",
-                      transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
-                    }}
-                    selectedValue={selectedPayment}
-                    onValueChange={(itemValue, itemIndex) =>
-                      setSelectedPayment(itemValue)
-                    }
-                  >
-                    <Picker.Item
-                      label="Tarjeta de crédito"
-                      value="creditCard"
-                    />
-                    <Picker.Item label="Tarjeta de débito" value="debitCard" />
-                  </Picker>
-                </View>
+                {selectedMode != "free" && (
+              <View style={{ flexDirection: "row" }}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  marginTop: 20,
+                  color: "black",
+                  marginLeft: 27,
+                }}
+              >
+                
+                {" "}
+                Pago:
+              </Text>
+              <Picker
+                style={{
+                  width: "51%",
+                  alignSelf: "flex-end",
+                  marginLeft: 72,
+                  height: "54%",
+                  transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+                }}
+                selectedValue={selectedPayment}
+                onValueChange={(itemValue, itemIndex) =>
+                  setSelectedPayment(itemValue)
+                }
+              >
+                <Picker.Item
+                  label="Tarjeta de crédito"
+                  value="creditCard"
+                />
+                <Picker.Item label="Tarjeta de débito" value="debitCard" />
+              </Picker>
+            </View>
 
+            )}
+
+                
                 <View
                   style={{
                     flexDirection: "row",
@@ -1692,7 +1697,7 @@ const ProfileScreenServicesProfesional = ({ navigation }) => {
   );
 };
 
-export default ProfileScreenServicesProfesional;
+export default ProfProfileScreenServices;
 
 const styles = StyleSheet.create({
   container: {

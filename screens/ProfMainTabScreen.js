@@ -5,29 +5,27 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Icon from "react-native-vector-icons/Ionicons";
 
-import ShiftScreenProfesional from "./ShiftScreenProfesional";
-import ProfileScreenProfesional from "./ProfileScreenProfesional";
-import ProfileScreenViewProfesional from "./ProfileScreenViewProfesional";
-import ProfileScreenServicesProfesional from "./ProfileScreenServicesProfesional";
+import ProfShiftScreen from "./ProfShiftScreen";
+import ProfProfileScreen from "./ProfProfileScreen";
+import ProfProfileScreenView from "./ProfProfileScreenView";
+import ProfProfileScreenServices from "./ProfProfileScreenServices";
 import { useTheme } from "react-native-paper";
 import { View } from "react-native-animatable";
-import PaymentScreenProfesional from "./PaymentScreenProfesional";
-const HomeStack = createStackNavigator();
-const ShiftStackProfesional = createStackNavigator();
-const ProfileStackProfesional = createStackNavigator();
-const FavouriteStack = createStackNavigator();
+import ProfPaymentScreen from "./ProfPaymentScreen";
+const ProfShiftStack = createStackNavigator();
+const ProfProfileStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MainTabScreenProfesional = () => (
+const ProfMainTabScreen = () => (
   <Tab.Navigator
-    initialRouteName="Shifts"
+    initialRouteName="ProfShifts"
     activeColor="#fff"
     barStyle={{ backgroundColor: "#ff2167" }}
   >
     <Tab.Screen
-      name="Shifts"
-      component={ShiftStackScreenProfesional}
+      name="ProfShifts"
+      component={ProfShiftStackScreen}
       options={{
         tabBarLabel: "Turnos",
         tabBarColor: "#ff2167",
@@ -38,8 +36,8 @@ const MainTabScreenProfesional = () => (
     />
 
     <Tab.Screen
-      name="Profile"
-      component={ProfileStackScreenProfesional}
+      name="ProfProfile"
+      component={ProfProfileStackScreen}
       options={{
         tabBarLabel: "Perfil",
         tabBarColor: "#ff2167",
@@ -51,12 +49,12 @@ const MainTabScreenProfesional = () => (
   </Tab.Navigator>
 );
 
-export default MainTabScreenProfesional;
+export default ProfMainTabScreen;
 
-const ShiftStackScreenProfesional = ({ navigation }) => {
+const ProfShiftStackScreen = ({ navigation }) => {
   const { colors } = useTheme();
   return (
-    <ShiftStackProfesional.Navigator
+    <ProfShiftStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: "#ff2167",
@@ -71,22 +69,22 @@ const ShiftStackScreenProfesional = ({ navigation }) => {
         },
       }}
     >
-      <ShiftStackProfesional.Screen
-        name="Shifts"
-        component={ShiftScreenProfesional}
+      <ProfShiftStack.Screen
+        name="ProfShifts"
+        component={ProfShiftScreen}
         options={{
           title: "Turnos",
         }}
       />
-    </ShiftStackProfesional.Navigator>
+    </ProfShiftStack.Navigator>
   );
 };
 
-const ProfileStackScreenProfesional = ({ navigation }) => {
+const ProfProfileStackScreen = ({ navigation }) => {
   const { colors } = useTheme();
 
   return (
-    <ProfileStackProfesional.Navigator
+    <ProfProfileStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: "#ff2167",
@@ -99,9 +97,9 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
         },
       }}
     >
-      <ProfileStackProfesional.Screen
+      <ProfProfileStack.Screen
         name="Perfil"
-        component={ProfileScreenProfesional}
+        component={ProfProfileScreen}
         options={{
           title: "Perfil",
           headerLeft: () => (
@@ -120,7 +118,7 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
                 size={27}
                 backgroundColor="#ff2167"
                 color="#fff"
-                onPress={() => navigation.navigate("PaymentScreenProfesional")}
+                onPress={() => navigation.navigate("ProfPaymentScreen")}
               />
             </View>
           ),
@@ -134,7 +132,7 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
                 backgroundColor="#ff2167"
                 color="#fff"
                 onPress={() =>
-                  navigation.navigate("ProfileScreenViewProfesional")
+                  navigation.navigate("ProfProfileScreenView")
                 }
               />
               <Icon.Button
@@ -143,19 +141,19 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
                 backgroundColor="#ff2167"
                 color="#fff"
                 onPress={() =>
-                  navigation.navigate("ProfileScreenServicesProfesional")
+                  navigation.navigate("ProfProfileScreenServices")
                 }
               />
             </View>
           ),
         }}
       />
-      <ProfileStackProfesional.Screen
-        name="ProfileScreenViewProfesional"
+      <ProfProfileStack.Screen
+        name="ProfProfileScreenView"
         options={{
           title: "View",
         }}
-        component={ProfileScreenViewProfesional}
+        component={ProfProfileScreenView}
         options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
@@ -163,12 +161,12 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-      <ProfileStackProfesional.Screen
-        name="ProfileScreenServicesProfesional"
+      <ProfProfileStack.Screen
+        name="ProfProfileScreenServices"
         options={{
           title: "View",
         }}
-        component={ProfileScreenServicesProfesional}
+        component={ProfProfileScreenServices}
         options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
@@ -176,12 +174,12 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-      <ProfileStackProfesional.Screen
-        name="PaymentScreenProfesional"
+      <ProfProfileStack.Screen
+        name="ProfPaymentScreen"
         options={{
           title: "View",
         }}
-        component={PaymentScreenProfesional}
+        component={ProfPaymentScreen}
         options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
@@ -189,6 +187,6 @@ const ProfileStackScreenProfesional = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-    </ProfileStackProfesional.Navigator>
+    </ProfProfileStack.Navigator>
   );
 };

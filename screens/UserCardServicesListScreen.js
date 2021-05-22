@@ -12,19 +12,19 @@ import {
   Input,
 } from "native-base";
 import { beautyServices } from "../model/beautyServices";
-import CardServices from "../components/CardServices";
+import UserCardServices from "../components/UserCardServices";
 let helperArray = require("../model/data");
 
-const CardServicesListScreen = ({ navigation, route }) => {
+const UserCardServicesListScreen = ({ navigation, route }) => {
   const itemData = route.params.itemData;
   const searchUser = (textToSearch) => {
     alert(textToSearch);
   };
   const renderItem = ({ item }) => {
     return (
-      <CardServices
+      <UserCardServices
         itemData={item}
-        onPress={() => navigation.navigate("CalendarScreen", { itemData })}
+        onPress={() => navigation.navigate("UserCalendarScreen", { itemData })}
       />
     );
   };
@@ -66,7 +66,7 @@ const CardServicesListScreen = ({ navigation, route }) => {
   );
 };
 
-export default CardServicesListScreen;
+export default UserCardServicesListScreen;
 
 const styles = StyleSheet.create({
   container: {

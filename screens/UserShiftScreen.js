@@ -14,9 +14,9 @@ import COLORS from "../consts/colors";
 let helperArray = require("../model/data");
 
 import { shift } from "../model/shift";
-import CardShift from "../components/CardShift";
+import UserCardShift from "../components/UserCardShift";
 
-const ShiftScreen = ({ navigation }) => {
+const UserShiftScreen = ({ navigation }) => {
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Confirmar cancelación del turno",
@@ -60,7 +60,7 @@ const ShiftScreen = ({ navigation }) => {
   };
 
   const renderItem = ({ item }) => {
-    return <CardShift itemData={item} onPress={createTwoButtonAlert} />;
+    return <UserCardShift itemData={item} onPress={createTwoButtonAlert} />;
   };
   return (
     <Container>
@@ -99,7 +99,7 @@ const ShiftScreen = ({ navigation }) => {
     </Container>
   );
 };
-export default ShiftScreen;
+export default UserShiftScreen;
 
 const styles = StyleSheet.create({
   container: {

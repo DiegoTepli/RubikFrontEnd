@@ -12,9 +12,9 @@ import COLORS from "../consts/colors";
 let helperArray = require("../model/data");
 
 import { shift } from "../model/shift";
-import CardShiftProfesional from "../components/CardShiftProfesional";
+import ProfCardShift from "../components/ProfCardShift";
 
-const ShiftScreen = ({ navigation }) => {
+const ProfShiftScreen = ({ navigation }) => {
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Confirmar cancelación del turno",
@@ -58,7 +58,7 @@ const ShiftScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <CardShiftProfesional itemData={item} onPress={createTwoButtonAlert} />
+      <ProfCardShift itemData={item} onPress={createTwoButtonAlert} />
     );
   };
   return (
@@ -98,7 +98,7 @@ const ShiftScreen = ({ navigation }) => {
     </Container>
   );
 };
-export default ShiftScreen;
+export default ProfShiftScreen;
 
 const styles = StyleSheet.create({
   container: {

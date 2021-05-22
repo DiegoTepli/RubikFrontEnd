@@ -12,7 +12,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const CardShiftProfesional = ({ itemData, onPress }) => {
+const ProfCardShift = ({ itemData, onPress }) => {
   return (
     <View style={styles.card}>
       <View style={styles.cardImgWrapper}>
@@ -55,7 +55,7 @@ const CardShiftProfesional = ({ itemData, onPress }) => {
   );
 };
 
-export default CardShiftProfesional;
+export default ProfCardShift;
 
 const styles = StyleSheet.create({
   card: {

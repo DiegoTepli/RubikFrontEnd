@@ -15,7 +15,7 @@ let helperArray = require("../model/data");
 import {
   CreditCardInput,
 } from "react-native-credit-card-input";
-const SaveCardScreen = ({ navigation }) => {
+const UserSaveCardScreen = ({ navigation }) => {
   const categories = ["Tarjeta de crédito", "Tarjeta de débito"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   const _onFocus = (field) => console.log("focusing", field);
@@ -167,7 +167,7 @@ const SaveCardScreen = ({ navigation }) => {
   );
 };
 
-export default SaveCardScreen;
+export default UserSaveCardScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -5,35 +5,35 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Icon from "react-native-vector-icons/Ionicons";
 
-import HomeScreen from "./HomeScreen";
-import ShiftScreen from "./ShiftScreen";
+import UserHomeScreen from "./UserHomeScreen";
+import UserShiftScreen from "./UserShiftScreen";
 
-import ProfileScreen from "./ProfileScreen";
+import UserProfileScreen from "./UserProfileScreen";
 
 import { useTheme } from "react-native-paper";
 import { View } from "react-native-animatable";
-import CardListScreen from "./CardListScreen";
-import CardItemDetails from "./CardItemDetails";
-import CardServicesListScreen from "./CardServicesListScreen";
-import CalendarScreen from "./CalendarScreen";
-import PaymentCreditScreen from "./PaymentCreditScreen";
-import PaymentDebitScreen from "./PaymentDebitScreen";
-import SaveCardScreen from "./SaveCardScreen";
-const HomeStack = createStackNavigator();
-const ShiftStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
+import UserCardListScreen from "./UserCardListScreen";
+import UserProfSelected from "./UserProfSelected";
+import UserCardServicesListScreen from "./UserCardServicesListScreen";
+import UserCalendarScreen from "./UserCalendarScreen";
+import UserPaymentCreditScreen from "./UserPaymentCreditScreen";
+import UserPaymentDebitScreen from "./UserPaymentDebitScreen";
+import UserSaveCardScreen from "./UserSaveCardScreen";
+const UserHomeStack = createStackNavigator();
+const UserShiftStack = createStackNavigator();
+const UserProfileStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
-const MainTabScreen = () => (
+const UserMainTabScreen = () => (
   <Tab.Navigator
-    initialRouteName="Home"
+    initialRouteName="UserHome"
     activeColor="#fff"
     barStyle={{ backgroundColor: "#ff2167" }}
   >
     <Tab.Screen
-      name="Home"
-      component={HomeStackScreen}
+      name="UserHome"
+      component={UserHomeStackScreen}
       options={{
         tabBarLabel: "Inicio",
         tabBarColor: "#ff2167",
@@ -43,8 +43,8 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Shifts"
-      component={ShiftStackScreen}
+      name="UserShifts"
+      component={UserShiftStackScreen}
       options={{
         tabBarLabel: "Turnos",
         tabBarColor: "#ff2167",
@@ -55,8 +55,8 @@ const MainTabScreen = () => (
     />
 
     <Tab.Screen
-      name="Profile"
-      component={ProfileStackScreen}
+      name="UserProfile"
+      component={UserProfileStackScreen}
       options={{
         tabBarLabel: "Perfil",
         tabBarColor: "#ff2167",
@@ -68,12 +68,12 @@ const MainTabScreen = () => (
   </Tab.Navigator>
 );
 
-export default MainTabScreen;
+export default UserMainTabScreen;
 
-const HomeStackScreen = ({ navigation }) => {
+const UserHomeStackScreen = ({ navigation }) => {
   const { colors } = useTheme();
   return (
-    <HomeStack.Navigator
+    <UserHomeStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: "#ff2167",
@@ -88,24 +88,24 @@ const HomeStackScreen = ({ navigation }) => {
         },
       }}
     >
-      <HomeStack.Screen
+      <UserHomeStack.Screen
         name="Home"
-        component={HomeScreen}
+        component={UserHomeScreen}
         options={{
           title: "Categorías",
         }}
       />
-      <HomeStack.Screen
-        name="CardListScreen"
-        component={CardListScreen}
+      <UserHomeStack.Screen
+        name="UserCardListScreen"
+        component={UserCardListScreen}
         options={({ route }) => ({
           title: route.params.category,
           headerBackTitleVisible: false,
         })}
       />
-      <HomeStack.Screen
-        name="CardItemDetails"
-        component={CardItemDetails}
+      <UserHomeStack.Screen
+        name="UserProfSelected"
+        component={UserProfSelected}
         options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
@@ -114,9 +114,9 @@ const HomeStackScreen = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen
-        name="CardServicesListScreen"
-        component={CardServicesListScreen}
+      <UserHomeStack.Screen
+        name="UserCardServicesListScreen"
+        component={UserCardServicesListScreen}
         options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
@@ -124,20 +124,9 @@ const HomeStackScreen = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen
-        name="CalendarScreen"
-        component={CalendarScreen}
-        options={({ route }) => ({
-          // title: route.params.title,
-          headerBackTitleVisible: false,
-          headerTitle: false,
-          headerTransparent: true,
-          headerTintColor: "#fff",
-        })}
-      />
-      <HomeStack.Screen
-        name="PaymentCreditScreen"
-        component={PaymentCreditScreen}
+      <UserHomeStack.Screen
+        name="UserCalendarScreen"
+        component={UserCalendarScreen}
         options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
@@ -146,9 +135,9 @@ const HomeStackScreen = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-      <HomeStack.Screen
-        name="PaymentDebitScreen"
-        component={PaymentDebitScreen}
+      <UserHomeStack.Screen
+        name="UserPaymentCreditScreen"
+        component={UserPaymentCreditScreen}
         options={({ route }) => ({
           // title: route.params.title,
           headerBackTitleVisible: false,
@@ -157,12 +146,23 @@ const HomeStackScreen = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-    </HomeStack.Navigator>
+      <UserHomeStack.Screen
+        name="UserPaymentDebitScreen"
+        component={UserPaymentDebitScreen}
+        options={({ route }) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: "#fff",
+        })}
+      />
+    </UserHomeStack.Navigator>
   );
 };
 
-const ShiftStackScreen = ({ navigation }) => (
-  <ShiftStack.Navigator
+const UserShiftStackScreen = ({ navigation }) => (
+  <UserShiftStack.Navigator
     screenOptions={{
       headerStyle: {
         backgroundColor: "#ff2167",
@@ -175,15 +175,15 @@ const ShiftStackScreen = ({ navigation }) => (
       },
     }}
   >
-    <ShiftStack.Screen name="Turnos" component={ShiftScreen} />
-  </ShiftStack.Navigator>
+    <UserShiftStack.Screen name="Turnos" component={UserShiftScreen} />
+  </UserShiftStack.Navigator>
 );
 
-const ProfileStackScreen = ({ navigation }) => {
+const UserProfileStackScreen = ({ navigation }) => {
   const { colors } = useTheme();
 
   return (
-    <ProfileStack.Navigator
+    <UserProfileStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: "#ff2167",
@@ -197,9 +197,9 @@ const ProfileStackScreen = ({ navigation }) => {
         },
       }}
     >
-      <ProfileStack.Screen
+      <UserProfileStack.Screen
         name="Perfil"
-        component={ProfileScreen}
+        component={UserProfileScreen}
         options={{
           title: "Perfil",
           headerLeft: () => (
@@ -218,19 +218,19 @@ const ProfileStackScreen = ({ navigation }) => {
                 size={27}
                 backgroundColor="#ff2167"
                 color="#fff"
-                onPress={() => navigation.navigate("SaveCardScreen")}
+                onPress={() => navigation.navigate("UserSaveCardScreen")}
               />
             </View>
           ),
         }}
       />
       
-      <ProfileStack.Screen
-        name="SaveCardScreen"
+      <UserProfileStack.Screen
+        name="UserSaveCardScreen"
         options={{
           title: "Perfil",
         }}
-        component={SaveCardScreen}
+        component={UserSaveCardScreen}
         options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,
@@ -238,6 +238,6 @@ const ProfileStackScreen = ({ navigation }) => {
           headerTintColor: "#fff",
         })}
       />
-    </ProfileStack.Navigator>
+    </UserProfileStack.Navigator>
   );
 };

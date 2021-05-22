@@ -15,7 +15,7 @@ import {
   Input,
 } from "native-base";
 import { data } from "../model/data";
-import Card from "../components/Card";
+import UserCard from "../components/UserCard";
 import COLORS from "../consts/colors";
 import { ScrollView } from "react-native-gesture-handler";
 let helperArray = require("../model/data");
@@ -152,10 +152,10 @@ const CardListScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <Card
+      <UserCard
         itemData={item}
         onPress={() =>
-          navigation.navigate("CardItemDetails", { itemData: item })
+          navigation.navigate("UserProfSelected", { itemData: item })
         }
       />
     );

@@ -50,13 +50,13 @@ export default class App extends Component {
           {
             text: "Tarjeta de crédito",
             onPress: () =>
-              navigation.navigate("PaymentCreditScreen", {
+              navigation.navigate("UserPaymentCreditScreen", {
                 selectedScheduleIndex: this.state.selectedScheduleIndex,
               }),
           },
           {
             text: "Tarjeta de débito",
-            onPress: () => navigation.navigate("PaymentDebitScreen"),
+            onPress: () => navigation.navigate("UserPaymentDebitScreen"),
           },
         ]
       );

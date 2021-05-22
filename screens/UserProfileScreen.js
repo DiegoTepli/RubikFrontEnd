@@ -19,7 +19,7 @@ import * as Animatable from "react-native-animatable";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
 
-const ProfileScreen = () => {
+const UserProfileScreen = () => {
   const [image, setImage] = useState("file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.0.14-RubikFront/ImagePicker/dfbbc5a4-2013-456f-a825-1f854d06644b.png");
   const { colors } = useTheme();
 
@@ -322,7 +322,7 @@ const ProfileScreen = () => {
   );
 };
 
-export default ProfileScreen;
+export default UserProfileScreen;
 
 const styles = StyleSheet.create({
   container: {

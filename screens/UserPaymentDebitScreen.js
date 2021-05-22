@@ -21,6 +21,7 @@ export default class App extends Component {
 
   _onChange = (formData) => console.log(JSON.stringify(formData, null, " "));
   render() {
+    const { navigation, position } = this.props;
     const createTwoButtonAlert = () =>
       Alert.alert("Confirmar turno", "¿Desea confirmar la reserva del turno?", [
         {

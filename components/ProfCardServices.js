@@ -14,12 +14,12 @@ import { Picker } from "@react-native-picker/picker";
 import * as Animatable from "react-native-animatable";
 import { useTheme } from "@react-navigation/native";
 
-const CardServicesProf = ({ itemData }) => {
+const ProfCardServices = ({ itemData }) => {
   const { colors } = useTheme();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
   const [selectedDiscount, setSelectedDiscount] = useState();
-  const [selectedMode, setSelectedMode] = useState();
+  const [selectedMode, setSelectedMode] = useState("free");
   const [selectedPayment, setSelectedPayment] = useState();
   const [modalOpenInfo, setModalOpenInfo] = useState(false);
   const [data, setData] = React.useState({
@@ -317,7 +317,8 @@ const CardServicesProf = ({ itemData }) => {
               </TouchableOpacity>
             </View>
 
-            <View style={{ flexDirection: "row" }}>
+            {selectedMode != "free" && (
+              <View style={{ flexDirection: "row" }}>
               <Text
                 style={{
                   fontSize: 20,
@@ -327,6 +328,7 @@ const CardServicesProf = ({ itemData }) => {
                   marginLeft: 27,
                 }}
               >
+                
                 {" "}
                 Pago:
               </Text>
@@ -339,14 +341,19 @@ const CardServicesProf = ({ itemData }) => {
                   transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
                 }}
                 selectedValue={selectedPayment}
-                onValueChange={(itemValue) =>
+                onValueChange={(itemValue, itemIndex) =>
                   setSelectedPayment(itemValue)
                 }
               >
-                <Picker.Item label="Tarjeta de crédito" value="creditCard" />
+                <Picker.Item
+                  label="Tarjeta de crédito"
+                  value="creditCard"
+                />
                 <Picker.Item label="Tarjeta de débito" value="debitCard" />
               </Picker>
             </View>
+
+            )}
 
             <View
               style={{
@@ -499,7 +506,7 @@ const CardServicesProf = ({ itemData }) => {
   );
 };
 
-export default CardServicesProf;
+export default ProfCardServices;
 
 const styles = StyleSheet.create({
   card: {

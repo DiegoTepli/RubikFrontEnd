@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { AirbnbRating } from "react-native-ratings";
 
-const Card = ({ itemData, onPress }) => {
+const ProfCardComments = ({ itemData, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
@@ -16,49 +16,29 @@ const Card = ({ itemData, onPress }) => {
 
         <View style={styles.cardInfo}>
           <View style={styles.cardTitleDiscount}>
-            <Text style={styles.cardTitle}>{itemData.title}</Text>
-            {itemData.discount != null && (
-              <View style={{ flexDirection: "row" }}>
-                <Text style={styles.cardDiscount}>
-                  Hasta {itemData.discount}% OFF
-                </Text>
-              </View>
-            )}
-            {itemData.discount == null && (
-              <View style={{ flexDirection: "row" }}></View>
-            )}
+            <Text style={styles.cardTitle}>{itemData.name}</Text>
+            <Text style={styles.cardDiscount}>{itemData.discount}</Text>
           </View>
-          <View style={{ flexDirection: "row" }}>
-            <AirbnbRating
-              count={5}
-              size={15}
-              isDisabled={true}
-              showRating={false}
-              starContainerStyle={{ alignSelf: "flex-start", marginLeft: -3 }}
-            />
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-              {itemData.rating}
-            </Text>
-            <Text style={{ fontSize: 16, marginLeft: 5 }}>
-              ({itemData.reviews})
-            </Text>
-          </View>
-
-          <Text numberOfLines={2} style={styles.cardDetails}>
-            {itemData.description}
-          </Text>
+          <AirbnbRating
+            count={5}
+            size={18}
+            showRating={false}
+            isDisabled={true}
+            starContainerStyle={{ alignSelf: "flex-start", marginLeft: -3 }}
+          />
+          <Text style={styles.cardDetails}>{itemData.date}</Text>
+          <Text style={styles.cardDetails}>{itemData.comment}</Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default Card;
+export default ProfCardComments;
 
 const styles = StyleSheet.create({
   card: {
     height: 100,
-    marginVertical: 10,
     flexDirection: "row",
     shadowColor: "#999",
     shadowOffset: { width: 0, height: 1 },
@@ -70,8 +50,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardImg: {
-    height: "100%",
-    width: "100%",
+    height: "80%",
+    width: "60%",
+    marginTop: 10,
     alignSelf: "center",
     borderRadius: 20,
     borderBottomRightRadius: 20,
@@ -89,7 +70,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
   },
   cardDiscount: {
     alignSelf: "center",
@@ -103,5 +84,6 @@ const styles = StyleSheet.create({
   cardDetails: {
     fontSize: 14,
     color: "#444",
+    fontWeight: "bold",
   },
 });

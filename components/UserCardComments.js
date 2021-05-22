@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { AirbnbRating } from "react-native-ratings";
 
-const CardComments = ({ itemData, onPress }) => {
+const UserCardComments = ({ itemData, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
@@ -34,7 +34,7 @@ const CardComments = ({ itemData, onPress }) => {
   );
 };
 
-export default CardComments;
+export default UserCardComments;
 
 const styles = StyleSheet.create({
   card: {

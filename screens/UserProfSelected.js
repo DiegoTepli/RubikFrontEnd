@@ -21,13 +21,13 @@ import {
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { comments } from "../model/comments";
-import CardComments from "../components/CardComments";
+import UserCardComments from "../components/UserCardComments";
 import { useEffect } from "react";
 import { LogBox } from "react-native";
 const MIN_HEIGHT = Platform.OS === "ios" ? 90 : 55;
 const MAX_HEIGHT = 350;
 
-const CardItemDetails = ({ route, navigation }) => {
+const UserProfSelected = ({ route, navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
@@ -38,7 +38,7 @@ const CardItemDetails = ({ route, navigation }) => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
   const renderItem = ({ item }) => {
-    return <CardComments itemData={item} />;
+    return <UserCardComments itemData={item} />;
   };
 
   const renderSelectedTab = () => {
@@ -108,7 +108,7 @@ const CardItemDetails = ({ route, navigation }) => {
             <TouchableOpacity
               style={styles.signIn}
               onPress={() =>
-                navigation.navigate("CardServicesListScreen", itemData)
+                navigation.navigate("UserCardServicesListScreen", itemData)
               }
             >
               <LinearGradient
@@ -301,7 +301,7 @@ const CardItemDetails = ({ route, navigation }) => {
   );
 };
 
-export default CardItemDetails;
+export default UserProfSelected;
 
 const styles = StyleSheet.create({
   container: {
