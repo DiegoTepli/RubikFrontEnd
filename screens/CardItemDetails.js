@@ -29,15 +29,11 @@ const MAX_HEIGHT = 350;
 
 const CardItemDetails = ({ route, navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [isClick, setClick] = useState(false);
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
   }, []);
   const itemData = route.params.itemData;
   const navTitleView = useRef(null);
-  const theme = useTheme();
   const categories = ["Descripción", "Comentarios y puntación"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 

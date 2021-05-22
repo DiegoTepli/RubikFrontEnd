@@ -24,8 +24,6 @@ import { Picker } from "@react-native-picker/picker";
 const CardListScreen = ({ navigation }) => {
   const categories = ["Popularidad", "Puntuación", "Descuento", "Día"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-  const [activeCardIndex, setActiveCardIndex] = React.useState(0);
-  const scrollX = React.useRef(new Animated.Value(0)).current;
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState();
   const searchUser = (textToSearch) => {
@@ -186,7 +184,6 @@ const CardListScreen = ({ navigation }) => {
                 if (index == 3) {
                   setModalOpen(true);
                 }
-                /*renderSelectedTab();*/
               }}
             >
               <View>

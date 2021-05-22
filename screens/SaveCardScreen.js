@@ -18,11 +18,6 @@ import {
 const SaveCardScreen = ({ navigation }) => {
   const categories = ["Tarjeta de crédito", "Tarjeta de débito"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-  const [activeCardIndex, setActiveCardIndex] = React.useState(0);
-  const scrollX = React.useRef(new Animated.Value(0)).current;
-  const searchUser = (textToSearch) => {
-    alert(textToSearch);
-  };
   const _onFocus = (field) => console.log("focusing", field);
 
   const _onChange = (formData) =>

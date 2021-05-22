@@ -18,11 +18,9 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Animatable from "react-native-animatable";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
-import { AuthContext } from "../components/context";
 
 const ProfileScreenProfesional = () => {
-  const { signOut, toggleTheme } = React.useContext(AuthContext);
-  const [image, setImage] = useState("../assets/user2.png");
+  const [image, setImage] = useState("file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.0.14-RubikFront/ImagePicker/dfbbc5a4-2013-456f-a825-1f854d06644b.png");
   const { colors } = useTheme();
 
   const PickImage = async () => {
@@ -148,7 +146,7 @@ const ProfileScreenProfesional = () => {
               }}
             >
               <ImageBackground
-                source={require("../assets/user2.png")}
+                source={{uri: image}}
                 style={{ height: 100, width: 100 }}
                 imageStyle={{ borderRadius: 50 }}
               >

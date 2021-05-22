@@ -18,11 +18,9 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Animatable from "react-native-animatable";
 import BottomSheet from "reanimated-bottom-sheet";
 import Animated from "react-native-reanimated";
-import { AuthContext } from "../components/context";
 
 const ProfileScreen = () => {
-  const { signOut, toggleTheme } = React.useContext(AuthContext);
-  const [image, setImage] = useState("../assets/user2.png");
+  const [image, setImage] = useState("file:///data/user/0/host.exp.exponent/cache/ExperienceData/UNVERIFIED-192.168.0.14-RubikFront/ImagePicker/dfbbc5a4-2013-456f-a825-1f854d06644b.png");
   const { colors } = useTheme();
 
   const PickImage = async () => {
@@ -63,31 +61,7 @@ const ProfileScreen = () => {
     }
   };
 
-  const takePhotoFromCamera = () => {
-    ImagePicker.openCamera({
-      compressImageMaxWidth: 300,
-      compressImageMaxHeight: 300,
-      cropping: true,
-      compressImageQuality: 0.7,
-    }).then((image) => {
-      console.log(image);
-      setImage(image.path);
-      bs.current.snapTo(1);
-    });
-  };
-
-  const choosePhotoFromLibrary = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 300,
-      cropping: true,
-      compressImageQuality: 0.7,
-    }).then((image) => {
-      console.log(image);
-      setImage(image.path);
-      bs.current.snapTo(1);
-    });
-  };
+  
 
   renderInner = () => (
     <View style={styles.panel}>
@@ -148,7 +122,7 @@ const ProfileScreen = () => {
               }}
             >
               <ImageBackground
-                source={require("../assets/user2.png")}
+                source={{uri: image}}
                 style={{ height: 100, width: 100 }}
                 imageStyle={{ borderRadius: 50 }}
               >

@@ -14,13 +14,13 @@ import { Picker } from "@react-native-picker/picker";
 import * as Animatable from "react-native-animatable";
 import { useTheme } from "@react-navigation/native";
 
-const CardServicesProf = ({ itemData, onPress }) => {
+const CardServicesProf = ({ itemData }) => {
   const { colors } = useTheme();
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState();
-  const [selectedLanguage2, setSelectedLanguage2] = useState();
-  const [selectedLanguage3, setSelectedLanguage3] = useState();
-  const [selectedLanguage4, setSelectedLanguage4] = useState();
+  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedDiscount, setSelectedDiscount] = useState();
+  const [selectedMode, setSelectedMode] = useState();
+  const [selectedPayment, setSelectedPayment] = useState();
   const [modalOpenInfo, setModalOpenInfo] = useState(false);
   const [data, setData] = React.useState({
     username: "",
@@ -47,7 +47,6 @@ const CardServicesProf = ({ itemData, onPress }) => {
     }
   };
 
-  const [text, onChangeText] = React.useState("Useless Text");
   const createTwoButtonAlert = () =>
     Alert.alert(
       "Eliminar servicio",
@@ -150,9 +149,9 @@ const CardServicesProf = ({ itemData, onPress }) => {
                   height: "54%",
                   transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
                 }}
-                selectedValue={selectedLanguage}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedLanguage(itemValue)
+                selectedValue={selectedCategory}
+                onValueChange={(itemValue) =>
+                  setSelectedCategory(itemValue)
                 }
               >
                 <Picker.Item label={itemData.category} />
@@ -246,9 +245,9 @@ const CardServicesProf = ({ itemData, onPress }) => {
                   height: "54%",
                   transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
                 }}
-                selectedValue={selectedLanguage2}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedLanguage2(itemValue)
+                selectedValue={selectedDiscount}
+                onValueChange={(itemValue) =>
+                  setSelectedDiscount(itemValue)
                 }
               >
                 <Picker.Item label="0%" value="0" />
@@ -294,9 +293,9 @@ const CardServicesProf = ({ itemData, onPress }) => {
                   height: "54%",
                   transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
                 }}
-                selectedValue={selectedLanguage3}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedLanguage3(itemValue)
+                selectedValue={selectedMode}
+                onValueChange={(itemValue) =>
+                  setSelectedMode(itemValue)
                 }
               >
                 <Picker.Item label="Gratuito" value="free" />
@@ -339,9 +338,9 @@ const CardServicesProf = ({ itemData, onPress }) => {
                   height: "54%",
                   transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
                 }}
-                selectedValue={selectedLanguage4}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedLanguage4(itemValue)
+                selectedValue={selectedPayment}
+                onValueChange={(itemValue) =>
+                  setSelectedPayment(itemValue)
                 }
               >
                 <Picker.Item label="Tarjeta de crédito" value="creditCard" />

@@ -12,7 +12,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { useTheme } from "@react-navigation/native";
 
-const SplashScreen = ({ navigation }) => {
+const InitScreen = ({ navigation }) => {
   const { colors } = useTheme();
 
   return (
@@ -66,7 +66,7 @@ const SplashScreen = ({ navigation }) => {
   );
 };
 
-export default SplashScreen;
+export default InitScreen;
 
 const { height } = Dimensions.get("screen");
 const height_logo = height * 0.4;
