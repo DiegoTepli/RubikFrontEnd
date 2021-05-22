@@ -175,7 +175,7 @@ const App = () => {
             <Drawer.Navigator
               drawerContent={(props) => <DrawerContent {...props} />}
             >
-              <Drawer.Screen name="HomeDrawer" component={ProfMainTabScreen} />
+              <Drawer.Screen name="HomeDrawer" component={UserMainTabScreen} />
             </Drawer.Navigator>
           ) : (
             <RootStackScreen />
