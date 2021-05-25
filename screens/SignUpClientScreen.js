@@ -7,18 +7,15 @@ import {
   Platform,
   StyleSheet,
   ScrollView,
+  Image,
+  Dimensions
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
 import Feather from "react-native-vector-icons/Feather";
 import { StatusBar } from "expo-status-bar";
-
-import { useTheme } from "react-native-paper";
-
-
-
-/*import ImagePicker from 'react-native-image-crop-picker';*/
 import * as ImagePicker from "expo-image-picker";
+import { useTheme } from "react-native-paper";
 
 const SignUpClientScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
@@ -272,6 +269,26 @@ const SignUpClientScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
+          <View style={styles.action}>
+            <TouchableOpacity style={styles.panelButton} onPress={PickImage}>
+              <Text style={styles.panelButtonTitle}>
+              Adjuntar factura de algún servicio para constatar domicilio
+              </Text>
+              <StatusBar style="auto" />
+            </TouchableOpacity>
+          </View>
+
+          {image && (
+            <Image
+              source={{ uri: image }}
+              style={{
+                width: height_logo,
+                height: height_logo,
+                marginBottom: 30,
+              }}
+            />
+          )}
+
           <View style={styles.button}>
             <TouchableOpacity
               style={styles.signIn}
@@ -301,6 +318,9 @@ const SignUpClientScreen = ({ navigation }) => {
 };
 
 export default SignUpClientScreen;
+
+const { height } = Dimensions.get("screen");
+const height_logo = height * 0.2;
 
 const styles = StyleSheet.create({
   container: {

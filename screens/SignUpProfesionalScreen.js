@@ -25,7 +25,6 @@ import * as ImagePicker from "expo-image-picker";
 const SignUpProfesionalScreen = ({ navigation }) => {
   const [image1, setImage1] = useState(null);
   const [image2, setImage2] = useState(null);
-  const [image3, setImage3] = useState(null);
 
   const PickImage1 = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -346,7 +345,7 @@ const SignUpProfesionalScreen = ({ navigation }) => {
           <View style={styles.action}>
             <TouchableOpacity style={styles.panelButton} onPress={PickImage1}>
               <Text style={styles.panelButtonTitle}>
-                Constancia de inscripción impositiva
+                Adjuntar constancia de inscripción impositiva
               </Text>
             </TouchableOpacity>
           </View>
@@ -363,7 +362,7 @@ const SignUpProfesionalScreen = ({ navigation }) => {
           <View style={styles.action}>
             <TouchableOpacity style={styles.panelButton} onPress={PickImage2}>
               <Text style={styles.panelButtonTitle}>
-                Factura de algún servicio
+                Adjuntar factura de algún servicio para constatar domicilio
               </Text>
               <StatusBar style="auto" />
             </TouchableOpacity>
