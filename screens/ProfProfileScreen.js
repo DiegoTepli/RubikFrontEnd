@@ -354,11 +354,11 @@ const ProfProfileScreen = () => {
             ) : null}
           </View>
 
-          <Text style={styles.text_footer}>CUIL</Text>
+          <Text style={styles.text_footer}>CUIT</Text>
           <View style={styles.action}>
             <SafeAreaView style={styles.input}>
               <TextInput
-                placeholder="CUIL"
+                placeholder="CUIT"
                 placeholderTextColor="#666666"
                 style={[
                   styles.textInput,

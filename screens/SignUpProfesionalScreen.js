@@ -244,7 +244,7 @@ const SignUpProfesionalScreen = ({ navigation }) => {
 
           <View style={styles.action}>
             <TextInput
-              placeholder="CUIL"
+              placeholder="CUIT"
               placeholderTextColor="#666666"
               style={[
                 styles.textInput,
