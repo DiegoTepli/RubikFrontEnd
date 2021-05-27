@@ -36,6 +36,7 @@
     "react-native-calendars": "^1.1255.0",
     "react-native-category": "^1.0.4",
     "react-native-credit-card-input": "^0.4.1",
+    "react-native-customisable-alert": "^0.1.17",
     "react-native-dropdown-picker": "^5.0.0",
     "react-native-elements": "^3.3.2",
     "react-native-gesture-handler": "~1.10.2",

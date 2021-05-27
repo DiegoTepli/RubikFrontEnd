@@ -3,7 +3,8 @@ import COLORS from "../consts/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@react-navigation/native";
 import { AirbnbRating } from "react-native-ratings";
-
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert } from "react-native-customisable-alert";
 import {
   View,
   Text,
@@ -134,6 +135,12 @@ const UserProfSelected = ({ route, navigation }) => {
     if (selectedCategoryIndex === 1) {
       return (
         <View style={styles.container}>
+          <CustomisableAlert
+                    titleStyle={{
+                        fontSize: 18,
+                        fontWeight: "bold"
+                    }}
+                />
           <Modal visible={modalOpen} animationType="slide" transparent={true}>
             <View style={{ backgroundColor: "#000000AA", flex: 1 }}>
               <View
@@ -211,7 +218,17 @@ const UserProfSelected = ({ route, navigation }) => {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ backgroundColor: "#ff2167", padding: 10 }}
-                    onPress={() => setModalOpen(false)}
+                    onPress={() => 
+                      {
+                      setModalOpen(false); 
+                      showAlert({
+                      title:"Evaluación realizada exitosamente!",
+                      message: "Gracias por evaluarme!",
+                      alertType: 'success',
+                      onPress: () => console.log('Gracias por evaluarme!')
+                      
+                    })
+                  }}
                   >
                     <Text
                       style={{

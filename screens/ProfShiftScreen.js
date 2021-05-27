@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { Container } from "native-base";
 import COLORS from "../consts/colors";
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert, closeAlert } from "react-native-customisable-alert";
 let helperArray = require("../model/data");
 
 import { shift } from "../model/shift";
@@ -16,17 +18,12 @@ import ProfCardShift from "../components/ProfCardShift";
 
 const ProfShiftScreen = ({ navigation }) => {
   const createTwoButtonAlert = () =>
-    Alert.alert(
-      "Confirmar cancelación del turno",
-      "¿Desea cancelar el turno solicitado?",
-      [
-        {
-          text: "Cancelar",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
-      ]
+  showAlert({
+    title:"Cancelar turno!",
+    message: "Está seguro que desea cancelar el turno?",
+    alertType: 'warning',
+    onPress: () => closeAlert()
+  }
     );
   const categories = ["Próximos", "Históricos"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
@@ -63,6 +60,12 @@ const ProfShiftScreen = ({ navigation }) => {
   };
   return (
     <Container>
+      <CustomisableAlert
+        titleStyle={{
+          fontSize: 18,
+          fontWeight: "bold",
+        }}
+      />
       <View style={styles.categoryListContainerDesc}>
         {categories.map((item, index) => (
           <TouchableOpacity

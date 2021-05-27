@@ -11,7 +11,8 @@ import { LogBox } from "react-native";
 LogBox.ignoreAllLogs();
 import { LinearGradient } from "expo-linear-gradient";
 UIManager.setLayoutAnimationEnabledExperimental(true);
-
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert } from "react-native-customisable-alert";
 import {
   CreditCardInput,
 } from "react-native-credit-card-input";
@@ -61,7 +62,24 @@ export default class App extends Component {
 
         <View style={styles.sectionReserve}>
           <TouchableOpacity
-            onPress={createTwoButtonAlert}
+             onPress={() => 
+              {
+              showAlert({
+              title:"Confirmar pago!",
+              message: "Desea confirmar el turno solicitado?",
+              alertType: 'warning',
+              onPress: () => {
+                showAlert({
+                  title:"Turno reservado correctamente!",
+                  message: "El turno se ha reservado correctamente!",
+                  alertType: 'success',
+                  onPress: () => console.log('Turno reservado correctamente!')
+                  
+                })
+              }
+              
+            })
+          }}
             style={styles.signIn}
           >
             <LinearGradient
@@ -81,6 +99,12 @@ export default class App extends Component {
             </LinearGradient>
           </TouchableOpacity>
         </View>
+        <CustomisableAlert
+                    titleStyle={{
+                        fontSize: 18,
+                        fontWeight: "bold"
+                    }}
+                />
       </View>
     );
   }

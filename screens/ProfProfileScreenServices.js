@@ -4,6 +4,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "@react-navigation/native";
 import { Picker } from "@react-native-picker/picker";
 import { xorBy } from "lodash";
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert, closeAlert } from "react-native-customisable-alert";
 import {
   View,
   Text,
@@ -75,10 +77,11 @@ const ProfProfileScreenServices = ({ navigation }) => {
   const [modalOpenSat, setModalOpenSat] = useState(false);
   const [modalOpenSun, setModalOpenSun] = useState(false);
   const categories = ["Descripción", "Servicios", "Turnos"];
-  const [selectedCategory, setSelectedCategory] = useState();
-  const [selectedDiscount, setSelectedDiscount] = useState();
+  const [selectedCategory, setSelectedCategory] = useState("hairdressing");
+  const [selectedService, setSelectedService] = useState("hairstyle");
+  const [selectedDiscount, setSelectedDiscount] = useState("0");
   const [selectedMode, setSelectedMode] = useState("free");
-  const [selectedPayment, setSelectedPayment] = useState();
+  const [selectedPayment, setSelectedPayment] = useState('creditCard');
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
   const schedules = [
@@ -265,7 +268,16 @@ const ProfProfileScreenServices = ({ navigation }) => {
           </View>
 
           <View style={styles.sectionReserveDesc}>
-            <TouchableOpacity style={styles.signInDesc}>
+            <TouchableOpacity style={styles.signInDesc}
+            onPress={() => {
+              showAlert({
+                title: "Datos guardados",
+                message: "Datos guardados exitosamente!",
+                alertType: "success",
+                onPress: () => console.log("Datos guardados!"),
+              });
+            }}
+            >
               <LinearGradient
                 colors={["#ff2167", "#ff2167"]}
                 style={styles.signInDesc}
@@ -380,25 +392,27 @@ const ProfProfileScreenServices = ({ navigation }) => {
                   >
                     Servicio:
                   </Text>
-                  <View style={{ width: "60%" }}>
-                    <SafeAreaView style={styles.inputModal}>
-                      <TextInput
-                        placeholder=""
-                        placeholderTextColor="#666666"
-                        style={[
-                          styles.textInput,
-                          {
-                            color: colors.text,
-                          },
-                        ]}
-                        autoCapitalize="none"
-                        onChangeText={(val) => textInputChange(val)}
-                      />
-                    </SafeAreaView>
-                    {data.check_textInputChange ? (
-                      <Animatable.View animation="bounceIn"></Animatable.View>
-                    ) : null}
-                  </View>
+                  <Picker
+                    style={{
+                      width: "38%",
+                      alignSelf: "flex-end",
+                      marginLeft: 42,
+                      height: "54%",
+                      transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+                    }}
+                    selectedValue={selectedService}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setSelectedService(itemValue)
+                    }
+                  >
+                    <Picker.Item label="Peinado" value="hairstyle" />
+                    <Picker.Item label="Corte de pelo" value="haircut" />
+                    <Picker.Item label="Color" value="color" />
+                    <Picker.Item label="Lavado" value="washed" />
+                    <Picker.Item label="Planchita" value="planchita" />
+                    <Picker.Item label="Mechas" value="wicks" />
+                    <Picker.Item label="Alisado" value="smoothed" />
+                  </Picker>
                 </View>
 
                 <View style={{ flexDirection: "row" }}>
@@ -418,6 +432,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       <TextInput
                         placeholder=""
                         placeholderTextColor="#666666"
+                        keyboardType = 'numeric'
                         style={[
                           styles.textInput,
                           {
@@ -590,7 +605,28 @@ const ProfProfileScreenServices = ({ navigation }) => {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ backgroundColor: "#ff2167", padding: 10 }}
-                    onPress={() => setModalOpen(false)}
+                    onPress={() => {
+                      setModalOpen(false);
+                      if (selectedMode == 'free')
+                      {
+                      showAlert({
+                        title: "Servicio creado",
+                        message: "Servicio creado exitosamente!",
+                        alertType: "success",
+                        onPress: () => console.log("Servicio creado!"),
+                      });
+                      }
+                      else
+                      if (selectedPayment == 'creditCard'){
+                        navigation.navigate("ProfPaymentCreditScreen");
+                        console.log("Credito");
+                      }
+                      else{
+                      if (selectedPayment == 'debitCard')
+                        navigation.navigate("ProfPaymentDebitScreen");
+                        console.log("Debito");
+                      }
+                    }}
                   >
                     <Text
                       style={{
@@ -1626,8 +1662,52 @@ const ProfProfileScreenServices = ({ navigation }) => {
             </View>
           </Modal>
 
+          <View style={{}}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      marginTop: 20,
+                      color: "black",
+                      marginLeft: 20,
+                    }}
+                  >
+                    ¿Con cuantas horas de anticipación el usuario puede reservar un turno?
+                  </Text>
+                  <View style={{ marginLeft: 290, width: '20%', marginTop: -41, height: '7%'}}>
+                    <SafeAreaView style={styles.inputModal}>
+                      <TextInput
+                        placeholder="24"
+                        placeholderTextColor="#666666"
+                        keyboardType = "numeric"
+                        style={[
+                          styles.textInput,
+                          {
+                            color: colors.text,
+                            marginTop: -10,
+                            fontSize: 20
+                          },
+                        ]}
+                        autoCapitalize="none"
+                        onChangeText={(val) => textInputChange(val)}
+                      />
+                    </SafeAreaView>
+                    {data.check_textInputChange ? (
+                      <Animatable.View animation="bounceIn"></Animatable.View>
+                    ) : null}
+                  </View>
+                </View>
+
           <View style={styles.sectionReserveTurn}>
-            <TouchableOpacity style={styles.signInSaveTurn}>
+            <TouchableOpacity style={styles.signInSaveTurn}
+            onPress={() => {
+              showAlert({
+                title: "Turnos guardados",
+                message: "Turnos guardados exitosamente!",
+                alertType: "success",
+                onPress: () => console.log("Turnos guardados!"),
+              });
+            }}>
               <LinearGradient
                 colors={["#ff2167", "#ff2167"]}
                 style={styles.signInSaveTurn}
@@ -1652,6 +1732,12 @@ const ProfProfileScreenServices = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <CustomisableAlert
+        titleStyle={{
+          fontSize: 18,
+          fontWeight: "bold",
+        }}
+      />
       <StatusBar barStyle="light-content" />
       <View
         style={styles.section}
@@ -1863,7 +1949,7 @@ const styles = StyleSheet.create({
   },
   sectionReserveDesc: {
     padding: 20,
-    paddingTop: 10,
+    paddingTop: 0,
     borderBottomColor: "#cccccc",
     backgroundColor: "white",
   },
@@ -1877,7 +1963,7 @@ const styles = StyleSheet.create({
   },
   sectionReserveTurn: {
     padding: 15,
-    paddingTop: 30,
+    paddingTop: 20,
     borderBottomColor: "#cccccc",
     backgroundColor: "white",
   },

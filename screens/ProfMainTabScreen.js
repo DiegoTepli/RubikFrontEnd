@@ -9,9 +9,11 @@ import ProfShiftScreen from "./ProfShiftScreen";
 import ProfProfileScreen from "./ProfProfileScreen";
 import ProfProfileScreenView from "./ProfProfileScreenView";
 import ProfProfileScreenServices from "./ProfProfileScreenServices";
+import ProfPaymentCreditScreen from "./ProfPaymentCreditScreen";
+import ProfPaymentDebitScreen from "./ProfPaymentDebitScreen";
 import { useTheme } from "react-native-paper";
 import { View } from "react-native-animatable";
-import ProfPaymentScreen from "./ProfPaymentScreen";
+import ProfSaveCardScreen from "./ProfSaveCardScreen";
 const ProfShiftStack = createStackNavigator();
 const ProfProfileStack = createStackNavigator();
 
@@ -118,7 +120,7 @@ const ProfProfileStackScreen = ({ navigation }) => {
                 size={27}
                 backgroundColor="#ff2167"
                 color="#fff"
-                onPress={() => navigation.navigate("ProfPaymentScreen")}
+                onPress={() => navigation.navigate("ProfSaveCardScreen")}
               />
             </View>
           ),
@@ -175,11 +177,50 @@ const ProfProfileStackScreen = ({ navigation }) => {
         })}
       />
       <ProfProfileStack.Screen
-        name="ProfPaymentScreen"
+        name="ProfSaveCardScreen"
         options={{
           title: "View",
         }}
-        component={ProfPaymentScreen}
+        component={ProfSaveCardScreen}
+        options={({ route }) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: "#fff",
+        })}
+      />
+      <ProfProfileStack.Screen
+        name="ProfPaymentCreditScreen"
+        options={{
+          title: "View",
+        }}
+        component={ProfPaymentCreditScreen}
+        options={({ route }) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: "#fff",
+        })}
+      />
+      <ProfProfileStack.Screen
+        name="ProfPaymentDebitScreen"
+        options={{
+          title: "View",
+        }}
+        component={ProfPaymentDebitScreen}
+        options={({ route }) => ({
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: "#fff",
+        })}
+      />
+      <ProfProfileStack.Screen
+        name="ProfCardServices"
+        options={{
+          title: "View",
+        }}
+        component={ProfPaymentDebitScreen}
         options={({ route }) => ({
           headerBackTitleVisible: false,
           headerTitle: false,

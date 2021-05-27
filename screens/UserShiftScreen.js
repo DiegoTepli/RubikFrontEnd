@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert, closeAlert } from "react-native-customisable-alert";
 import {
   Container,
 } from "native-base";
@@ -18,18 +20,13 @@ import UserCardShift from "../components/UserCardShift";
 
 const UserShiftScreen = ({ navigation }) => {
   const createTwoButtonAlert = () =>
-    Alert.alert(
-      "Confirmar cancelación del turno",
-      "¿Desea cancelar el turno solicitado?",
-      [
-        {
-          text: "Cancelar",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
-      ]
-    );
+  showAlert({
+    title:"Cancelar turno!",
+    message: "Está seguro que desea cancelar el turno?",
+    alertType: 'warning',
+    onPress: () => closeAlert()
+  }
+  )
   const categories = ["Próximos", "Históricos"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
@@ -64,6 +61,12 @@ const UserShiftScreen = ({ navigation }) => {
   };
   return (
     <Container>
+      <CustomisableAlert
+        titleStyle={{
+          fontSize: 18,
+          fontWeight: "bold",
+        }}
+      />
       <View style={styles.categoryListContainerDesc}>
         {categories.map((item, index) => (
           <TouchableOpacity

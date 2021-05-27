@@ -9,13 +9,15 @@ import {
 import {
   Container,
 } from "native-base";
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert } from "react-native-customisable-alert";
 import { LinearGradient } from "expo-linear-gradient";
 import COLORS from "../consts/colors";
 let helperArray = require("../model/data");
 import {
   CreditCardInput,
 } from "react-native-credit-card-input";
-const ProfPaymentScreen = ({ navigation }) => {
+const ProfSaveCardScreen = ({ navigation }) => {
   const categories = ["Tarjeta de crédito", "Tarjeta de débito"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   const _onFocus = (field) => console.log("focusing", field);
@@ -53,7 +55,18 @@ const ProfPaymentScreen = ({ navigation }) => {
           />
 
           <View style={styles.sectionReserve}>
-            <TouchableOpacity style={styles.signIn}>
+          <TouchableOpacity style={styles.signIn}
+             onPress={() => 
+              {
+              showAlert({
+              title:"Datos guardados",
+              message: "Datos guardados exitosamente!",
+              alertType: 'success',
+              onPress: () => console.log('Datos guardados!')
+              
+            })
+          }}
+          >
               <LinearGradient
                 colors={["#ff2167", "#ff2167"]}
                 style={styles.signIn}
@@ -105,7 +118,18 @@ const ProfPaymentScreen = ({ navigation }) => {
           />
 
           <View style={styles.sectionReserve}>
-            <TouchableOpacity style={styles.signIn}>
+          <TouchableOpacity style={styles.signIn}
+             onPress={() => 
+              {
+              showAlert({
+              title:"Datos guardados",
+              message: "Datos guardados exitosamente!",
+              alertType: 'success',
+              onPress: () => console.log('Datos guardados!')
+              
+            })
+          }}
+          >
               <LinearGradient
                 colors={["#ff2167", "#ff2167"]}
                 style={styles.signIn}
@@ -130,6 +154,12 @@ const ProfPaymentScreen = ({ navigation }) => {
 
   return (
     <Container>
+      <CustomisableAlert
+        titleStyle={{
+          fontSize: 18,
+          fontWeight: "bold",
+        }}
+      />
       <View style={styles.categoryListContainer}>
         {categories.map((item, index) => (
           <TouchableOpacity
@@ -167,7 +197,7 @@ const ProfPaymentScreen = ({ navigation }) => {
   );
 };
 
-export default ProfPaymentScreen;
+export default ProfSaveCardScreen;
 
 const styles = StyleSheet.create({
   container: {

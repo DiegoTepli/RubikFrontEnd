@@ -11,16 +11,21 @@ import {
   TextInput,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { useNavigation } from '@react-navigation/native';
 import * as Animatable from "react-native-animatable";
 import { useTheme } from "@react-navigation/native";
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert, closeAlert } from "react-native-customisable-alert";
 
 const ProfCardServices = ({ itemData }) => {
   const { colors } = useTheme();
+  const navigation = useNavigation(); 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedService, setSelectedService] = useState();
   const [selectedDiscount, setSelectedDiscount] = useState();
   const [selectedMode, setSelectedMode] = useState("free");
-  const [selectedPayment, setSelectedPayment] = useState();
+  const [selectedPayment, setSelectedPayment] = useState("creditCard");
   const [modalOpenInfo, setModalOpenInfo] = useState(false);
   const [data, setData] = React.useState({
     username: "",
@@ -48,20 +53,21 @@ const ProfCardServices = ({ itemData }) => {
   };
 
   const createTwoButtonAlert = () =>
-    Alert.alert(
-      "Eliminar servicio",
-      "¿Desea eliminar el servicio seleccionado?",
-      [
-        {
-          text: "Cancelar",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
-      ]
-    );
+  showAlert({
+    title:"Eliminar servicio!",
+    message: "Está seguro que desea eliminar el servicio?",
+    alertType: 'warning',
+    onPress: () => closeAlert()
+  }
+  )
   return (
     <View style={styles.cardInfo}>
+      <CustomisableAlert
+        titleStyle={{
+          fontSize: 18,
+          fontWeight: "bold",
+        }}
+      />
       <Text style={styles.cardTitle}>{itemData.category}</Text>
 
       {itemData.serviceDiscount != null && (
@@ -159,38 +165,34 @@ const ProfCardServices = ({ itemData }) => {
             </View>
 
             <View style={{ flexDirection: "row" }}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  fontWeight: "bold",
-                  marginTop: 20,
-                  color: "black",
-                  marginLeft: 30,
-                }}
-              >
-                Servicio:
-              </Text>
-              <View style={{ width: "60%" }}>
-                <SafeAreaView style={styles.inputModal}>
-                  <TextInput
-                    editable={false}
-                    value={itemData.serviceCategory}
-                    placeholderTextColor="#666666"
-                    style={[
-                      styles.textInput,
-                      {
-                        color: colors.text,
-                      },
-                    ]}
-                    autoCapitalize="none"
-                    onChangeText={(val) => textInputChange(val)}
-                  />
-                </SafeAreaView>
-                {data.check_textInputChange ? (
-                  <Animatable.View animation="bounceIn"></Animatable.View>
-                ) : null}
-              </View>
-            </View>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      marginTop: 20,
+                      color: "black",
+                      marginLeft: 30,
+                    }}
+                  >
+                    Servicio:
+                  </Text>
+                  <Picker
+                    style={{
+                      width: "38%",
+                      alignSelf: "flex-end",
+                      marginLeft: 42,
+                      height: "54%",
+                      transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+                    }}
+                    selectedValue={selectedService}
+                    onValueChange={(itemValue, itemIndex) =>
+                      setSelectedService(itemValue)
+                    }
+                  >
+                    <Picker.Item label={itemData.serviceCategory} />
+                  </Picker>
+                </View>
+
 
             <View style={{ flexDirection: "row" }}>
               <Text
@@ -209,6 +211,7 @@ const ProfCardServices = ({ itemData }) => {
                   <TextInput
                     defaultValue={itemData.servicePrice.toString()}
                     placeholderTextColor="#666666"
+                    keyboardType = 'numeric'
                     style={[
                       styles.textInput,
                       {
@@ -376,7 +379,28 @@ const ProfCardServices = ({ itemData }) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={{ backgroundColor: "#ff2167", padding: 10 }}
-                onPress={() => setModalOpen(false)}
+                onPress={() => {
+                  setModalOpen(false);
+                  if (selectedMode == 'free')
+                  {
+                  showAlert({
+                    title: "Servicio modificado",
+                    message: "Servicio modificado exitosamente!",
+                    alertType: "success",
+                    onPress: () => console.log("Servicio modificado!"),
+                  });
+                  }
+                  else
+                  if (selectedPayment == 'creditCard'){
+                    navigation.navigate("ProfPaymentCreditScreen");
+                    console.log("Credito");
+                  }
+                  else{
+                  if (selectedPayment == 'debitCard')
+                    navigation.navigate("ProfPaymentDebitScreen");
+                    console.log("Debito");
+                  }
+                }}
               >
                 <Text
                   style={{ color: "white", fontWeight: "bold", fontSize: 18 }}

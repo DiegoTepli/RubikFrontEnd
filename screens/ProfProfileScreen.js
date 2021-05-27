@@ -14,6 +14,8 @@ import {
   useTheme,
 } from "react-native-paper";
 import * as ImagePicker from "expo-image-picker";
+import CustomisableAlert from "react-native-customisable-alert";
+import { showAlert } from "react-native-customisable-alert";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Animatable from "react-native-animatable";
 import BottomSheet from "reanimated-bottom-sheet";
@@ -119,6 +121,12 @@ const ProfProfileScreen = () => {
 
   return (
     <View style={styles.container}>
+      <CustomisableAlert
+        titleStyle={{
+          fontSize: 18,
+          fontWeight: "bold",
+        }}
+      />
       <BottomSheet
         ref={bs}
         snapPoints={[330, 0]}
@@ -391,7 +399,17 @@ const ProfProfileScreen = () => {
       </Animatable.View>
 
       <View style={styles.sectionReserve}>
-        <TouchableOpacity style={styles.signIn}>
+      <TouchableOpacity
+          style={styles.signIn}
+          onPress={() => {
+            showAlert({
+              title: "Datos guardados",
+              message: "Datos guardados exitosamente!",
+              alertType: "success",
+              onPress: () => console.log("Datos guardados!"),
+            });
+          }}
+        >
           <LinearGradient colors={["#ff2167", "#ff2167"]} style={styles.signIn}>
             <Text
               style={[

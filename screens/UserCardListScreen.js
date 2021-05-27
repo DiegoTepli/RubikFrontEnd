@@ -22,7 +22,7 @@ let helperArray = require("../model/data");
 import { Picker } from "@react-native-picker/picker";
 
 const CardListScreen = ({ navigation }) => {
-  const categories = ["Mayor popularidad", "Mayor puntaje", "Menor precio", "Mayor descuento", "Día"];
+  const categories = ["Mayor popularidad", "Mayor puntaje", "Menor precio", "Día"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState();
@@ -68,18 +68,6 @@ const CardListScreen = ({ navigation }) => {
     }
 
     if (selectedCategoryIndex === 3) {
-      return (
-        <View style={styles.container}>
-          <FlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-      );
-    }
-
-    if (selectedCategoryIndex === 4) {
       return (
         <View>
           <Modal visible={modalOpen} animationType="slide" transparent={true}>

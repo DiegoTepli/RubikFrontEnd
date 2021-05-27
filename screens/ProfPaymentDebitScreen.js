@@ -65,15 +65,15 @@ export default class App extends Component {
             onPress={() => 
               {
               showAlert({
-              title:"Confirmar pago!",
-              message: "Desea confirmar el turno solicitado?",
-              alertType: 'warning',
-              onPress: () => {
-                showAlert({
-                  title:"Turno reservado correctamente!",
-                  message: "El turno se ha reservado correctamente!",
-                  alertType: 'success',
-                  onPress: () => console.log('Turno reservado correctamente!')
+                title:"Confirmar pago!",
+                message: "Desea confirmar el pago por el servicio solicitado?",
+                alertType: 'warning',
+                onPress: () => {
+                  showAlert({
+                    title:"Servicio creado exitosamente!",
+                    message: "El servicio se ha creado exitosamente!",
+                    alertType: 'success',
+                    onPress: () => console.log('Servicio creado exitosamente!')
                   
                 })
               }

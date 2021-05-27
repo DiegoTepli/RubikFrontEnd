@@ -62,18 +62,18 @@ export default class App extends Component {
 
         <View style={styles.sectionReserve}>
           <TouchableOpacity
-            onPress={() => 
+             onPress={() => 
               {
               showAlert({
               title:"Confirmar pago!",
-              message: "Desea confirmar el turno solicitado?",
+              message: "Desea confirmar el pago por el servicio solicitado?",
               alertType: 'warning',
               onPress: () => {
                 showAlert({
-                  title:"Turno reservado correctamente!",
-                  message: "El turno se ha reservado correctamente!",
+                  title:"Servicio creado exitosamente!",
+                  message: "El servicio se ha creado exitosamente!",
                   alertType: 'success',
-                  onPress: () => console.log('Turno reservado correctamente!')
+                  onPress: () => console.log('Servicio creado exitosamente!')
                   
                 })
               }
