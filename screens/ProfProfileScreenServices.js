@@ -76,7 +76,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
   const [modalOpenFri, setModalOpenFri] = useState(false);
   const [modalOpenSat, setModalOpenSat] = useState(false);
   const [modalOpenSun, setModalOpenSun] = useState(false);
-  const categories = ["Descripción", "Servicios", "Turnos"];
+  const categories = ["Descripción", "Servicios", "Horarios"];
   const [selectedCategory, setSelectedCategory] = useState("hairdressing");
   const [selectedService, setSelectedService] = useState("hairstyle");
   const [selectedDiscount, setSelectedDiscount] = useState("0");
@@ -782,13 +782,13 @@ const ProfProfileScreenServices = ({ navigation }) => {
               alignSelf: "center",
               marginTop: -10,
               width: "100%",
-              paddingLeft: 15,
+              paddingLeft: 10,
             }}
           >
-            Seleccionar turnos disponibles
+            Seleccionar Horarios disponibles
           </Text>
           <View
-            style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 20 }}
+            style={{ marginHorizontal: 18, marginBottom: 10, marginTop: 25 }}
           >
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Lunes</Text>
             <View
@@ -817,7 +817,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -942,7 +942,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -1067,7 +1067,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -1192,7 +1192,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -1317,7 +1317,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -1442,7 +1442,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -1567,7 +1567,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                       },
                     ]}
                   >
-                    Seleccionar turnos
+                    Seleccionar Horarios
                   </Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -1702,10 +1702,10 @@ const ProfProfileScreenServices = ({ navigation }) => {
             <TouchableOpacity style={styles.signInSaveTurn}
             onPress={() => {
               showAlert({
-                title: "Turnos guardados",
-                message: "Turnos guardados exitosamente!",
+                title: "Horarios guardados",
+                message: "Horarios guardados exitosamente!",
                 alertType: "success",
-                onPress: () => console.log("Turnos guardados!"),
+                onPress: () => console.log("Horarios guardados!"),
               });
             }}>
               <LinearGradient
@@ -1720,7 +1720,7 @@ const ProfProfileScreenServices = ({ navigation }) => {
                     },
                   ]}
                 >
-                  Guardar turnos
+                  Guardar Horarios
                 </Text>
               </LinearGradient>
             </TouchableOpacity>
