@@ -7,7 +7,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import UserHomeScreen from "./UserHomeScreen";
 import UserShiftScreen from "./UserShiftScreen";
-
+import UserFAQScreen from "./UserFAQScreen";
 import UserProfileScreen from "./UserProfileScreen";
 
 import { useTheme } from "react-native-paper";
@@ -22,6 +22,7 @@ import UserSaveCardScreen from "./UserSaveCardScreen";
 const UserHomeStack = createStackNavigator();
 const UserShiftStack = createStackNavigator();
 const UserProfileStack = createStackNavigator();
+const UserFAQStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -65,6 +66,19 @@ const UserMainTabScreen = () => (
         ),
       }}
     />
+
+<Tab.Screen
+      name="UserFAQ"
+      component={UserFAQStackScreen}
+      options={{
+        tabBarLabel: "FAQ",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
+          <Icon name="ios-information-circle" color={color} size={26} />
+        ),
+      }}
+    />
+
   </Tab.Navigator>
 );
 
@@ -240,4 +254,24 @@ const UserProfileStackScreen = ({ navigation }) => {
       />
     </UserProfileStack.Navigator>
   );
+  
 };
+
+const UserFAQStackScreen = ({ navigation }) => (
+  <UserFAQStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#ff2167",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+        alignSelf: "center",
+        fontSize: 25,
+      },
+    }}
+  >
+    <UserFAQStack.Screen name="FAQ" component={UserFAQScreen} />
+  </UserFAQStack.Navigator>
+);
+

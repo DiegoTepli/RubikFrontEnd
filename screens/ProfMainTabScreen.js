@@ -4,7 +4,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Icon from "react-native-vector-icons/Ionicons";
-
+import ProfFAQScreen from "./ProfFAQScreen";
 import ProfShiftScreen from "./ProfShiftScreen";
 import ProfProfileScreen from "./ProfProfileScreen";
 import ProfProfileScreenView from "./ProfProfileScreenView";
@@ -16,7 +16,7 @@ import { View } from "react-native-animatable";
 import ProfSaveCardScreen from "./ProfSaveCardScreen";
 const ProfShiftStack = createStackNavigator();
 const ProfProfileStack = createStackNavigator();
-
+const ProfFAQStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const ProfMainTabScreen = () => (
@@ -45,6 +45,17 @@ const ProfMainTabScreen = () => (
         tabBarColor: "#ff2167",
         tabBarIcon: ({ color }) => (
           <Icon name="ios-person" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="ProfFAQ"
+      component={ProfFAQStackScreen}
+      options={{
+        tabBarLabel: "FAQ",
+        tabBarColor: "#ff2167",
+        tabBarIcon: ({ color }) => (
+          <Icon name="ios-information-circle" color={color} size={26} />
         ),
       }}
     />
@@ -231,3 +242,21 @@ const ProfProfileStackScreen = ({ navigation }) => {
     </ProfProfileStack.Navigator>
   );
 };
+
+const ProfFAQStackScreen = ({ navigation }) => (
+  <ProfFAQStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#ff2167",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+        alignSelf: "center",
+        fontSize: 25,
+      },
+    }}
+  >
+    <ProfFAQStack.Screen name="FAQ" component={ProfFAQScreen} />
+  </ProfFAQStack.Navigator>
+);

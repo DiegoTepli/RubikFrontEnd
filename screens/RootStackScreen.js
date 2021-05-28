@@ -6,6 +6,7 @@ import InitScreen from "./InitScreen";
 import SignInScreen from "./SignInScreen";
 import SignUpClientScreen from "./SignUpClientScreen";
 import SignUpProfesionalScreen from "./SignUpProfesionalScreen";
+import SignUpProfesionalCardScreen from "./SignUpProfesionalCardScreen";
 
 const RootStack = createStackNavigator();
 
@@ -20,6 +21,10 @@ const RootStackScreen = ({ navigation }) => (
     <RootStack.Screen
       name="SignUpProfesionalScreen"
       component={SignUpProfesionalScreen}
+    />
+     <RootStack.Screen
+      name="SignUpProfesionalCardScreen"
+      component={SignUpProfesionalCardScreen}
     />
   </RootStack.Navigator>
 );

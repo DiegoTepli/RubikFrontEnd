@@ -19,6 +19,7 @@ import {
   Modal,
   TextInput,
   SafeAreaView,
+  ScrollView
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { comments } from "../model/comments";
@@ -45,7 +46,7 @@ const UserProfSelected = ({ route, navigation }) => {
   const renderSelectedTab = () => {
     if (selectedCategoryIndex === 0) {
       return (
-        <View>
+        <ScrollView>
           <View style={{ marginTop: 0, marginLeft: 20, marginBottom: 20 }}>
             <View style={{ flexDirection: "row" }}>
               <Text style={{ fontSize: 20, fontWeight: "bold" }}>Nombre: </Text>
@@ -129,7 +130,7 @@ const UserProfSelected = ({ route, navigation }) => {
               </LinearGradient>
             </TouchableOpacity>
           </View>
-        </View>
+        </ScrollView>
       );
     }
     if (selectedCategoryIndex === 1) {

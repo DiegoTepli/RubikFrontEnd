@@ -225,6 +225,60 @@ const SignUpClientScreen = ({ navigation }) => {
 
           <View style={styles.action}>
             <TextInput
+              placeholder="CBU"
+              placeholderTextColor="#666666"
+              style={[
+                styles.textInput,
+                {
+                  color: colors.text,
+                },
+              ]}
+              autoCapitalize="none"
+              onChangeText={(val) => textInputChange(val)}
+            />
+            {data.check_textInputChange ? (
+              <Animatable.View animation="bounceIn"></Animatable.View>
+            ) : null}
+          </View>
+
+          <View style={styles.action}>
+            <TextInput
+              placeholder="CUIT"
+              placeholderTextColor="#666666"
+              style={[
+                styles.textInput,
+                {
+                  color: colors.text,
+                },
+              ]}
+              autoCapitalize="none"
+              onChangeText={(val) => textInputChange(val)}
+            />
+            {data.check_textInputChange ? (
+              <Animatable.View animation="bounceIn"></Animatable.View>
+            ) : null}
+          </View>
+
+          <View style={styles.action}>
+            <TextInput
+              placeholder="Banco"
+              placeholderTextColor="#666666"
+              style={[
+                styles.textInput,
+                {
+                  color: colors.text,
+                },
+              ]}
+              autoCapitalize="none"
+              onChangeText={(val) => textInputChange(val)}
+            />
+            {data.check_textInputChange ? (
+              <Animatable.View animation="bounceIn"></Animatable.View>
+            ) : null}
+          </View>
+
+          <View style={styles.action}>
+            <TextInput
               placeholder="Contraseña"
               placeholderTextColor="#666666"
               secureTextEntry={data.secureTextEntry ? true : false}

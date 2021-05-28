@@ -226,6 +226,24 @@ const SignUpProfesionalScreen = ({ navigation }) => {
 
           <View style={styles.action}>
             <TextInput
+              placeholder="Número de contacto"
+              placeholderTextColor="#666666"
+              style={[
+                styles.textInput,
+                {
+                  color: colors.text,
+                },
+              ]}
+              autoCapitalize="none"
+              onChangeText={(val) => textInputChange(val)}
+            />
+            {data.check_textInputChange ? (
+              <Animatable.View animation="bounceIn"></Animatable.View>
+            ) : null}
+          </View>
+
+          <View style={styles.action}>
+            <TextInput
               placeholder="CBU"
               placeholderTextColor="#666666"
               style={[
@@ -263,24 +281,6 @@ const SignUpProfesionalScreen = ({ navigation }) => {
           <View style={styles.action}>
             <TextInput
               placeholder="Banco"
-              placeholderTextColor="#666666"
-              style={[
-                styles.textInput,
-                {
-                  color: colors.text,
-                },
-              ]}
-              autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
-            />
-            {data.check_textInputChange ? (
-              <Animatable.View animation="bounceIn"></Animatable.View>
-            ) : null}
-          </View>
-
-          <View style={styles.action}>
-            <TextInput
-              placeholder="Número de contacto"
               placeholderTextColor="#666666"
               style={[
                 styles.textInput,
@@ -382,7 +382,7 @@ const SignUpProfesionalScreen = ({ navigation }) => {
           <View style={styles.button}>
             <TouchableOpacity
               style={styles.signIn}
-              onPress={() => navigation.goBack()}
+              onPress={() => navigation.navigate("SignUpProfesionalCardScreen")}
             >
               <LinearGradient
                 colors={["#ff2167", "#ff2167"]}
@@ -396,7 +396,7 @@ const SignUpProfesionalScreen = ({ navigation }) => {
                     },
                   ]}
                 >
-                  Registrarse
+                  Siguiente
                 </Text>
               </LinearGradient>
             </TouchableOpacity>
