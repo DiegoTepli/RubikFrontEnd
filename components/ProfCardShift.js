@@ -12,7 +12,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const ProfCardShift = ({ itemData, onPress }) => {
+const ProfCardShift = ({ itemData, onPress, selectedCategoryIndex }) => {
   return (
     <View style={styles.card}>
       <View style={styles.cardImgWrapper}>
@@ -41,15 +41,17 @@ const ProfCardShift = ({ itemData, onPress }) => {
         <Text style={styles.cardDetails}>Barrio: {itemData.neighborhood}</Text>
         <Text style={styles.cardDetails}>Pago: {itemData.paymentMethod}</Text>
 
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <TouchableOpacity onPress={onPress} style={styles.signIn}>
-            <ImageBackground
-              source={require("../assets/cancel.png")}
-              resizeMode="center"
-              style={styles.categoryIcon}
-            />
-          </TouchableOpacity>
-        </View>
+        {selectedCategoryIndex == 0 && (
+              <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <TouchableOpacity onPress={onPress} style={styles.signIn}>
+                <ImageBackground
+                  source={require("../assets/cancel.png")}
+                  resizeMode="center"
+                  style={styles.categoryIcon}
+                />
+              </TouchableOpacity>
+            </View>
+            )}
       </View>
     </View>
   );

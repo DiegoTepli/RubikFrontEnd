@@ -22,7 +22,14 @@ const ProfShiftScreen = ({ navigation }) => {
     title:"Cancelar turno!",
     message: "Está seguro que desea cancelar el turno?",
     alertType: 'warning',
-    onPress: () => closeAlert()
+    onPress: () => {
+      showAlert({
+        title:"Turno cancelado correctamente!",
+        message: "El turno se ha cancelado correctamente!",
+        alertType: 'success',
+        onPress: () => console.log('Turno cancelado correctamente!')
+      })
+    }
   }
     );
   const categories = ["Próximos", "Históricos"];
@@ -55,7 +62,7 @@ const ProfShiftScreen = ({ navigation }) => {
 
   const renderItem = ({ item }) => {
     return (
-      <ProfCardShift itemData={item} onPress={createTwoButtonAlert} />
+      <ProfCardShift itemData={item} onPress={createTwoButtonAlert} selectedCategoryIndex={selectedCategoryIndex} />
     );
   };
   return (

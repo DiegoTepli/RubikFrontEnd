@@ -19,7 +19,21 @@ import { shift } from "../model/shift";
 import UserCardShift from "../components/UserCardShift";
 
 const UserShiftScreen = ({ navigation }) => {
-  
+  const createTwoButtonAlert = () =>
+  showAlert({
+    title:"Cancelar turno!",
+    message: "Está seguro que desea cancelar el turno?",
+    alertType: 'warning',
+    onPress: () => {
+      showAlert({
+        title:"Turno cancelado correctamente!",
+        message: "El turno se ha cancelado correctamente!",
+        alertType: 'success',
+        onPress: () => console.log('Turno cancelado correctamente!')
+      })
+    }
+  }
+    );
   const categories = ["Próximos", "Históricos"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
@@ -50,7 +64,7 @@ const UserShiftScreen = ({ navigation }) => {
   };
 
   const renderItem = ({ item }) => {
-    return <UserCardShift itemData={item} />;
+    return <UserCardShift itemData={item} onPress={createTwoButtonAlert} selectedCategoryIndex = {selectedCategoryIndex} />;
   };
   return (
     <Container>

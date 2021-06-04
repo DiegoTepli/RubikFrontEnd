@@ -12,7 +12,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const CardShift = ({ itemData }) => {
+const CardShift = ({ itemData, onPress, selectedCategoryIndex }) => {
   return (
     <View style={styles.card}>
       <View style={styles.cardImgWrapper}>
@@ -38,6 +38,17 @@ const CardShift = ({ itemData }) => {
         </Text>
         <Text style={styles.cardDetails}>Precio: ${itemData.servicePrice}</Text>
         <Text style={styles.cardDetails}>Pago: {itemData.paymentMethod}</Text>
+        {selectedCategoryIndex == 0 && (
+              <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+              <TouchableOpacity onPress={onPress} style={styles.signIn}>
+                <ImageBackground
+                  source={require("../assets/cancel.png")}
+                  resizeMode="center"
+                  style={styles.categoryIcon}
+                />
+              </TouchableOpacity>
+            </View>
+            )}
       </View>
     </View>
   );

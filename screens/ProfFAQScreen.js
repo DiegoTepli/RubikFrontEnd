@@ -20,9 +20,9 @@ const ProfFAQScreen = ({ navigation }) => {
     
         <Text style={{marginTop: 20, alignSelf: 'center', fontSize: 25, fontWeight: 'bold'}}>Preguntas frecuentes</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Puede el usuario cancelar un turno?</Text>
-        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>Una vez que el turno se haya registrado, no existe la posibilidad de que el usuario pueda cancelarlo. En este caso, deberá ponerse en contacto con el profesional para reprogramar la cita.</Text>
+        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>Puede cancelarlo siempre y cuando se realice con un mínimo de 24 horas de anticipación, cancelandose así tanto la reserva del turno como el pago realizado. Dentro de las 24 horas ya no se aceptarán cancelaciones. En este caso, deberá ponerse en contacto con el profesional para reprogramar la cita.</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Que pasa si yo cancelo el turno?</Text>
-        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>En este caso, se le reintegrará la totalidad del dinero al cliente.</Text>
+        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>En este caso, se cancelará tanto la reserva del turno como el pago realizado.</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Que datos debo colocar en mi descripción?</Text>
         <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>Cualquier información que pueda ser de utilidad para el usuario. Ejemplo: Brindo servicios de Peluquería, barbería y estética. Me muevo únicamente por las zonas de Palermo y Recoleta.</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Qué duración tiene la creación del servicio clásico/premium?</Text>

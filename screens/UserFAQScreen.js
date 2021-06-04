@@ -20,9 +20,9 @@ const UserFAQScreen = ({ navigation }) => {
     
         <Text style={{marginTop: 20, alignSelf: 'center', fontSize: 25, fontWeight: 'bold'}}>Preguntas frecuentes</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Puedo cancelar un turno una vez ya registrado?</Text>
-        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>Una vez que el turno se haya registrado, no existe la posibilidad de que el usuario pueda cancelarlo. En este caso, deberá ponerse en contacto con el profesional para reprogramar la cita.</Text>
+        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>Una vez que el turno se haya registrado, podrá cancelarlo con un mínimo de 24 horas de anticipación, cancelandose así tanto la reserva del turno como el pago realizado. Dentro de las 24 horas ya no se aceptarán cancelaciones. En ese caso, deberá ponerse en contacto con el profesional para reprogramar la cita.</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Que pasa si el profesional cancela mi turno?</Text>
-        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>En este caso, se le reintegrará la totalidad del dinero.</Text>
+        <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>En este caso, se cancelará tanto la reserva del turno como el pago realizado.</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold'}}>¿Que pasa si el profesional nunca llegó a mi domicilio ni tampoco realizó la cancelación del turno?</Text>
         <Text style={{marginHorizontal: 20, marginTop: 10, fontSize: 18}}>Se deberá iniciar el reclamo correspondiente y se le reintegrará la totalidad del dinero, siempre y cuando se verifique la veracidad de los hechos ocurridos.</Text>
         <Text style={{marginHorizontal: 20, marginTop: 20, fontSize: 18, fontWeight: 'bold', marginBottom: 20}}>Para cualquier consulta o reclamo, contactarse via mail a Rubik_Soporte@gmail.com</Text>
