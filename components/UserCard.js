@@ -3,12 +3,14 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { AirbnbRating } from "react-native-ratings";
 
 const UserCard = ({ itemData, onPress }) => {
+  console.log(itemData);
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
         <View style={styles.cardImgWrapper}>
           <Image
-            source={itemData.image}
+            //source={{ uri: itemData.service.imgs[0] }}
+            source = {require("../assets/banners/banner2.jpg")}
             resizeMode="cover"
             style={styles.cardImg}
           />
@@ -16,11 +18,11 @@ const UserCard = ({ itemData, onPress }) => {
 
         <View style={styles.cardInfo}>
           <View style={styles.cardTitleDiscount}>
-            <Text style={styles.cardTitle}>{itemData.title}</Text>
+            <Text style={styles.cardTitle}>{itemData.user.name}</Text>
             {itemData.discount != null && (
               <View style={{ flexDirection: "row" }}>
                 <Text style={styles.cardDiscount}>
-                  Hasta {itemData.discount}% OFF
+                  Hasta {itemData.discount }% OFF
                 </Text>
               </View>
             )}
@@ -31,16 +33,17 @@ const UserCard = ({ itemData, onPress }) => {
           <View style={{ flexDirection: "row" }}>
             <AirbnbRating
               count={5}
+              defaultRating={itemData.rating.weigthAverageRating}
               size={15}
               isDisabled={true}
               showRating={false}
               starContainerStyle={{ alignSelf: "flex-start", marginLeft: -3 }}
             />
             <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-              {itemData.rating}
+              {itemData.rating.weigthAverageRating}
             </Text>
             <Text style={{ fontSize: 16, marginLeft: 5 }}>
-              ({itemData.reviews})
+              ({itemData.rating.totalRatings})
             </Text>
           </View>
 

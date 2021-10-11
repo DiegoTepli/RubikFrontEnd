@@ -5,34 +5,34 @@ const CardServices = ({ itemData, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.cardInfo}>
-        <Text style={styles.cardTitle}>{itemData.category}</Text>
+        <Text style={styles.cardTitle}>{itemData.service.category.name}</Text>
 
-        {itemData.serviceDiscount != null && (
+        {itemData.discount != null && (
           <View>
             <View style={{ flexDirection: "row" }}>
               <Text style={styles.cardDetails}>
-                Servicio: {itemData.serviceCategory}
+                Servicio: {itemData.service.name}
               </Text>
               <Text style={styles.cardDiscount}>
                 {" "}
-                {itemData.serviceDiscount}% OFF
+                {itemData.discount.percentage}% OFF
               </Text>
             </View>
             <View style={{ flexDirection: "row" }}>
               <Text style={styles.cardDetails}>Precio: </Text>
               <Text style={styles.cardDetailsPriceLineThrough}>
-                ${itemData.servicePrice}
+                ${itemData.price}
               </Text>
               <Text style={styles.cardDetailsPriceDiscount}>
                 {" "}
                 $
-                {(itemData.servicePrice * (100 - itemData.serviceDiscount)) /
+                {(itemData.price * (100 - itemData.discount.percentage)) /
                   100}{" "}
               </Text>
             </View>
           </View>
         )}
-        {itemData.serviceDiscount == null && (
+        {itemData.discount == null && (
           <View>
             <Text style={styles.cardDetails}>
               Servicio: {itemData.serviceCategory}

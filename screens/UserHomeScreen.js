@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  FlatList,
   StyleSheet,
   StatusBar,
   TouchableOpacity,
@@ -13,8 +14,13 @@ import { useTheme } from "@react-navigation/native";
 
 import Swiper from "react-native-swiper";
 
+import useCategory from '../hooks/useCategory';
+
 const UserHomeScreen = ({ navigation }) => {
   const theme = useTheme();
+  const [results, searchApi] = useCategory();
+
+  const image = { uri: "results[0].mainImage "};
 
   return (
     <ScrollView style={styles.container}>
@@ -64,96 +70,31 @@ const UserHomeScreen = ({ navigation }) => {
         </Swiper>
       </View>
 
-      <View style={styles.categoryContainer}>
-        <TouchableOpacity
-          style={styles.categoryBtn}
-          onPress={() =>
-            navigation.navigate("UserCardListScreen", { category: "Peluquería" })
+      <View style={[styles.categoryContainer, { marginTop: 10 }]}>
+
+      <FlatList 
+          data = {results}
+          keyExtractor = {(result) => result._id}
+          numColumns={3}
+          renderItem = {({item}) => {
+            return <TouchableOpacity
+              style={[styles.categoryBtn, { marginTop: 10 }]}
+              onPress={() =>
+                navigation.navigate("UserCardListScreen", { category: item._id })
+              }
+            >
+              <ImageBackground
+                source={{ uri: item.mainImage}}
+                resizeMode="center"
+                style={styles.categoryIcon}
+              />
+
+              <Text style={styles.categoryBtnTxt}>{item.name}</Text>
+            </TouchableOpacity>
+            }
           }
         >
-          <ImageBackground
-            source={require("../assets/banners/Peluqueria.png")}
-            resizeMode="center"
-            style={styles.categoryIcon}
-          />
-
-          <Text style={styles.categoryBtnTxt}>Peluquería</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.categoryBtn}
-          onPress={() =>
-            navigation.navigate("CardListScreen", { category: "barbershop" })
-          }
-        >
-          <ImageBackground
-            source={require("../assets/banners/Barberia.png")}
-            resizeMode="cover"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Barbería</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Estetica.png")}
-            resizeMode="cover"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Estética</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={[styles.categoryContainer, { marginTop: 10 }]}>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Manicuria.png")}
-            resizeMode="cover"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Manicuría</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Pedicuria.png")}
-            resizeMode="center"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Pedicuría</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Maquillaje.png")}
-            resizeMode="center"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Maquillaje</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={[styles.categoryContainer, { marginTop: 10 }]}>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Depilacion.png")}
-            resizeMode="cover"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Depilación</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Cuerpo.png")}
-            resizeMode="cover"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Cuerpo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryBtn} onPress={() => {}}>
-          <ImageBackground
-            source={require("../assets/banners/Spa.png")}
-            resizeMode="cover"
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryBtnTxt}>Spa</Text>
-        </TouchableOpacity>
+        </FlatList>
       </View>
     </ScrollView>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Platform,
   StyleSheet,
   StatusBar,
-  Alert,
+//  Alert,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LinearGradient } from "expo-linear-gradient";
@@ -15,13 +15,18 @@ import Feather from "react-native-vector-icons/Feather";
 
 import { useTheme } from "react-native-paper";
 
-import { AuthContext } from "../components/context";
+//import { AuthContext } from "../components/context";
 
-import Users from "../model/users";
+//import Users from "../model/users";
+
+import { Context as authContext} from "../context/authContext";
 
 const SignInScreen = ({ navigation }) => {
+
+  const {state, signIn} = useContext(authContext);
+
   const [data, setData] = React.useState({
-    username: "",
+    email: "",
     password: "",
     check_textInputChange: false,
     secureTextEntry: true,
@@ -31,20 +36,20 @@ const SignInScreen = ({ navigation }) => {
 
   const { colors } = useTheme();
 
-  const { signIn } = React.useContext(AuthContext);
+  //const { signIn } = React.useContext(AuthContext);
 
   const textInputChange = (val) => {
     if (val.trim().length >= 4) {
       setData({
         ...data,
-        username: val,
+        email: val,
         check_textInputChange: true,
         isValidUser: true,
       });
     } else {
       setData({
         ...data,
-        username: val,
+        email: val,
         check_textInputChange: false,
         isValidUser: false,
       });
@@ -88,7 +93,7 @@ const SignInScreen = ({ navigation }) => {
     }
   };
 
-  const loginHandle = (userName, password) => {
+  /*const loginHandle = (userName, password) => {
     const foundUser = Users.filter((item) => {
       return userName == item.username && password == item.password;
     });
@@ -109,7 +114,7 @@ const SignInScreen = ({ navigation }) => {
       return;
     }
     signIn(foundUser);
-  };
+  };*/
 
   return (
     <View style={styles.container}>
@@ -179,7 +184,7 @@ const SignInScreen = ({ navigation }) => {
           <TouchableOpacity
             style={styles.signIn}
             onPress={() => {
-              loginHandle(data.username, data.password);
+              signIn({email: data.email, password: data.password});
             }}
           >
             <LinearGradient

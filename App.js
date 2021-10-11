@@ -33,6 +33,10 @@ import RootStackScreen from "./screens/RootStackScreen";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { Provider as AuthProvider } from './context/authContext';
+
+import { setNavigator } from './screens/navigationRef';
+
 const Drawer = createDrawerNavigator();
 
 const App = () => {
@@ -178,12 +182,23 @@ const App = () => {
               <Drawer.Screen name="HomeDrawer" component={UserMainTabScreen} />
             </Drawer.Navigator>
           ) : (
-            <RootStackScreen />
-          )}
+              <RootStackScreen />
+            )}
         </NavigationContainer>
       </AuthContext.Provider>
     </PaperProvider>
   );
 };
 
-export default App;
+//export default App;
+
+
+export default () => {
+  return (
+    <AuthProvider>
+      <App ref = {(navigator) => {
+        setNavigator(navigator)
+      }}/>
+    </AuthProvider>
+  )
+}

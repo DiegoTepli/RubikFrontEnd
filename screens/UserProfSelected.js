@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
+import useUserProfile from '../hooks/useUserProfile';
+import useUserComments from '../hooks/useUserComments';
+import useAddComment from '../hooks/useAddComment';
 import COLORS from "../consts/colors";
 import { LinearGradient } from "expo-linear-gradient";
-import { useTheme } from "@react-navigation/native";
 import { AirbnbRating } from "react-native-ratings";
 import CustomisableAlert from "react-native-customisable-alert";
 import { showAlert } from "react-native-customisable-alert";
@@ -22,22 +24,31 @@ import {
   ScrollView
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { comments } from "../model/comments";
 import UserCardComments from "../components/UserCardComments";
-import { useEffect } from "react";
-import { LogBox } from "react-native";
 const MIN_HEIGHT = Platform.OS === "ios" ? 90 : 55;
 const MAX_HEIGHT = 350;
 
 const UserProfSelected = ({ route, navigation }) => {
+
+  const { userId } = route.params;
+  const [userData] = useUserProfile(userId);
+  const [userComments, searchComments] = useUserComments(userId);
+
+  //TODO: poner todo en el mismo hook de comments
+  const [hasBeenCommented, commentApi] = useAddComment();
+
   const [modalOpen, setModalOpen] = useState(false);
-  useEffect(() => {
-    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-  }, []);
-  const itemData = route.params.itemData;
+
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState('');
+
   const navTitleView = useRef(null);
   const categories = ["Descripción", "Comentarios y puntación"];
   const [selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
+
+  if (!userData) {
+    return null;
+  }
 
   const renderItem = ({ item }) => {
     return <UserCardComments itemData={item} />;
@@ -50,20 +61,20 @@ const UserProfSelected = ({ route, navigation }) => {
           <View style={{ marginTop: 0, marginLeft: 20, marginBottom: 20 }}>
             <View style={{ flexDirection: "row" }}>
               <Text style={{ fontSize: 20, fontWeight: "bold" }}>Nombre: </Text>
-              <Text style={{ fontSize: 20 }}>{itemData.title}</Text>
+              <Text style={{ fontSize: 20 }}>{userData.user.name}</Text>
             </View>
             <View style={{ flexDirection: "row", marginTop: 5 }}>
               <Text style={{ fontSize: 20, fontWeight: "bold" }}>
                 Telefono:{" "}
               </Text>
-              <Text style={{ fontSize: 20 }}>{itemData.profPhone}</Text>
+              <Text style={{ fontSize: 20 }}>{userData.user.phone}</Text>
             </View>
 
             <View style={styles.categories}>
-              {itemData.categories.map((category, index) => (
+              {userData.services.map((service, index) => (
                 <View style={styles.categoryContainer} key={index}>
                   <FontAwesome name="tag" size={16} color="#fff" />
-                  <Text style={styles.category}>{category}</Text>
+                  <Text style={styles.category}>{service.service.category.name}</Text>
                 </View>
               ))}
             </View>
@@ -74,6 +85,7 @@ const UserProfSelected = ({ route, navigation }) => {
                 size={20}
                 isDisabled={true}
                 showRating={false}
+                defaultRating={userData.rating[0].weigthAverageRating}
                 starContainerStyle={{ alignSelf: "flex-start", marginLeft: -3 }}
               />
 
@@ -88,7 +100,7 @@ const UserProfSelected = ({ route, navigation }) => {
                   color: "black",
                 }}
               >
-                {itemData.rating}
+                {userData.rating[0].weigthAverageRating}
               </Text>
               <Text
                 style={{
@@ -99,18 +111,18 @@ const UserProfSelected = ({ route, navigation }) => {
                   marginLeft: 5,
                 }}
               >
-                ({itemData.reviews})
+                ({userData.rating[0].totalRatings})
               </Text>
             </View>
           </View>
           <View style={[styles.sectionDesc, styles.sectionLarge]}>
-            <Text style={styles.sectionContent}>{itemData.description}</Text>
+            <Text style={styles.sectionContent}>{userData.services[0].description}</Text>
           </View>
           <View style={styles.sectionReserve}>
             <TouchableOpacity
               style={styles.signIn}
               onPress={() =>
-                navigation.navigate("UserCardServicesListScreen", itemData)
+                navigation.navigate("UserCardServicesListScreen", {userId: userId})
               }
             >
               <LinearGradient
@@ -137,11 +149,11 @@ const UserProfSelected = ({ route, navigation }) => {
       return (
         <View style={styles.container}>
           <CustomisableAlert
-                    titleStyle={{
-                        fontSize: 18,
-                        fontWeight: "bold"
-                    }}
-                />
+            titleStyle={{
+              fontSize: 18,
+              fontWeight: "bold"
+            }}
+          />
           <Modal visible={modalOpen} animationType="slide" transparent={true}>
             <View style={{ backgroundColor: "#000000AA", flex: 1 }}>
               <View
@@ -172,6 +184,8 @@ const UserProfSelected = ({ route, navigation }) => {
                     }}
                     multiline
                     placeholder="Deja tu comentario aquí"
+                    onChangeText={text => setComment(text)}
+                    defaultValue={comment}
                   />
                 </SafeAreaView>
                 <Text
@@ -190,7 +204,8 @@ const UserProfSelected = ({ route, navigation }) => {
                   count={5}
                   defaultRating={0}
                   size={20}
-                  showRating={false}
+                  showRating={true}
+                  onFinishRating={setRating}
                   starContainerStyle={{ marginTop: 8 }}
                 />
 
@@ -201,7 +216,7 @@ const UserProfSelected = ({ route, navigation }) => {
                     marginHorizontal: 30,
                     marginTop: 30,
                     marginBottom: 20,
-                  }}
+                  }} x
                 >
                   <TouchableOpacity
                     style={{ backgroundColor: "#ff2167", padding: 10 }}
@@ -219,17 +234,19 @@ const UserProfSelected = ({ route, navigation }) => {
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ backgroundColor: "#ff2167", padding: 10 }}
-                    onPress={() => 
-                      {
-                      setModalOpen(false); 
-                      showAlert({
-                      title:"Evaluación realizada exitosamente!",
-                      message: "Gracias por evaluarme!",
-                      alertType: 'success',
-                      onPress: () => console.log('Gracias por evaluarme!')
-                      
-                    })
-                  }}
+                    onPress={() => {
+                      setModalOpen(false);
+                      commentApi(userId, 1, 1, comment, rating);
+                      if (hasBeenCommented) {
+                        searchComments(userId);
+                        showAlert({
+                          title: "Evaluación realizada exitosamente!",
+                          message: "Gracias por evaluarme!",
+                          alertType: 'success',
+                          onPress: () => console.log('Gracias por evaluarme!')
+                        })
+                      }
+                    }}
                   >
                     <Text
                       style={{
@@ -246,9 +263,9 @@ const UserProfSelected = ({ route, navigation }) => {
             </View>
           </Modal>
           <FlatList
-            data={comments}
+            data={userComments}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item._id}
           />
 
           <TouchableOpacity
@@ -271,7 +288,7 @@ const UserProfSelected = ({ route, navigation }) => {
       <StatusBar barStyle="light-content" />
 
       <View style={{ height: 330 }}>
-        <Image source={itemData.image} style={styles.image} />
+        <Image source={require("../assets/banners/banner2.jpg")} style={styles.image} />
       </View>
 
       <View

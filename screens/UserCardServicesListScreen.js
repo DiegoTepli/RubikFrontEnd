@@ -11,19 +11,29 @@ import {
   Item,
   Input,
 } from "native-base";
-import { beautyServices } from "../model/beautyServices";
+//import { beautyServices } from "../model/beautyServices";
 import UserCardServices from "../components/UserCardServices";
-let helperArray = require("../model/data");
+//let helperArray = require("../model/data");
+import useServicesByUser from '../hooks/useServicesByUser';
 
 const UserCardServicesListScreen = ({ navigation, route }) => {
-  const itemData = route.params.itemData;
+  //const itemData = route.params.itemData;
+
+  const { userId } = route.params;
+  const [services] = useServicesByUser(userId);
+
+  console.log("eeeeeeee");
+  console.log(services);
+
   const searchUser = (textToSearch) => {
     alert(textToSearch);
   };
   const renderItem = ({ item }) => {
+    console.log("serviceee");
+    console.log(item);
     return (
       <UserCardServices
-        itemData={item}
+        itemData = {item}
         onPress={() => navigation.navigate("UserCalendarScreen", { itemData })}
       />
     );
@@ -57,9 +67,9 @@ const UserCardServicesListScreen = ({ navigation, route }) => {
 
       <View style={styles.container}>
         <FlatList
-          data={beautyServices}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          data = {services}
+          keyExtractor = {(result) => result._id}
+          renderItem = {renderItem}
         />
       </View>
     </Container>

@@ -16,9 +16,12 @@ import Feather from "react-native-vector-icons/Feather";
 import { StatusBar } from "expo-status-bar";
 import * as ImagePicker from "expo-image-picker";
 import { useTheme } from "react-native-paper";
+import useSignUp  from "../hooks/useSignUp";
 
 const SignUpClientScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
+
+  const [newUser, newUserApi] = useSignUp();
 
   const PickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -27,7 +30,6 @@ const SignUpClientScreen = ({ navigation }) => {
       aspect: [4, 3],
       quality: 1,
     });
-    console.log(result);
     if (!result.cancelled) {
       setImage(result.uri);
     }
@@ -36,7 +38,15 @@ const SignUpClientScreen = ({ navigation }) => {
   const { colors } = useTheme();
 
   const [data, setData] = React.useState({
-    username: "",
+    email: "",
+    name: "",
+    dni: "",
+    cuit: "",
+    state: "",
+    city: "",
+    neighborhood: "",
+    address: "",
+    phone: "",
     password: "",
     confirm_password: "",
     check_textInputChange: false,
@@ -48,16 +58,79 @@ const SignUpClientScreen = ({ navigation }) => {
     if (val.length !== 0) {
       setData({
         ...data,
-        username: val,
-        check_textInputChange: true,
+        email: val//,
+        //check_textInputChange: true,
       });
     } else {
       setData({
         ...data,
-        username: val,
-        check_textInputChange: false,
+        email: val//,
+        //check_textInputChange: false,
       });
     }
+  };
+
+  const handleEmail = (val) => {
+    setData({
+      ...data,
+      email: val
+    });
+  };
+
+  const handleName = (val) => {
+    setData({
+      ...data,
+      name: val
+    });
+  };
+
+  const handleDni = (val) => {
+    setData({
+      ...data,
+      dni: val
+    });
+  };
+
+  const handleCuit = (val) => {
+    setData({
+      ...data,
+      cuit: val
+    });
+  };
+
+  const handleState = (val) => {
+    setData({
+      ...data,
+      state: val
+    });
+  };
+
+  const handleCity = (val) => {
+    setData({
+      ...data,
+      city: val
+    });
+  };
+
+  const handleNeighborhood = (val) => {
+    setData({
+      ...data,
+      neighborhood: val
+    });
+  };
+
+  const handleAddress = (val) => {
+    setData({
+      ...data,
+      address: val
+    });
+  };
+
+  const handlePhone = (val) => {
+    setData({
+      ...data,
+      phone: val
+    });
   };
 
   const handlePasswordChange = (val) => {
@@ -107,7 +180,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleEmail(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -125,7 +198,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleName(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -143,7 +216,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleDni(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -152,7 +225,7 @@ const SignUpClientScreen = ({ navigation }) => {
 
           <View style={styles.action}>
             <TextInput
-              value="CABA"
+              value="Provincia"
               editable={false}
               placeholderTextColor="#666666"
               style={[
@@ -162,7 +235,26 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleState(val)}
+            />
+            {data.check_textInputChange ? (
+              <Animatable.View animation="bounceIn"></Animatable.View>
+            ) : null}
+          </View>
+
+          <View style={styles.action}>
+            <TextInput
+              value="Ciudad"
+              editable={false}
+              placeholderTextColor="#666666"
+              style={[
+                styles.textInput,
+                {
+                  color: colors.text,
+                },
+              ]}
+              autoCapitalize="none"
+              onChangeText={(val) => handleCity(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -180,7 +272,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleNeighborhood(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -198,7 +290,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleAddress(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -216,25 +308,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
-            />
-            {data.check_textInputChange ? (
-              <Animatable.View animation="bounceIn"></Animatable.View>
-            ) : null}
-          </View>
-
-          <View style={styles.action}>
-            <TextInput
-              placeholder="CBU"
-              placeholderTextColor="#666666"
-              style={[
-                styles.textInput,
-                {
-                  color: colors.text,
-                },
-              ]}
-              autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handlePhone(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -252,25 +326,7 @@ const SignUpClientScreen = ({ navigation }) => {
                 },
               ]}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
-            />
-            {data.check_textInputChange ? (
-              <Animatable.View animation="bounceIn"></Animatable.View>
-            ) : null}
-          </View>
-
-          <View style={styles.action}>
-            <TextInput
-              placeholder="Banco"
-              placeholderTextColor="#666666"
-              style={[
-                styles.textInput,
-                {
-                  color: colors.text,
-                },
-              ]}
-              autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => handleCuit(val)}
             />
             {data.check_textInputChange ? (
               <Animatable.View animation="bounceIn"></Animatable.View>
@@ -295,8 +351,8 @@ const SignUpClientScreen = ({ navigation }) => {
               {data.secureTextEntry ? (
                 <Feather name="eye-off" color="grey" size={20} />
               ) : (
-                <Feather name="eye" color="grey" size={20} />
-              )}
+                  <Feather name="eye" color="grey" size={20} />
+                )}
             </TouchableOpacity>
           </View>
 
@@ -318,15 +374,15 @@ const SignUpClientScreen = ({ navigation }) => {
               {data.secureTextEntry ? (
                 <Feather name="eye-off" color="grey" size={20} />
               ) : (
-                <Feather name="eye" color="grey" size={20} />
-              )}
+                  <Feather name="eye" color="grey" size={20} />
+                )}
             </TouchableOpacity>
           </View>
 
           <View style={styles.action}>
             <TouchableOpacity style={styles.panelButton} onPress={PickImage}>
               <Text style={styles.panelButtonTitle}>
-              Adjuntar factura de algún servicio para constatar domicilio
+                Adjuntar factura de algún servicio para constatar domicilio
               </Text>
               <StatusBar style="auto" />
             </TouchableOpacity>
@@ -346,7 +402,10 @@ const SignUpClientScreen = ({ navigation }) => {
           <View style={styles.button}>
             <TouchableOpacity
               style={styles.signIn}
-              onPress={() => navigation.goBack()}
+              onPress={() => {
+                newUserApi(data)
+                navigation.goBack()
+              }}
             >
               <LinearGradient
                 colors={["#ff2167", "#ff2167"]}
